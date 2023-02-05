@@ -1,0 +1,62 @@
+<RCC>
+  <qresource prefix="pushbottom">
+    <file>pushubottom/rec.png</file>
+    <file>pushubottom/circle2.png</file>
+    <file>pushubottom/my.png</file>
+    <file>pushubottom/file.png</file>
+    <file>pushubottom/like.png</file>
+    <file>pushubottom/sound.png</file>
+    <file>pushubottom/class.png</file>
+    <file>pushubottom/stop.png</file>
+    <file>pushubottom/start.png</file>
+    <file>pushubottom/btn-left_1.png</file>
+    <file>pushubottom/btn-right_2.png</file>
+    <file>pushubottom/start.png</file>
+    <file>pushubottom/circle.png</file>
+    <file>pushubottom/closepng.png</file>
+    <file>pushubottom/down.png</file>
+    <file>pushubottom/closepng.png</file>
+    <file>pushubottom/btn-left.png</file>
+    <file>pushubottom/btn-right.png</file>
+    <file>pushubottom/closepng.png</file>
+    <file>pushubottom/search.png</file>
+    <file>pushubottom/local.png</file>
+    <file>pushubottom/head.png</file>
+  </qresource>
+  <qresource prefix="background">
+    <file>pushubottom/error.png</file>
+    <file>pushubottom/404.png</file>
+    <file>background/13.jpg</file>
+    <file>background/14.jpg</file>
+    <file>background/15.jpg</file>
+    <file>background/16.jpg</file>
+    <file>background/5.jpg</file>
+    <file>background/6.jpg</file>
+    <file>background/7.jpg</file>
+    <file>background/8.jpg</file>
+    <file>background/9.png</file>
+    <file>background/10.jpg</file>
+    <file>background/11.jpg</file>
+    <file>background/12.jpg</file>
+    <file>background/1.jpg</file>
+    <file>background/2.jpg</file>
+    <file>background/3.jpg</file>
+    <file>background/4.jpg</file>
+  </qresource>
+  <qresource prefix="新前缀">
+    <file>pushubottom/search.png</file>
+  </qresource>
+  <qresource prefix="head">
+    <file>head/1.png</file>
+    <file>head/2.png</file>
+    <file>head/3.png</file>
+    <file>head/4.png</file>
+    <file>head/5.png</file>
+    <file>head/6.png</file>
+    <file>head/7.png</file>
+    <file>head/8.png</file>
+    <file>head/9.png</file>
+  </qresource>
+  <qresource prefix="新前缀"/>
+  <qresource prefix="新前缀"/>
+</RCC>
