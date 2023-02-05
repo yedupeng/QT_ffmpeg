@@ -8,6 +8,36 @@ Mainwindow::Mainwindow(QWidget *parent) : QWidget(parent),ui(new Ui::Form)
     ui->setupUi(this);
     mp3_player = new QMediaPlayer(this);
     playlist = new QMediaPlaylist;
+    ui->tableWidget->setSelectionBehavior(QAbstractItemView::SelectRows);
+    ui->tableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    ui->tableWidget->setContextMenuPolicy(Qt::CustomContextMenu); 
+
+    menu = new QMenu(this);
+    m = new QMenu(this);
+    QAction* action1 = new QAction("暂停", this);
+    QAction* action2 = new QAction("删除歌曲", this);
+    QAction* action3 = new QAction("添加进歌单", this);
+    QAction* action4 = new QAction("我的歌单一", this);
+    QAction* action5 = new QAction("我的歌单二", this);
+    QAction* action6 = new QAction("我喜欢的音乐", this);
+    QList<QAction*> action_list;
+    action_list.append(action4);
+    action_list.append(action5);
+    action_list.append(action6);
+
+    menu->addAction(action1);
+    menu->addAction(action2);
+
+    m->addAction(action4);
+    m->addAction(action5);
+    m->addAction(action6);
+    m->setTitle("添加进歌单");
+
+    menu->addMenu(m);
+    menu->addSeparator();
+
+    // menu->addAction(action4);
+    // menu->addAction(action5);
     system("chcp 65001");
 
     ui->verticalSlider->setMaximum(100);
@@ -41,7 +71,6 @@ Mainwindow::Mainwindow(QWidget *parent) : QWidget(parent),ui(new Ui::Form)
 
 Mainwindow::~Mainwindow()
 {
-    avformat_free_context(cnt_avf);
 }
 
 // 点击切换btn_aut头像
@@ -143,7 +172,9 @@ void Mainwindow::btn_chage_import_song()
 void Mainwindow::get_songs(QString file)
 {
     int ret = 0;
+    av_register_all();
     // std::cout<<file.toLocal8Bit().data()<<std::endl;
+    AVFormatContext *cnt_avf = nullptr;
     ret = avformat_open_input(&cnt_avf, file.toLocal8Bit().data(), nullptr, nullptr);
     if(ret<0)
     {
@@ -176,6 +207,7 @@ void Mainwindow::get_songs(QString file)
     ui->tableWidget->horizontalHeader()->setDefaultAlignment(Qt::AlignLeft | Qt::AlignVCenter);
 
     avformat_close_input(&cnt_avf);
+    avformat_free_context(cnt_avf);
 }
 
 void Mainwindow::play_all()
@@ -323,19 +355,5 @@ void Mainwindow::show_meau(const QPoint& pos)
 	{
 		return;
 	}
-    QMenu* menu;
-    ui->tableWidget->setSelectionBehavior(QAbstractItemView::SelectRows);
-    ui->tableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
-    ui->tableWidget->setContextMenuPolicy(Qt::CustomContextMenu); 
-    QAction* action1 = new QAction("暂停", this);
-    QAction* action2 = new QAction("删除歌曲", this);
-    QAction* action3 = new QAction("添加进我的歌单一", this);
-    QAction* action4 = new QAction("添加进我的歌单二", this);
-    QAction* action5 = new QAction("添加进我喜欢的音乐", this);
-    menu->addAction(action1);
-    menu->addAction(action2);
-    menu->addAction(action3);
-    menu->addAction(action4);
-    menu->addAction(action5);
     menu->popup(ui->tableWidget->viewport()->mapToGlobal(pos));
 }

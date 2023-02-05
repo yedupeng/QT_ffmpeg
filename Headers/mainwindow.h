@@ -44,7 +44,7 @@ public:
     int flag = 1;
     int flag_volum = 1;
     QStringList list_songs;
-    // QMenu* menu;
+    QMenu* menu;
 
 private slots:
     void btn_chage_img();
@@ -85,10 +85,11 @@ private:
     Ui::Form *ui;
     QString File;
     int num = 0;
-    AVFormatContext* cnt_avf;
+    // AVFormatContext* cnt_avf;
     QMap<QString,QString> q_map;
     QMediaPlayer* mp3_player;
     QMediaPlaylist* playlist;
+    QMenu * m;
 };
 
 #endif
