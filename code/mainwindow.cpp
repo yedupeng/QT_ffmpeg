@@ -67,6 +67,8 @@ Mainwindow::Mainwindow(QWidget *parent) : QWidget(parent),ui(new Ui::Form)
     connect(ui->btn_next,SIGNAL(clicked()),this,SLOT(next_song()));
     connect(ui->btn_last,SIGNAL(clicked()),this,SLOT(last_song()));
     connect(ui->tableWidget,SIGNAL(customContextMenuRequested(const QPoint&)),this,SLOT(show_meau(const QPoint&)));
+    connect(menu,SIGNAL(triggered(QAction *)),this,SLOT(select_action(QAction *)));
+    connect(ui->tableWidget,SIGNAL(cellClicked(int,int)),this,SLOT(get_row(int,int)));
 }
 
 Mainwindow::~Mainwindow()
@@ -350,10 +352,49 @@ void Mainwindow::last_song()
 
 void Mainwindow::show_meau(const QPoint& pos)
 {
-    QTableWidgetItem* selectedItem = ui->tableWidget->itemAt(pos);
+    selectedItem = ui->tableWidget->itemAt(pos);
     if (nullptr == selectedItem)
 	{
 		return;
 	}
     menu->popup(ui->tableWidget->viewport()->mapToGlobal(pos));
+}
+
+void Mainwindow::select_action(QAction *action)
+{
+    // qDebug()<<action->text();
+    QString selection = action->text();
+    if(selection == "暂停")
+    {
+        mp3_player->stop();
+    }else if(selection == "删除歌曲")
+    {
+        if (nullptr == selectedItem)
+        {
+            return;
+        }else
+        {
+            if(selectedItem2 == selectedItem)
+            {
+                ui->tableWidget->removeRow(row_index);
+                playlist->removeMedia(row_index);
+                qDebug()<<selectedItem;
+            }
+        }
+    }else if(selection == "我的歌单一")
+    {
+        qDebug()<<selection;
+    }else if(selection == "我的歌单二")
+    {
+        qDebug()<<selection;
+    }else if(selection == "我喜欢的音乐")
+    {
+        qDebug()<<selection;
+    }
+}
+
+void Mainwindow::get_row(int row, int col)
+{
+    row_index = row;
+    selectedItem2 = ui->tableWidget->item(row ,col);;
 }

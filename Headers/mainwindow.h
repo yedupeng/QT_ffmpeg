@@ -45,6 +45,9 @@ public:
     int flag_volum = 1;
     QStringList list_songs;
     QMenu* menu;
+    QTableWidgetItem* selectedItem;
+    QTableWidgetItem* selectedItem2;
+    int row_index;
 
 private slots:
     void btn_chage_img();
@@ -68,6 +71,8 @@ private slots:
     void last_song();
     void show_meau(const QPoint&);
     void get_songs(QString file);
+    void select_action(QAction *action);
+    void get_row(int row, int col);
 
 private:
     // struct findResult
