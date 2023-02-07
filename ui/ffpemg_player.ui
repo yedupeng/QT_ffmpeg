@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1044</width>
+    <width>1045</width>
     <height>692</height>
    </rect>
   </property>
@@ -14,6 +14,21 @@
    <string>Form</string>
   </property>
   <layout class="QGridLayout" name="gridLayout_5">
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
+   <property name="spacing">
+    <number>0</number>
+   </property>
    <item row="0" column="0">
     <widget class="QFrame" name="frame">
      <property name="minimumSize">
@@ -782,6 +797,12 @@ color: rgb(255, 255, 255);</string>
             <string notr="true">#stack_1
 {
 background-color: rgb(0, 0, 0);
+border:none;
+}
+
+#page_favor
+{
+	background-color: rgb(0, 0, 0);
 }</string>
            </property>
            <property name="frameShape">
@@ -921,7 +942,7 @@ QScrollBar::sub-page:vertical
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>819</width>
+                      <width>839</width>
                       <height>1000</height>
                      </rect>
                     </property>
@@ -1674,12 +1695,545 @@ font: 15pt &quot;华文楷体&quot;;</string>
              </item>
             </layout>
            </widget>
-           <widget class="QWidget" name="page_other"/>
+           <widget class="QWidget" name="page_favor">
+            <property name="styleSheet">
+             <string notr="true">#page_favor
+{
+	background-color: rgb(0, 0, 0);
+}
+
+QScrollBar:vertical
+{
+	width:10px;
+	background:rgb(56, 56, 63);
+}
+
+QScrollBar::handle:vertical
+{
+	border-radius:5px;
+	background: rgb(255, 255, 255);
+}
+
+QScrollBar::add-line:vertical
+{
+	image:url();
+}
+
+QScrollBar::sub-line:vertical
+{
+	image:url();
+}
+
+QScrollBar::add-page:vertical
+{
+	background: rgb(169, 169, 169);
+}
+
+QScrollBar::sub-page:vertical
+{
+	background: rgb(169, 169, 169);
+}
+
+
+
+</string>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_7" stretch="8,1,8">
+             <property name="spacing">
+              <number>0</number>
+             </property>
+             <property name="leftMargin">
+              <number>0</number>
+             </property>
+             <property name="topMargin">
+              <number>0</number>
+             </property>
+             <property name="rightMargin">
+              <number>0</number>
+             </property>
+             <property name="bottomMargin">
+              <number>0</number>
+             </property>
+             <item>
+              <widget class="QFrame" name="frame_13">
+               <property name="styleSheet">
+                <string notr="true">#frame_13
+{
+background-color: rgb(0, 0, 0);
+
+}
+
+QPushButton:hover
+{
+	margin:2px;
+}
+</string>
+               </property>
+               <property name="frameShape">
+                <enum>QFrame::StyledPanel</enum>
+               </property>
+               <property name="frameShadow">
+                <enum>QFrame::Raised</enum>
+               </property>
+               <widget class="QLabel" name="label_18">
+                <property name="geometry">
+                 <rect>
+                  <x>40</x>
+                  <y>10</y>
+                  <width>211</width>
+                  <height>241</height>
+                 </rect>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">#label_18
+{
+	border-image: url(:/background/background/17.jpg);
+}</string>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+               </widget>
+               <widget class="QLabel" name="label_28">
+                <property name="geometry">
+                 <rect>
+                  <x>420</x>
+                  <y>40</y>
+                  <width>151</width>
+                  <height>21</height>
+                 </rect>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">#label_28
+{
+	font: 15pt &quot;华文楷体&quot;;
+	color: rgb(255, 255, 255);
+}</string>
+                </property>
+                <property name="text">
+                 <string>我喜欢的音乐</string>
+                </property>
+               </widget>
+               <widget class="QLabel" name="label_29">
+                <property name="geometry">
+                 <rect>
+                  <x>320</x>
+                  <y>20</y>
+                  <width>51</width>
+                  <height>51</height>
+                 </rect>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">#label_29
+{
+
+	font: 15pt &quot;华文楷体&quot;;
+	color: rgb(255, 0, 0);
+
+}</string>
+                </property>
+                <property name="text">
+                 <string>歌单</string>
+                </property>
+               </widget>
+               <widget class="QPushButton" name="btn_play_favor">
+                <property name="geometry">
+                 <rect>
+                  <x>270</x>
+                  <y>80</y>
+                  <width>141</width>
+                  <height>51</height>
+                 </rect>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">#btn_play_favor
+{
+background-color: rgb(255, 170, 0);
+border:none;
+border-radius:20px;
+font: 12pt &quot;华文楷体&quot;;
+color: rgb(255, 255, 255);
+}
+
+
+</string>
+                </property>
+                <property name="text">
+                 <string>播放全部</string>
+                </property>
+               </widget>
+               <widget class="QPushButton" name="pushButton_2">
+                <property name="geometry">
+                 <rect>
+                  <x>450</x>
+                  <y>90</y>
+                  <width>101</width>
+                  <height>31</height>
+                 </rect>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: rgb(255, 170, 127);
+border-radius:10px;
+font: 9pt &quot;华文楷体&quot;;
+color: rgb(255, 255, 255);</string>
+                </property>
+                <property name="text">
+                 <string>下载全部歌曲</string>
+                </property>
+               </widget>
+               <widget class="QPushButton" name="pushButton_3">
+                <property name="geometry">
+                 <rect>
+                  <x>590</x>
+                  <y>90</y>
+                  <width>91</width>
+                  <height>31</height>
+                 </rect>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: rgb(255, 85, 0);
+border-radius:10px;
+font: 9pt &quot;华文楷体&quot;;
+color: rgb(255, 255, 255);</string>
+                </property>
+                <property name="text">
+                 <string>导入歌曲</string>
+                </property>
+               </widget>
+               <widget class="QLabel" name="label_30">
+                <property name="geometry">
+                 <rect>
+                  <x>300</x>
+                  <y>150</y>
+                  <width>81</width>
+                  <height>16</height>
+                 </rect>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">#label_30
+{
+	font: 9pt &quot;华文楷体&quot;;
+color: rgb(255, 255, 255);
+}</string>
+                </property>
+                <property name="text">
+                 <string>歌曲数量：</string>
+                </property>
+               </widget>
+               <widget class="QLabel" name="label_31">
+                <property name="geometry">
+                 <rect>
+                  <x>370</x>
+                  <y>150</y>
+                  <width>72</width>
+                  <height>15</height>
+                 </rect>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">#label_31
+{
+	color: rgb(255, 255, 255);
+}</string>
+                </property>
+                <property name="text">
+                 <string>0</string>
+                </property>
+               </widget>
+               <widget class="QLabel" name="label_32">
+                <property name="geometry">
+                 <rect>
+                  <x>360</x>
+                  <y>200</y>
+                  <width>451</width>
+                  <height>31</height>
+                 </rect>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">#label_32
+{
+	font: 15pt &quot;华文楷体&quot;;
+color: rgb(255, 255, 255);
+}</string>
+                </property>
+                <property name="text">
+                 <string>纵使听遍百曲，喜欢的终究是你的声音~</string>
+                </property>
+               </widget>
+               <widget class="QLabel" name="label_33">
+                <property name="geometry">
+                 <rect>
+                  <x>270</x>
+                  <y>20</y>
+                  <width>51</width>
+                  <height>51</height>
+                 </rect>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">border-image: url(:/pushbottom/pushubottom/like.png);</string>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+               </widget>
+               <widget class="QLabel" name="label_34">
+                <property name="geometry">
+                 <rect>
+                  <x>300</x>
+                  <y>170</y>
+                  <width>141</width>
+                  <height>16</height>
+                 </rect>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">	font: 9pt &quot;华文楷体&quot;;
+color: rgb(255, 255, 255);</string>
+                </property>
+                <property name="text">
+                 <string>当前导入歌曲路径：</string>
+                </property>
+               </widget>
+               <widget class="QLabel" name="label_35">
+                <property name="geometry">
+                 <rect>
+                  <x>440</x>
+                  <y>170</y>
+                  <width>291</width>
+                  <height>16</height>
+                 </rect>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">	font: 9pt &quot;华文楷体&quot;;
+color: rgb(255, 255, 255);</string>
+                </property>
+                <property name="text">
+                 <string>空</string>
+                </property>
+               </widget>
+              </widget>
+             </item>
+             <item>
+              <widget class="QFrame" name="frame_14">
+               <property name="styleSheet">
+                <string notr="true">background-color: rgb(0, 0, 0);</string>
+               </property>
+               <property name="frameShape">
+                <enum>QFrame::StyledPanel</enum>
+               </property>
+               <property name="frameShadow">
+                <enum>QFrame::Raised</enum>
+               </property>
+               <layout class="QGridLayout" name="gridLayout_7">
+                <property name="leftMargin">
+                 <number>0</number>
+                </property>
+                <property name="topMargin">
+                 <number>0</number>
+                </property>
+                <property name="rightMargin">
+                 <number>0</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>0</number>
+                </property>
+                <property name="spacing">
+                 <number>0</number>
+                </property>
+                <item row="0" column="0">
+                 <widget class="QTableWidget" name="tableWidget_3">
+                  <property name="styleSheet">
+                   <string notr="true">#tableWidget_3
+{
+	border:none;
+	background-color: rgb(0, 0, 0);
+
+text-align:center;
+}
+
+QHeaderView::section
+{
+	color: rgb(255, 255, 255);
+	font: 10pt &quot;华文楷体&quot;;
+	
+	background-color: rgb(0, 0, 0);
+	text-align:center;
+}
+
+QTableCornerButton::section{
+
+background:black;
+
+}
+
+QTableWidget::item  
+{
+	background-color: rgb(0, 0, 0);
+	color: rgb(255, 255, 255);
+	font: 10pt &quot;华文楷体&quot;;
+
+text-align:center;
+}
+
+
+QTableWidget::item::selected 
+{
+	background-color: rgb(0, 0, 0);
+	color: rgb(255, 255, 255);
+	font: 10pt &quot;华文楷体&quot;;
+
+text-align:center;
+}
+
+
+
+
+
+
+</string>
+                  </property>
+                  <column>
+                   <property name="text">
+                    <string>歌曲</string>
+                   </property>
+                  </column>
+                  <column>
+                   <property name="text">
+                    <string>歌手</string>
+                   </property>
+                  </column>
+                  <column>
+                   <property name="text">
+                    <string>专辑</string>
+                   </property>
+                  </column>
+                  <column>
+                   <property name="text">
+                    <string>时间</string>
+                   </property>
+                  </column>
+                  <column>
+                   <property name="text">
+                    <string>路径</string>
+                   </property>
+                  </column>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item>
+              <widget class="QScrollArea" name="scr2">
+               <property name="styleSheet">
+                <string notr="true">#scr2
+{
+	border:none;
+}
+
+</string>
+               </property>
+               <property name="widgetResizable">
+                <bool>true</bool>
+               </property>
+               <widget class="QWidget" name="scrollAreaWidgetContents_5">
+                <property name="geometry">
+                 <rect>
+                  <x>0</x>
+                  <y>0</y>
+                  <width>861</width>
+                  <height>1100</height>
+                 </rect>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>1100</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">
+background-color: rgb(0, 0, 0);
+</string>
+                </property>
+                <layout class="QGridLayout" name="gridLayout_6">
+                 <property name="leftMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="spacing">
+                  <number>0</number>
+                 </property>
+                 <item row="1" column="0">
+                  <widget class="QTableWidget" name="tableWidget_2">
+                   <property name="styleSheet">
+                    <string notr="true">#tableWidget_2
+{
+	border:none;
+	background-color: rgb(0, 0, 0);
+
+text-align:center;
+}
+
+QHeaderView::section
+{
+	color: rgb(255, 255, 255);
+	font: 10pt &quot;华文楷体&quot;;
+	
+	background-color: rgb(0, 0, 0);
+	text-align:center;
+}
+
+QTableCornerButton::section{
+
+background:black;
+
+}
+
+QTableWidget::item  
+{
+	background-color: rgb(0, 0, 0);
+	color: rgb(255, 255, 255);
+	font: 10pt &quot;华文楷体&quot;;
+
+text-align:center;
+}
+
+
+QTableWidget::item::selected 
+{
+	background-color: rgb(0, 0, 0);
+	color: rgb(255, 255, 255);
+	font: 10pt &quot;华文楷体&quot;;
+
+text-align:center;
+}
+
+
+
+
+
+
+</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </widget>
+             </item>
+            </layout>
+           </widget>
            <widget class="QWidget" name="page_local">
             <property name="styleSheet">
              <string notr="true">background-color: rgb(0, 0, 0);</string>
             </property>
-            <layout class="QVBoxLayout" name="verticalLayout_6" stretch="1">
+            <layout class="QVBoxLayout" name="verticalLayout_6" stretch="0">
              <property name="spacing">
               <number>0</number>
              </property>
@@ -1701,7 +2255,39 @@ font: 15pt &quot;华文楷体&quot;;</string>
                 <string notr="true">#frame_12
 {
 	background-color: rgb(0, 0, 0);
-}</string>
+}
+QScrollBar:vertical
+{
+	width:10px;
+	background:rgb(56, 56, 63);
+}
+
+QScrollBar::handle:vertical
+{
+	border-radius:5px;
+	background: rgb(255, 255, 255);
+}
+
+QScrollBar::add-line:vertical
+{
+	image:url();
+}
+
+QScrollBar::sub-line:vertical
+{
+	image:url();
+}
+
+QScrollBar::add-page:vertical
+{
+	background: rgb(169, 169, 169);
+}
+
+QScrollBar::sub-page:vertical
+{
+	background: rgb(169, 169, 169);
+}
+</string>
                </property>
                <property name="frameShape">
                 <enum>QFrame::StyledPanel</enum>
@@ -1802,17 +2388,57 @@ QPushButton:hover
                  <string>导入歌曲</string>
                 </property>
                </widget>
-               <widget class="QTableWidget" name="tableWidget">
+               <widget class="QScrollArea" name="scrollArea_2">
                 <property name="geometry">
                  <rect>
-                  <x>40</x>
-                  <y>60</y>
-                  <width>850</width>
-                  <height>462</height>
+                  <x>0</x>
+                  <y>80</y>
+                  <width>861</width>
+                  <height>431</height>
                  </rect>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">#tableWidget
+                 <string notr="true">border:none;
+</string>
+                </property>
+                <property name="widgetResizable">
+                 <bool>true</bool>
+                </property>
+                <widget class="QWidget" name="scrollAreaWidgetContents_6">
+                 <property name="geometry">
+                  <rect>
+                   <x>0</x>
+                   <y>0</y>
+                   <width>851</width>
+                   <height>1000</height>
+                  </rect>
+                 </property>
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>1000</height>
+                  </size>
+                 </property>
+                 <layout class="QGridLayout" name="gridLayout_8">
+                  <property name="leftMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="topMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="rightMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="bottomMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="spacing">
+                   <number>0</number>
+                  </property>
+                  <item row="0" column="0">
+                   <widget class="QTableWidget" name="tableWidget">
+                    <property name="styleSheet">
+                     <string notr="true">#tableWidget
 {
 	border:none;
 	background-color: rgb(0, 0, 0);
@@ -1860,32 +2486,36 @@ text-align:center;
 
 
 </string>
-                </property>
-                <column>
-                 <property name="text">
-                  <string>歌曲</string>
-                 </property>
-                </column>
-                <column>
-                 <property name="text">
-                  <string>歌手</string>
-                 </property>
-                </column>
-                <column>
-                 <property name="text">
-                  <string>专辑</string>
-                 </property>
-                </column>
-                <column>
-                 <property name="text">
-                  <string>时间</string>
-                 </property>
-                </column>
-                <column>
-                 <property name="text">
-                  <string>路径</string>
-                 </property>
-                </column>
+                    </property>
+                    <column>
+                     <property name="text">
+                      <string>歌曲</string>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>歌手</string>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>专辑</string>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>时间</string>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>路径</string>
+                     </property>
+                    </column>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
                </widget>
               </widget>
              </item>
