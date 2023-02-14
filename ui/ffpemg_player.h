@@ -34,7 +34,6 @@ QT_BEGIN_NAMESPACE
 class Ui_Form
 {
 public:
-    QGridLayout *gridLayout_5;
     QFrame *frame;
     QGridLayout *gridLayout;
     QFrame *frame_2;
@@ -171,9 +170,44 @@ public:
     QWidget *scrollAreaWidgetContents_6;
     QGridLayout *gridLayout_8;
     QTableWidget *tableWidget;
-    QWidget *page_5;
-    QLabel *label_17;
-    QWidget *page_6;
+    QWidget *page_m1;
+    QGridLayout *gridLayout_11;
+    QScrollArea *scr3;
+    QWidget *scrollAreaWidgetContents_7;
+    QGridLayout *gridLayout_9;
+    QTableWidget *tableWidget_4;
+    QFrame *frame_15;
+    QLabel *label_36;
+    QLabel *label_37;
+    QLabel *label_38;
+    QPushButton *btn_play_m1;
+    QPushButton *pushButton_4;
+    QPushButton *pushButton_5;
+    QLabel *label_39;
+    QLabel *label_40;
+    QLabel *label_41;
+    QLabel *label_42;
+    QLabel *label_43;
+    QLabel *label_44;
+    QWidget *page_m2;
+    QGridLayout *gridLayout_10;
+    QFrame *frame_16;
+    QLabel *label_45;
+    QLabel *label_46;
+    QLabel *label_47;
+    QPushButton *btn_play_m2;
+    QPushButton *pushButton_6;
+    QPushButton *pushButton_7;
+    QLabel *label_48;
+    QLabel *label_49;
+    QLabel *label_50;
+    QLabel *label_51;
+    QLabel *label_52;
+    QLabel *label_53;
+    QScrollArea *scr4;
+    QWidget *scrollAreaWidgetContents_9;
+    QGridLayout *gridLayout_13;
+    QTableWidget *tableWidget_6;
     QWidget *page_7;
     QWidget *page_8;
     QWidget *page_9;
@@ -201,12 +235,9 @@ public:
         if (Form->objectName().isEmpty())
             Form->setObjectName(QString::fromUtf8("Form"));
         Form->resize(1045, 692);
-        gridLayout_5 = new QGridLayout(Form);
-        gridLayout_5->setSpacing(0);
-        gridLayout_5->setObjectName(QString::fromUtf8("gridLayout_5"));
-        gridLayout_5->setContentsMargins(0, 0, 0, 0);
         frame = new QFrame(Form);
         frame->setObjectName(QString::fromUtf8("frame"));
+        frame->setGeometry(QRect(0, 11, 1022, 670));
         frame->setMinimumSize(QSize(1022, 670));
         frame->setMaximumSize(QSize(1050, 670));
         frame->setStyleSheet(QString::fromUtf8("#frame\n"
@@ -607,7 +638,7 @@ public:
         QFont font;
         font.setPointSize(9);
         font.setBold(false);
-        // font.setWeight(50);
+        // font.setWeight(50);we
         tabWidget->setFont(font);
         tabWidget->setStyleSheet(QString::fromUtf8("#tabWidget::pane\n"
 "{\n"
@@ -686,7 +717,7 @@ public:
         scr->setWidgetResizable(true);
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents->setObjectName(QString::fromUtf8("scrollAreaWidgetContents"));
-        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 839, 1000));
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 820, 1000));
         scrollAreaWidgetContents->setMinimumSize(QSize(0, 1000));
         scrollAreaWidgetContents->setStyleSheet(QString::fromUtf8("background-color: rgb(0, 0, 0);"));
         verticalLayout_2 = new QVBoxLayout(scrollAreaWidgetContents);
@@ -1338,7 +1369,7 @@ public:
         scr2->setWidgetResizable(true);
         scrollAreaWidgetContents_5 = new QWidget();
         scrollAreaWidgetContents_5->setObjectName(QString::fromUtf8("scrollAreaWidgetContents_5"));
-        scrollAreaWidgetContents_5->setGeometry(QRect(0, 0, 861, 1100));
+        scrollAreaWidgetContents_5->setGeometry(QRect(0, 0, 842, 1100));
         scrollAreaWidgetContents_5->setMinimumSize(QSize(0, 1100));
         scrollAreaWidgetContents_5->setStyleSheet(QString::fromUtf8("\n"
 "background-color: rgb(0, 0, 0);\n"
@@ -1584,15 +1615,495 @@ public:
         verticalLayout_6->addWidget(frame_12);
 
         stack_1->addWidget(page_local);
-        page_5 = new QWidget();
-        page_5->setObjectName(QString::fromUtf8("page_5"));
-        label_17 = new QLabel(page_5);
-        label_17->setObjectName(QString::fromUtf8("label_17"));
-        label_17->setGeometry(QRect(60, 20, 331, 21));
-        stack_1->addWidget(page_5);
-        page_6 = new QWidget();
-        page_6->setObjectName(QString::fromUtf8("page_6"));
-        stack_1->addWidget(page_6);
+        page_m1 = new QWidget();
+        page_m1->setObjectName(QString::fromUtf8("page_m1"));
+        page_m1->setStyleSheet(QString::fromUtf8("#page_m1\n"
+"{\n"
+"	background-color: rgb(0, 0, 0);\n"
+"}\n"
+"\n"
+"QScrollBar:vertical\n"
+"{\n"
+"	width:10px;\n"
+"	background:rgb(56, 56, 63);\n"
+"}\n"
+"\n"
+"QScrollBar::handle:vertical\n"
+"{\n"
+"	border-radius:5px;\n"
+"	background: rgb(255, 255, 255);\n"
+"}\n"
+"\n"
+"QScrollBar::add-line:vertical\n"
+"{\n"
+"	image:url();\n"
+"}\n"
+"\n"
+"QScrollBar::sub-line:vertical\n"
+"{\n"
+"	image:url();\n"
+"}\n"
+"\n"
+"QScrollBar::add-page:vertical\n"
+"{\n"
+"	background: rgb(169, 169, 169);\n"
+"}\n"
+"\n"
+"QScrollBar::sub-page:vertical\n"
+"{\n"
+"	background: rgb(169, 169, 169);\n"
+"}\n"
+""));
+        gridLayout_11 = new QGridLayout(page_m1);
+        gridLayout_11->setSpacing(0);
+        gridLayout_11->setObjectName(QString::fromUtf8("gridLayout_11"));
+        gridLayout_11->setContentsMargins(0, 0, 0, 0);
+        scr3 = new QScrollArea(page_m1);
+        scr3->setObjectName(QString::fromUtf8("scr3"));
+        scr3->setStyleSheet(QString::fromUtf8("#scr3\n"
+"{\n"
+"	border:none;\n"
+"}\n"
+"\n"
+""));
+        scr3->setWidgetResizable(true);
+        scrollAreaWidgetContents_7 = new QWidget();
+        scrollAreaWidgetContents_7->setObjectName(QString::fromUtf8("scrollAreaWidgetContents_7"));
+        scrollAreaWidgetContents_7->setGeometry(QRect(0, 0, 842, 1100));
+        scrollAreaWidgetContents_7->setMinimumSize(QSize(0, 1100));
+        scrollAreaWidgetContents_7->setStyleSheet(QString::fromUtf8("\n"
+"background-color: rgb(0, 0, 0);\n"
+""));
+        gridLayout_9 = new QGridLayout(scrollAreaWidgetContents_7);
+        gridLayout_9->setSpacing(0);
+        gridLayout_9->setObjectName(QString::fromUtf8("gridLayout_9"));
+        gridLayout_9->setContentsMargins(0, 0, 0, 0);
+        tableWidget_4 = new QTableWidget(scrollAreaWidgetContents_7);
+        if (tableWidget_4->columnCount() < 5)
+            tableWidget_4->setColumnCount(5);
+        QTableWidgetItem *__qtablewidgetitem10 = new QTableWidgetItem();
+        tableWidget_4->setHorizontalHeaderItem(0, __qtablewidgetitem10);
+        QTableWidgetItem *__qtablewidgetitem11 = new QTableWidgetItem();
+        tableWidget_4->setHorizontalHeaderItem(1, __qtablewidgetitem11);
+        QTableWidgetItem *__qtablewidgetitem12 = new QTableWidgetItem();
+        tableWidget_4->setHorizontalHeaderItem(2, __qtablewidgetitem12);
+        QTableWidgetItem *__qtablewidgetitem13 = new QTableWidgetItem();
+        tableWidget_4->setHorizontalHeaderItem(3, __qtablewidgetitem13);
+        QTableWidgetItem *__qtablewidgetitem14 = new QTableWidgetItem();
+        tableWidget_4->setHorizontalHeaderItem(4, __qtablewidgetitem14);
+        tableWidget_4->setObjectName(QString::fromUtf8("tableWidget_4"));
+        tableWidget_4->setStyleSheet(QString::fromUtf8("#tableWidget_4\n"
+"{\n"
+"	border:none;\n"
+"	background-color: rgb(0, 0, 0);\n"
+"\n"
+"text-align:center;\n"
+"}\n"
+"\n"
+"QHeaderView::section\n"
+"{\n"
+"	color: rgb(255, 255, 255);\n"
+"	font: 10pt \"\345\215\216\346\226\207\346\245\267\344\275\223\";\n"
+"	\n"
+"	background-color: rgb(0, 0, 0);\n"
+"	text-align:center;\n"
+"}\n"
+"\n"
+"QTableCornerButton::section{\n"
+"\n"
+"background:black;\n"
+"\n"
+"}\n"
+"\n"
+"QTableWidget::item  \n"
+"{\n"
+"	background-color: rgb(0, 0, 0);\n"
+"	color: rgb(255, 255, 255);\n"
+"	font: 10pt \"\345\215\216\346\226\207\346\245\267\344\275\223\";\n"
+"\n"
+"text-align:center;\n"
+"}\n"
+"\n"
+"\n"
+"QTableWidget::item::selected \n"
+"{\n"
+"	background-color: rgb(0, 0, 0);\n"
+"	color: rgb(255, 255, 255);\n"
+"	font: 10pt \"\345\215\216\346\226\207\346\245\267\344\275\223\";\n"
+"\n"
+"text-align:center;\n"
+"}\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+""));
+
+        gridLayout_9->addWidget(tableWidget_4, 1, 0, 1, 1);
+
+        scr3->setWidget(scrollAreaWidgetContents_7);
+
+        gridLayout_11->addWidget(scr3, 1, 0, 1, 1);
+
+        frame_15 = new QFrame(page_m1);
+        frame_15->setObjectName(QString::fromUtf8("frame_15"));
+        frame_15->setStyleSheet(QString::fromUtf8("#frame_15\n"
+"{\n"
+"background-color: rgb(0, 0, 0);\n"
+"\n"
+"}\n"
+"\n"
+"QPushButton:hover\n"
+"{\n"
+"	margin:2px;\n"
+"}\n"
+""));
+        frame_15->setFrameShape(QFrame::StyledPanel);
+        frame_15->setFrameShadow(QFrame::Raised);
+        label_36 = new QLabel(frame_15);
+        label_36->setObjectName(QString::fromUtf8("label_36"));
+        label_36->setGeometry(QRect(30, -20, 191, 201));
+        label_36->setStyleSheet(QString::fromUtf8("#label_36\n"
+"{\n"
+"	border-image: url(:/background/background/18.jpg);\n"
+"}"));
+        label_37 = new QLabel(frame_15);
+        label_37->setObjectName(QString::fromUtf8("label_37"));
+        label_37->setGeometry(QRect(440, 40, 151, 21));
+        label_37->setStyleSheet(QString::fromUtf8("#label_37\n"
+"{\n"
+"	font: 15pt \"\345\215\216\346\226\207\346\245\267\344\275\223\";\n"
+"	color: rgb(255, 255, 255);\n"
+"}"));
+        label_38 = new QLabel(frame_15);
+        label_38->setObjectName(QString::fromUtf8("label_38"));
+        label_38->setGeometry(QRect(320, 20, 51, 51));
+        label_38->setStyleSheet(QString::fromUtf8("#label_38\n"
+"{\n"
+"\n"
+"	font: 15pt \"\345\215\216\346\226\207\346\245\267\344\275\223\";\n"
+"	color: rgb(255, 0, 0);\n"
+"\n"
+"}"));
+        btn_play_m1 = new QPushButton(frame_15);
+        btn_play_m1->setObjectName(QString::fromUtf8("btn_play_m1"));
+        btn_play_m1->setGeometry(QRect(270, 80, 141, 51));
+        btn_play_m1->setStyleSheet(QString::fromUtf8("#btn_play_m1\n"
+"{\n"
+"background-color: rgb(255, 170, 0);\n"
+"border:none;\n"
+"border-radius:20px;\n"
+"font: 12pt \"\345\215\216\346\226\207\346\245\267\344\275\223\";\n"
+"color: rgb(255, 255, 255);\n"
+"}\n"
+"\n"
+"\n"
+""));
+        pushButton_4 = new QPushButton(frame_15);
+        pushButton_4->setObjectName(QString::fromUtf8("pushButton_4"));
+        pushButton_4->setGeometry(QRect(450, 90, 101, 31));
+        pushButton_4->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 170, 127);\n"
+"border-radius:10px;\n"
+"font: 9pt \"\345\215\216\346\226\207\346\245\267\344\275\223\";\n"
+"color: rgb(255, 255, 255);"));
+        pushButton_5 = new QPushButton(frame_15);
+        pushButton_5->setObjectName(QString::fromUtf8("pushButton_5"));
+        pushButton_5->setGeometry(QRect(590, 90, 91, 31));
+        pushButton_5->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 85, 0);\n"
+"border-radius:10px;\n"
+"font: 9pt \"\345\215\216\346\226\207\346\245\267\344\275\223\";\n"
+"color: rgb(255, 255, 255);"));
+        label_39 = new QLabel(frame_15);
+        label_39->setObjectName(QString::fromUtf8("label_39"));
+        label_39->setGeometry(QRect(300, 150, 81, 16));
+        label_39->setStyleSheet(QString::fromUtf8("#label_39\n"
+"{\n"
+"	font: 9pt \"\345\215\216\346\226\207\346\245\267\344\275\223\";\n"
+"color: rgb(255, 255, 255);\n"
+"}"));
+        label_40 = new QLabel(frame_15);
+        label_40->setObjectName(QString::fromUtf8("label_40"));
+        label_40->setGeometry(QRect(370, 150, 72, 15));
+        label_40->setStyleSheet(QString::fromUtf8("#label_40\n"
+"{\n"
+"	color: rgb(255, 255, 255);\n"
+"}"));
+        label_41 = new QLabel(frame_15);
+        label_41->setObjectName(QString::fromUtf8("label_41"));
+        label_41->setGeometry(QRect(460, 200, 451, 31));
+        label_41->setStyleSheet(QString::fromUtf8("#label_41\n"
+"{\n"
+"	font: 15pt \"\345\215\216\346\226\207\346\245\267\344\275\223\";\n"
+"color: rgb(255, 255, 255);\n"
+"}"));
+        label_42 = new QLabel(frame_15);
+        label_42->setObjectName(QString::fromUtf8("label_42"));
+        label_42->setGeometry(QRect(270, 20, 51, 51));
+        label_42->setStyleSheet(QString::fromUtf8("border-image: url(:/pushbottom/pushubottom/my.png);"));
+        label_43 = new QLabel(frame_15);
+        label_43->setObjectName(QString::fromUtf8("label_43"));
+        label_43->setGeometry(QRect(300, 170, 141, 16));
+        label_43->setStyleSheet(QString::fromUtf8("	font: 9pt \"\345\215\216\346\226\207\346\245\267\344\275\223\";\n"
+"color: rgb(255, 255, 255);"));
+        label_44 = new QLabel(frame_15);
+        label_44->setObjectName(QString::fromUtf8("label_44"));
+        label_44->setGeometry(QRect(440, 170, 291, 16));
+        label_44->setStyleSheet(QString::fromUtf8("	font: 9pt \"\345\215\216\346\226\207\346\245\267\344\275\223\";\n"
+"color: rgb(255, 255, 255);"));
+
+        gridLayout_11->addWidget(frame_15, 0, 0, 1, 1);
+
+        gridLayout_11->setRowStretch(0, 1);
+        gridLayout_11->setRowStretch(1, 1);
+        stack_1->addWidget(page_m1);
+        page_m2 = new QWidget();
+        page_m2->setObjectName(QString::fromUtf8("page_m2"));
+        page_m2->setStyleSheet(QString::fromUtf8("#page_m2\n"
+"{\n"
+"	background-color: rgb(0, 0, 0);\n"
+"}\n"
+"\n"
+"QScrollBar:vertical\n"
+"{\n"
+"	width:10px;\n"
+"	background:rgb(56, 56, 63);\n"
+"}\n"
+"\n"
+"QScrollBar::handle:vertical\n"
+"{\n"
+"	border-radius:5px;\n"
+"	background: rgb(255, 255, 255);\n"
+"}\n"
+"\n"
+"QScrollBar::add-line:vertical\n"
+"{\n"
+"	image:url();\n"
+"}\n"
+"\n"
+"QScrollBar::sub-line:vertical\n"
+"{\n"
+"	image:url();\n"
+"}\n"
+"\n"
+"QScrollBar::add-page:vertical\n"
+"{\n"
+"	background: rgb(169, 169, 169);\n"
+"}\n"
+"\n"
+"QScrollBar::sub-page:vertical\n"
+"{\n"
+"	background: rgb(169, 169, 169);\n"
+"}\n"
+""));
+        gridLayout_10 = new QGridLayout(page_m2);
+        gridLayout_10->setSpacing(0);
+        gridLayout_10->setObjectName(QString::fromUtf8("gridLayout_10"));
+        gridLayout_10->setContentsMargins(0, 0, 0, 0);
+        frame_16 = new QFrame(page_m2);
+        frame_16->setObjectName(QString::fromUtf8("frame_16"));
+        frame_16->setStyleSheet(QString::fromUtf8("#frame_16\n"
+"{\n"
+"background-color: rgb(0, 0, 0);\n"
+"\n"
+"}\n"
+"\n"
+"QPushButton:hover\n"
+"{\n"
+"	margin:2px;\n"
+"}\n"
+""));
+        frame_16->setFrameShape(QFrame::StyledPanel);
+        frame_16->setFrameShadow(QFrame::Raised);
+        label_45 = new QLabel(frame_16);
+        label_45->setObjectName(QString::fromUtf8("label_45"));
+        label_45->setGeometry(QRect(30, 10, 191, 201));
+        label_45->setStyleSheet(QString::fromUtf8("#label_45\n"
+"\n"
+"{\n"
+"	border-image: url(:/background/background/19.jpg);\n"
+"}"));
+        label_46 = new QLabel(frame_16);
+        label_46->setObjectName(QString::fromUtf8("label_46"));
+        label_46->setGeometry(QRect(440, 40, 151, 21));
+        label_46->setStyleSheet(QString::fromUtf8("#label_46\n"
+"\n"
+"{\n"
+"	font: 15pt \"\345\215\216\346\226\207\346\245\267\344\275\223\";\n"
+"	color: rgb(255, 255, 255);\n"
+"}"));
+        label_47 = new QLabel(frame_16);
+        label_47->setObjectName(QString::fromUtf8("label_47"));
+        label_47->setGeometry(QRect(320, 20, 51, 51));
+        label_47->setStyleSheet(QString::fromUtf8("#label_47\n"
+"{\n"
+"\n"
+"	font: 15pt \"\345\215\216\346\226\207\346\245\267\344\275\223\";\n"
+"	color: rgb(255, 0, 0);\n"
+"\n"
+"}"));
+        btn_play_m2 = new QPushButton(frame_16);
+        btn_play_m2->setObjectName(QString::fromUtf8("btn_play_m2"));
+        btn_play_m2->setGeometry(QRect(270, 80, 141, 51));
+        btn_play_m2->setStyleSheet(QString::fromUtf8("#btn_play_m2\n"
+"\n"
+"{\n"
+"background-color: rgb(255, 170, 0);\n"
+"border:none;\n"
+"border-radius:20px;\n"
+"font: 12pt \"\345\215\216\346\226\207\346\245\267\344\275\223\";\n"
+"color: rgb(255, 255, 255);\n"
+"}\n"
+"\n"
+"\n"
+""));
+        pushButton_6 = new QPushButton(frame_16);
+        pushButton_6->setObjectName(QString::fromUtf8("pushButton_6"));
+        pushButton_6->setGeometry(QRect(450, 90, 101, 31));
+        pushButton_6->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 170, 127);\n"
+"border-radius:10px;\n"
+"font: 9pt \"\345\215\216\346\226\207\346\245\267\344\275\223\";\n"
+"color: rgb(255, 255, 255);"));
+        pushButton_7 = new QPushButton(frame_16);
+        pushButton_7->setObjectName(QString::fromUtf8("pushButton_7"));
+        pushButton_7->setGeometry(QRect(590, 90, 91, 31));
+        pushButton_7->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 85, 0);\n"
+"border-radius:10px;\n"
+"font: 9pt \"\345\215\216\346\226\207\346\245\267\344\275\223\";\n"
+"color: rgb(255, 255, 255);"));
+        label_48 = new QLabel(frame_16);
+        label_48->setObjectName(QString::fromUtf8("label_48"));
+        label_48->setGeometry(QRect(300, 150, 81, 16));
+        label_48->setStyleSheet(QString::fromUtf8("#label_48\n"
+"{\n"
+"	font: 9pt \"\345\215\216\346\226\207\346\245\267\344\275\223\";\n"
+"color: rgb(255, 255, 255);\n"
+"}"));
+        label_49 = new QLabel(frame_16);
+        label_49->setObjectName(QString::fromUtf8("label_49"));
+        label_49->setGeometry(QRect(370, 150, 72, 15));
+        label_49->setStyleSheet(QString::fromUtf8("#label_49\n"
+"{\n"
+"	color: rgb(255, 255, 255);\n"
+"}"));
+        label_50 = new QLabel(frame_16);
+        label_50->setObjectName(QString::fromUtf8("label_50"));
+        label_50->setGeometry(QRect(500, 200, 451, 31));
+        label_50->setStyleSheet(QString::fromUtf8("#label_50\n"
+"{\n"
+"	font: 15pt \"\345\215\216\346\226\207\346\245\267\344\275\223\";\n"
+"color: rgb(255, 255, 255);\n"
+"}"));
+        label_51 = new QLabel(frame_16);
+        label_51->setObjectName(QString::fromUtf8("label_51"));
+        label_51->setGeometry(QRect(270, 20, 51, 51));
+        label_51->setStyleSheet(QString::fromUtf8("border-image: url(:/pushbottom/pushubottom/my.png);"));
+        label_52 = new QLabel(frame_16);
+        label_52->setObjectName(QString::fromUtf8("label_52"));
+        label_52->setGeometry(QRect(300, 170, 141, 16));
+        label_52->setStyleSheet(QString::fromUtf8("	font: 9pt \"\345\215\216\346\226\207\346\245\267\344\275\223\";\n"
+"color: rgb(255, 255, 255);"));
+        label_53 = new QLabel(frame_16);
+        label_53->setObjectName(QString::fromUtf8("label_53"));
+        label_53->setGeometry(QRect(440, 170, 291, 16));
+        label_53->setStyleSheet(QString::fromUtf8("	font: 9pt \"\345\215\216\346\226\207\346\245\267\344\275\223\";\n"
+"color: rgb(255, 255, 255);"));
+
+        gridLayout_10->addWidget(frame_16, 0, 0, 1, 1);
+
+        scr4 = new QScrollArea(page_m2);
+        scr4->setObjectName(QString::fromUtf8("scr4"));
+        scr4->setStyleSheet(QString::fromUtf8("#scr4\n"
+"{\n"
+"	border:none;\n"
+"}\n"
+"\n"
+""));
+        scr4->setWidgetResizable(true);
+        scrollAreaWidgetContents_9 = new QWidget();
+        scrollAreaWidgetContents_9->setObjectName(QString::fromUtf8("scrollAreaWidgetContents_9"));
+        scrollAreaWidgetContents_9->setGeometry(QRect(0, 0, 842, 1100));
+        scrollAreaWidgetContents_9->setMinimumSize(QSize(0, 1100));
+        scrollAreaWidgetContents_9->setStyleSheet(QString::fromUtf8("\n"
+"background-color: rgb(0, 0, 0);\n"
+""));
+        gridLayout_13 = new QGridLayout(scrollAreaWidgetContents_9);
+        gridLayout_13->setSpacing(0);
+        gridLayout_13->setObjectName(QString::fromUtf8("gridLayout_13"));
+        gridLayout_13->setContentsMargins(0, 0, 0, 0);
+        tableWidget_6 = new QTableWidget(scrollAreaWidgetContents_9);
+        if (tableWidget_6->columnCount() < 5)
+            tableWidget_6->setColumnCount(5);
+        QTableWidgetItem *__qtablewidgetitem15 = new QTableWidgetItem();
+        tableWidget_6->setHorizontalHeaderItem(0, __qtablewidgetitem15);
+        QTableWidgetItem *__qtablewidgetitem16 = new QTableWidgetItem();
+        tableWidget_6->setHorizontalHeaderItem(1, __qtablewidgetitem16);
+        QTableWidgetItem *__qtablewidgetitem17 = new QTableWidgetItem();
+        tableWidget_6->setHorizontalHeaderItem(2, __qtablewidgetitem17);
+        QTableWidgetItem *__qtablewidgetitem18 = new QTableWidgetItem();
+        tableWidget_6->setHorizontalHeaderItem(3, __qtablewidgetitem18);
+        QTableWidgetItem *__qtablewidgetitem19 = new QTableWidgetItem();
+        tableWidget_6->setHorizontalHeaderItem(4, __qtablewidgetitem19);
+        tableWidget_6->setObjectName(QString::fromUtf8("tableWidget_6"));
+        tableWidget_6->setStyleSheet(QString::fromUtf8("#tableWidget_6\n"
+"{\n"
+"	border:none;\n"
+"	background-color: rgb(0, 0, 0);\n"
+"\n"
+"text-align:center;\n"
+"}\n"
+"\n"
+"QHeaderView::section\n"
+"{\n"
+"	color: rgb(255, 255, 255);\n"
+"	font: 10pt \"\345\215\216\346\226\207\346\245\267\344\275\223\";\n"
+"	\n"
+"	background-color: rgb(0, 0, 0);\n"
+"	text-align:center;\n"
+"}\n"
+"\n"
+"QTableCornerButton::section{\n"
+"\n"
+"background:black;\n"
+"\n"
+"}\n"
+"\n"
+"QTableWidget::item  \n"
+"{\n"
+"	background-color: rgb(0, 0, 0);\n"
+"	color: rgb(255, 255, 255);\n"
+"	font: 10pt \"\345\215\216\346\226\207\346\245\267\344\275\223\";\n"
+"\n"
+"text-align:center;\n"
+"}\n"
+"\n"
+"\n"
+"QTableWidget::item::selected \n"
+"{\n"
+"	background-color: rgb(0, 0, 0);\n"
+"	color: rgb(255, 255, 255);\n"
+"	font: 10pt \"\345\215\216\346\226\207\346\245\267\344\275\223\";\n"
+"\n"
+"text-align:center;\n"
+"}\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+""));
+
+        gridLayout_13->addWidget(tableWidget_6, 1, 0, 1, 1);
+
+        scr4->setWidget(scrollAreaWidgetContents_9);
+
+        gridLayout_10->addWidget(scr4, 1, 0, 1, 1);
+
+        gridLayout_10->setRowStretch(0, 1);
+        gridLayout_10->setRowStretch(1, 1);
+        stack_1->addWidget(page_m2);
         page_7 = new QWidget();
         page_7->setObjectName(QString::fromUtf8("page_7"));
         stack_1->addWidget(page_7);
@@ -1768,12 +2279,9 @@ public:
         gridLayout->setColumnStretch(0, 1);
         gridLayout->setColumnStretch(1, 5);
 
-        gridLayout_5->addWidget(frame, 0, 0, 1, 1);
-
-
         retranslateUi(Form);
 
-        stack_1->setCurrentIndex(2);
+        stack_1->setCurrentIndex(1);
         tabWidget->setCurrentIndex(0);
         stackedWidget->setCurrentIndex(1);
 
@@ -1878,7 +2386,50 @@ public:
         ___qtablewidgetitem8->setText(QCoreApplication::translate("Form", "\346\227\266\351\227\264", nullptr));
         QTableWidgetItem *___qtablewidgetitem9 = tableWidget->horizontalHeaderItem(4);
         ___qtablewidgetitem9->setText(QCoreApplication::translate("Form", "\350\267\257\345\276\204", nullptr));
-        label_17->setText(QCoreApplication::translate("Form", "TextLabel", nullptr));
+        QTableWidgetItem *___qtablewidgetitem10 = tableWidget_4->horizontalHeaderItem(0);
+        ___qtablewidgetitem10->setText(QCoreApplication::translate("Form", "\346\255\214\346\233\262", nullptr));
+        QTableWidgetItem *___qtablewidgetitem11 = tableWidget_4->horizontalHeaderItem(1);
+        ___qtablewidgetitem11->setText(QCoreApplication::translate("Form", "\346\255\214\346\211\213", nullptr));
+        QTableWidgetItem *___qtablewidgetitem12 = tableWidget_4->horizontalHeaderItem(2);
+        ___qtablewidgetitem12->setText(QCoreApplication::translate("Form", "\344\270\223\350\276\221", nullptr));
+        QTableWidgetItem *___qtablewidgetitem13 = tableWidget_4->horizontalHeaderItem(3);
+        ___qtablewidgetitem13->setText(QCoreApplication::translate("Form", "\346\227\266\351\227\264", nullptr));
+        QTableWidgetItem *___qtablewidgetitem14 = tableWidget_4->horizontalHeaderItem(4);
+        ___qtablewidgetitem14->setText(QCoreApplication::translate("Form", "\350\267\257\345\276\204", nullptr));
+        label_36->setText(QString());
+        label_37->setText(QCoreApplication::translate("Form", "\346\210\221\347\232\204\346\255\214\345\215\225\344\270\200", nullptr));
+        label_38->setText(QCoreApplication::translate("Form", "\346\255\214\345\215\225", nullptr));
+        btn_play_m1->setText(QCoreApplication::translate("Form", "\346\222\255\346\224\276\345\205\250\351\203\250", nullptr));
+        pushButton_4->setText(QCoreApplication::translate("Form", "\344\270\213\350\275\275\345\205\250\351\203\250\346\255\214\346\233\262", nullptr));
+        pushButton_5->setText(QCoreApplication::translate("Form", "\345\257\274\345\205\245\346\255\214\346\233\262", nullptr));
+        label_39->setText(QCoreApplication::translate("Form", "\346\255\214\346\233\262\346\225\260\351\207\217\357\274\232", nullptr));
+        label_40->setText(QCoreApplication::translate("Form", "0", nullptr));
+        label_41->setText(QCoreApplication::translate("Form", "\350\256\260\345\275\225\351\202\243\344\270\200\351\246\226\350\256\260\345\277\206\347\212\271\346\226\260\347\232\204\346\255\214~", nullptr));
+        label_42->setText(QString());
+        label_43->setText(QCoreApplication::translate("Form", "\345\275\223\345\211\215\345\257\274\345\205\245\346\255\214\346\233\262\350\267\257\345\276\204\357\274\232", nullptr));
+        label_44->setText(QCoreApplication::translate("Form", "\347\251\272", nullptr));
+        label_45->setText(QString());
+        label_46->setText(QCoreApplication::translate("Form", "\346\210\221\347\232\204\346\255\214\345\215\225\344\272\214", nullptr));
+        label_47->setText(QCoreApplication::translate("Form", "\346\255\214\345\215\225", nullptr));
+        btn_play_m2->setText(QCoreApplication::translate("Form", "\346\222\255\346\224\276\345\205\250\351\203\250", nullptr));
+        pushButton_6->setText(QCoreApplication::translate("Form", "\344\270\213\350\275\275\345\205\250\351\203\250\346\255\214\346\233\262", nullptr));
+        pushButton_7->setText(QCoreApplication::translate("Form", "\345\257\274\345\205\245\346\255\214\346\233\262", nullptr));
+        label_48->setText(QCoreApplication::translate("Form", "\346\255\214\346\233\262\346\225\260\351\207\217\357\274\232", nullptr));
+        label_49->setText(QCoreApplication::translate("Form", "0", nullptr));
+        label_50->setText(QCoreApplication::translate("Form", "\345\223\201\346\255\214\357\274\214\345\223\201\344\272\272\347\224\237\347\231\276\346\200\201~", nullptr));
+        label_51->setText(QString());
+        label_52->setText(QCoreApplication::translate("Form", "\345\275\223\345\211\215\345\257\274\345\205\245\346\255\214\346\233\262\350\267\257\345\276\204\357\274\232", nullptr));
+        label_53->setText(QCoreApplication::translate("Form", "\347\251\272", nullptr));
+        QTableWidgetItem *___qtablewidgetitem15 = tableWidget_6->horizontalHeaderItem(0);
+        ___qtablewidgetitem15->setText(QCoreApplication::translate("Form", "\346\255\214\346\233\262", nullptr));
+        QTableWidgetItem *___qtablewidgetitem16 = tableWidget_6->horizontalHeaderItem(1);
+        ___qtablewidgetitem16->setText(QCoreApplication::translate("Form", "\346\255\214\346\211\213", nullptr));
+        QTableWidgetItem *___qtablewidgetitem17 = tableWidget_6->horizontalHeaderItem(2);
+        ___qtablewidgetitem17->setText(QCoreApplication::translate("Form", "\344\270\223\350\276\221", nullptr));
+        QTableWidgetItem *___qtablewidgetitem18 = tableWidget_6->horizontalHeaderItem(3);
+        ___qtablewidgetitem18->setText(QCoreApplication::translate("Form", "\346\227\266\351\227\264", nullptr));
+        QTableWidgetItem *___qtablewidgetitem19 = tableWidget_6->horizontalHeaderItem(4);
+        ___qtablewidgetitem19->setText(QCoreApplication::translate("Form", "\350\267\257\345\276\204", nullptr));
         pushButton_17->setText(QString());
         label_15->setText(QCoreApplication::translate("Form", "\346\255\214\346\211\213\357\274\232", nullptr));
         label_16->setText(QCoreApplication::translate("Form", "\346\233\262\345\220\215:", nullptr));

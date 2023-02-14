@@ -16,6 +16,7 @@
 #include <QtMultimedia/qmediaplaylist.h>
 #include <QMenu>
 #include <QAction>
+#include <qtimer.h>
 
 
 extern "C"
@@ -43,6 +44,7 @@ public:
     int model_flag;
     int flag = 1;
     int flag_volum = 1;
+    int rad_num = 0;
     QStringList list_songs;
     QMenu* menu;
     QTableWidgetItem* selectedItem;
@@ -73,6 +75,7 @@ private slots:
     void get_songs(QString file);
     void select_action(QAction *action);
     void get_row(int row, int col);
+    void update_red();
 
 private:
     // struct findResult

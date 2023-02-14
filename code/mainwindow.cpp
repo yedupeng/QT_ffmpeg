@@ -11,9 +11,13 @@ Mainwindow::Mainwindow(QWidget *parent) : QWidget(parent),ui(new Ui::Form)
     ui->tableWidget->setSelectionBehavior(QAbstractItemView::SelectRows);
     ui->tableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
     ui->tableWidget->setContextMenuPolicy(Qt::CustomContextMenu); 
+    ui->radioButton->setChecked(1);
+    ui->stackedWidget->setCurrentWidget(ui->page_1);
 
+    QTimer *timer = new QTimer(this);
     menu = new QMenu(this);
     m = new QMenu(this);
+
     QAction* action1 = new QAction("暂停", this);
     QAction* action2 = new QAction("删除歌曲", this);
     QAction* action3 = new QAction("添加进歌单", this);
@@ -69,6 +73,9 @@ Mainwindow::Mainwindow(QWidget *parent) : QWidget(parent),ui(new Ui::Form)
     connect(ui->tableWidget,SIGNAL(customContextMenuRequested(const QPoint&)),this,SLOT(show_meau(const QPoint&)));
     connect(menu,SIGNAL(triggered(QAction *)),this,SLOT(select_action(QAction *)));
     connect(ui->tableWidget,SIGNAL(cellClicked(int,int)),this,SLOT(get_row(int,int)));
+    connect(timer, SIGNAL(timeout()), this, SLOT(update_red()));
+
+    timer->start(3000);
 }
 
 Mainwindow::~Mainwindow()
@@ -110,12 +117,12 @@ void Mainwindow::btn_chage_page_favor()
 
 void Mainwindow::btn_chage_page_my1()
 {
-    ui->stack_1->setCurrentIndex(1);
+    ui->stack_1->setCurrentIndex(3);
 }
 
 void Mainwindow::btn_chage_page_my2()
 {
-    ui->stack_1->setCurrentIndex(1);
+    ui->stack_1->setCurrentIndex(4);
 }
 
 void Mainwindow::btn_chage_page_rec()
@@ -397,4 +404,33 @@ void Mainwindow::get_row(int row, int col)
 {
     row_index = row;
     selectedItem2 = ui->tableWidget->item(row ,col);;
+}
+
+void Mainwindow::update_red()
+{
+    if(rad_num == 0)
+    {
+        ui->stackedWidget->setCurrentWidget(ui->page_2);
+        ui->radioButton_2->setChecked(1);
+        ui->radioButton->setChecked(0);
+        rad_num++;
+    }else if(rad_num == 1)
+    {
+        ui->stackedWidget->setCurrentWidget(ui->page_3);
+        ui->radioButton_3->setChecked(1);
+        ui->radioButton_2->setChecked(0);  
+        rad_num++;
+    }else if(rad_num == 2)
+    {
+        ui->stackedWidget->setCurrentWidget(ui->page_4);
+        ui->radioButton_4->setChecked(1);
+        ui->radioButton_3->setChecked(0); 
+        rad_num++;    
+    }else if(rad_num == 3)
+    {        
+        ui->stackedWidget->setCurrentWidget(ui->page_1);
+        ui->radioButton->setChecked(1);
+        ui->radioButton_4->setChecked(0);   
+        rad_num = 0;
+    }
 }
