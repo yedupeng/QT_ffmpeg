@@ -8,6 +8,8 @@ Mainwindow::Mainwindow(QWidget *parent) : QWidget(parent),ui(new Ui::Form)
     ui->setupUi(this);
     mp3_player = new QMediaPlayer(this);
     playlist = new QMediaPlaylist;
+    // net->manager_getinfo = new QNetworkAccessManager;
+    // net->manager_importinfo = new QNetworkAccessManager;
     ui->tableWidget->setSelectionBehavior(QAbstractItemView::SelectRows);
     ui->tableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
     ui->tableWidget->setContextMenuPolicy(Qt::CustomContextMenu); 
@@ -50,6 +52,7 @@ Mainwindow::Mainwindow(QWidget *parent) : QWidget(parent),ui(new Ui::Form)
     ui->verticalSlider->setSingleStep(10);
     ui->verticalSlider->setSliderPosition(50);
     ui->horizontalSlider->setRange(0,100);
+    
     connect(ui->btn_close, SIGNAL(clicked()), this, SLOT(close()));
     connect(ui->btn_down ,SIGNAL(clicked()), this, SLOT(showMinimized()));
     connect(ui->btn_aut, SIGNAL(clicked()), this, SLOT(btn_chage_img()));
@@ -74,6 +77,8 @@ Mainwindow::Mainwindow(QWidget *parent) : QWidget(parent),ui(new Ui::Form)
     connect(menu,SIGNAL(triggered(QAction *)),this,SLOT(select_action(QAction *)));
     connect(ui->tableWidget,SIGNAL(cellClicked(int,int)),this,SLOT(get_row(int,int)));
     connect(timer, SIGNAL(timeout()), this, SLOT(update_red()));
+    // connect(net->manager_getinfo, SIGNAL(finished(QNetworkReply*)), this, SLOT(&Net_songs::get_song_info(QNetworkReply*)));
+    // connect(ui->btn_search,SIGNAL(clicked()),this,SLOT(get_search_song()));
 
     timer->start(3000);
 }
@@ -434,3 +439,9 @@ void Mainwindow::update_red()
         rad_num = 0;
     }
 }
+
+// void Mainwindow::get_search_song()
+// {
+//     QString text = ui->lineEdit->text();
+//     net->find(text);
+// }

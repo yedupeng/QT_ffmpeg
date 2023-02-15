@@ -17,6 +17,7 @@
 #include <QMenu>
 #include <QAction>
 #include <qtimer.h>
+#include "netinfo_get.h"
 
 
 extern "C"
@@ -76,6 +77,7 @@ private slots:
     void select_action(QAction *action);
     void get_row(int row, int col);
     void update_red();
+    // void get_search_song();
 
 private:
     // struct findResult
@@ -98,6 +100,7 @@ private:
     QMediaPlayer* mp3_player;
     QMediaPlaylist* playlist;
     QMenu * m;
+    Net_songs* net;
 };
 
 #endif

@@ -20,8 +20,10 @@ find_package(Qt5 COMPONENTS
 
 add_executable(ffmpeg_play main.cpp
                         ./ui/ffpemg_player.h
+                        ./Headers/netinfo_get.h
                         ./Headers/mainwindow.h
                         ./code/mainwindow.cpp
+                        ./code/netinfo_get.cpp
                         ./ui/ffmpeg.qrc)
 
 
