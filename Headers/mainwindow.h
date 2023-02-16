@@ -18,6 +18,7 @@
 #include <QAction>
 #include <qtimer.h>
 #include "netinfo_get.h"
+#include <QThread>
 
 
 extern "C"
@@ -77,21 +78,11 @@ private slots:
     void select_action(QAction *action);
     void get_row(int row, int col);
     void update_red();
-    // void get_search_song();
+    void get_search_song();
+    void add_table();
 
 private:
-    // struct findResult
-    // {
-    //     QString hash;
-    //     QString songName;
-    //     QString singername;
-    //     QString album_name;
-    //     QString filesize;
-    //     QString playPath;
-    //     QString timelength;
-    //     QImage image;
-    //     QString imagePath;
-    // };
+    QThread* pThread = new QThread;
     Ui::Form *ui;
     QString File;
     int num = 0;
@@ -100,7 +91,7 @@ private:
     QMediaPlayer* mp3_player;
     QMediaPlaylist* playlist;
     QMenu * m;
-    Net_songs* net;
+    Net_songs* net = new Net_songs;
 };
 
 #endif

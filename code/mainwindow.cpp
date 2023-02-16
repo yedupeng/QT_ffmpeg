@@ -6,15 +6,15 @@ int number = 1;
 Mainwindow::Mainwindow(QWidget *parent) : QWidget(parent),ui(new Ui::Form)
 {
     ui->setupUi(this);
+    net->moveToThread(pThread);
     mp3_player = new QMediaPlayer(this);
     playlist = new QMediaPlaylist;
-    // net->manager_getinfo = new QNetworkAccessManager;
-    // net->manager_importinfo = new QNetworkAccessManager;
     ui->tableWidget->setSelectionBehavior(QAbstractItemView::SelectRows);
     ui->tableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
     ui->tableWidget->setContextMenuPolicy(Qt::CustomContextMenu); 
     ui->radioButton->setChecked(1);
     ui->stackedWidget->setCurrentWidget(ui->page_1);
+    net->init();
 
     QTimer *timer = new QTimer(this);
     menu = new QMenu(this);
@@ -44,7 +44,7 @@ Mainwindow::Mainwindow(QWidget *parent) : QWidget(parent),ui(new Ui::Form)
 
     // menu->addAction(action4);
     // menu->addAction(action5);
-    system("chcp 65001");
+    // system("chcp 65001");
 
     ui->verticalSlider->setMaximum(100);
     ui->verticalSlider->setMinimum(0);
@@ -77,9 +77,8 @@ Mainwindow::Mainwindow(QWidget *parent) : QWidget(parent),ui(new Ui::Form)
     connect(menu,SIGNAL(triggered(QAction *)),this,SLOT(select_action(QAction *)));
     connect(ui->tableWidget,SIGNAL(cellClicked(int,int)),this,SLOT(get_row(int,int)));
     connect(timer, SIGNAL(timeout()), this, SLOT(update_red()));
-    // connect(net->manager_getinfo, SIGNAL(finished(QNetworkReply*)), this, SLOT(&Net_songs::get_song_info(QNetworkReply*)));
-    // connect(ui->btn_search,SIGNAL(clicked()),this,SLOT(get_search_song()));
-
+    connect(ui->btn_search,SIGNAL(clicked()),this,SLOT(get_search_song()));
+    connect(net, &Net_songs::get_songs_info_over, this, &Mainwindow::add_table);
     timer->start(3000);
 }
 
@@ -440,8 +439,46 @@ void Mainwindow::update_red()
     }
 }
 
-// void Mainwindow::get_search_song()
-// {
-//     QString text = ui->lineEdit->text();
-//     net->find(text);
-// }
+void Mainwindow::get_search_song()
+{
+    ui->stack_1->setCurrentIndex(5);
+    QString text = ui->lineEdit->text();
+    while(ui->tableWidget_7->rowCount())
+    {
+        ui->tableWidget_7->removeRow(0);
+    }
+    net->find(text);
+    ui->label_54->setText(text);
+}
+
+void Mainwindow::add_table()
+{
+    std::cout<<1<<std::endl;
+    ui->tableWidget_7->setSelectionBehavior(QAbstractItemView::SelectRows);
+    ui->tableWidget_7->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    ui->tableWidget_7->setContextMenuPolicy(Qt::CustomContextMenu); 
+
+    if(!net->m_listResult.isEmpty())
+    {
+        ui->label_17->setStyleSheet("QLabel {border-image: url(:/background/background/20.png);}");
+        const int tablerow = net->m_listResult.count();
+        for(int i=0;i<tablerow;i++)
+        {
+            net->info = net->m_listResult.at(i);
+            int rownum = ui->tableWidget_7->rowCount();
+            ui->tableWidget_7->insertRow(rownum);
+            ui->tableWidget_7->setItem(rownum, 0, new QTableWidgetItem(net->info.songName));
+            ui->tableWidget_7->setItem(rownum, 1, new QTableWidgetItem(net->info.singername));
+            ui->tableWidget_7->setItem(rownum, 2, new QTableWidgetItem(net->info.album_name));
+            ui->tableWidget_7->setItem(rownum, 3, new QTableWidgetItem(net->info.filesize));
+            ui->tableWidget_7->setItem(rownum, 4, new QTableWidgetItem(net->info.hash));
+            ui->tableWidget_7->horizontalHeader()->setDefaultAlignment(Qt::AlignLeft | Qt::AlignVCenter);
+            qDebug()<<net->info.songName.toStdString().c_str()<<net->info.singername.toStdString().c_str();
+        }
+        ui->label_56->setText(QString("%1").arg(tablerow));
+    }else
+    {
+        ui->label_17->setStyleSheet("QLabel {border-image: url(:/background/pushubottom/question.png);}");
+        ui->label_56->setText("0");
+    }
+}

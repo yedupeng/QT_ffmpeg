@@ -24,6 +24,8 @@
     <file>pushubottom/head.png</file>
   </qresource>
   <qresource prefix="background">
+    <file>background/20.png</file>
+    <file>pushubottom/question.png</file>
     <file>background/19.jpg</file>
     <file>background/18.jpg</file>
     <file>background/17.jpg</file>

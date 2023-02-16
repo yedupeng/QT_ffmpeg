@@ -1,28 +1,42 @@
 #include "../Headers/netinfo_get.h"
 
+
+void Net_songs::init()
+{
+    manager_getinfo = new QNetworkAccessManager;
+    manager_importinfo = new QNetworkAccessManager;
+}
+
 void Net_songs::find(QString searchName)
 {
     m_listResult.clear();
     QTextCodec *codec_ = QTextCodec::codecForName("utf-8");
-    QByteArray bytecodec_ = codec_->fromUnicode(searchName);
+    QString strInput = searchName;
+    QByteArray bytecodec_ = codec_->fromUnicode(strInput);
     QByteArray byteencodec = bytecodec_.toPercentEncoding();
     QString str_name = QString(byteencodec);
-
+    QNetworkReply* answer;
     QNetworkRequest request;
     QString strurl = QString("http://mobilecdn.kugou.com/api/v3/search/song?keyword=%1").arg(str_name);
+    qDebug()<<strurl;
     request.setUrl(QUrl(strurl));
-    manager_getinfo->get(request);
+    answer = manager_getinfo->get(request);
+    QEventLoop eventloop;
+    connect(manager_getinfo, SIGNAL(finished(QNetworkReply*)),&eventloop, SLOT(quit()));
+    eventloop.exec();
+    get_song_info(answer);
 }
 
 void Net_songs::get_song_info(QNetworkReply *reply)
 {
-    std::cout<<"start get songs"<<std::endl;
     if(reply->error() == QNetworkReply::NoError)
     {
         QByteArray bytes = reply->readAll();
         QString result(bytes);
         parseSongInfo(result);
+        emit get_songs_info_over();
     }
+    reply->deleteLater();
 }
 
 void Net_songs::parseSongInfo(QString json)
@@ -57,36 +71,55 @@ void Net_songs::parseSongInfo(QString json)
                                     QString hash;
                                     QString singername;
                                     QString album_name;
-                                    int filesize;
+                                    double filesize;
                                     QJsonObject object_first = value_first.toObject();
-                                    if(object_first.contains("filename"))
+                                    if(object_first.contains("songname"))
                                     {
-                                        QJsonValue filename = object_first.take("filename");
+                                        QJsonValue filename = object_first.take("songname");
                                         songname = filename.toString();
+                                    }else
+                                    {
+                                        songname = "未知";
                                     }
                                     if(object_first.contains("hash"))
                                     {
                                         QJsonValue filehash = object_first.take("hash");
                                         hash = filehash.toString();    
+                                    }else
+                                    {
+                                        hash = "未知";
                                     }
                                     if(object_first.contains("singername"))
                                     {
                                         QJsonValue singer = object_first.take("singername");
-                                        hash = singer.toString();    
+                                        singername = singer.toString();  
+                                        // qDebug()<<singer;  
+                                    }else
+                                    {
+                                        singername = "未知";
                                     }
                                     if(object_first.contains("album_name"))
                                     {
                                         QJsonValue album = object_first.take("album_name");
                                         album_name = album.toString();    
+                                    }else
+                                    {
+                                        album_name = "未知";
                                     }
                                     if(object_first.contains("filesize"))
                                     {
                                         QJsonValue value_filesize  = object_first.take("filesize");
-                                        filesize = value_filesize.toInt();    
+                                        filesize = value_filesize.toDouble(); 
+                                        filesize = round(filesize/1024/1024*100)/100;
+                                    }else
+                                    {
+                                        filesize = 0;
                                     }   
                                     result_list.songName = songname;
                                     result_list.hash = hash;
-                                    result_list.filesize = QString("%1").arg(filesize/1000);
+                                    result_list.filesize = QString("%1").arg(filesize);
+                                    
+                                    result_list.filesize = result_list.filesize+"Mb";
                                     result_list.album_name = album_name;
                                     result_list.singername = singername; 
                                     m_listResult.append(result_list);                     
@@ -97,5 +130,8 @@ void Net_songs::parseSongInfo(QString json)
                 }
             }
         }
+    }else
+    {
+        qDebug() << "error ... ...";
     }
 }
