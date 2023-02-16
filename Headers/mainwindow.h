@@ -8,9 +8,9 @@
 #include <iostream>
 #include <QDir>
 #include <QMapIterator>
-#include <String.h>
-#include <io.h>
-#include <QMediaPlayer>
+#include <string.h>
+#include <sys/io.h>
+#include <qmediaplayer.h>
 #include <qdebug.h>
 #include <QTime>
 #include <QtMultimedia/qmediaplaylist.h>

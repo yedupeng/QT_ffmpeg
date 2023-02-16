@@ -18,12 +18,12 @@ Mainwindow::Mainwindow(QWidget *parent) : QWidget(parent),ui(new Ui::Form)
     menu = new QMenu(this);
     m = new QMenu(this);
 
-    QAction* action1 = new QAction("暂停", this);
-    QAction* action2 = new QAction("删除歌曲", this);
-    QAction* action3 = new QAction("添加进歌单", this);
-    QAction* action4 = new QAction("我的歌单一", this);
-    QAction* action5 = new QAction("我的歌单二", this);
-    QAction* action6 = new QAction("我喜欢的音乐", this);
+    QAction* action1 = new QAction("暂停 ", this);
+    QAction* action2 = new QAction("删除歌曲 ", this);
+    QAction* action3 = new QAction("添加进歌单 ", this);
+    QAction* action4 = new QAction("我的歌单一 ", this);
+    QAction* action5 = new QAction("我的歌单二 ", this);
+    QAction* action6 = new QAction("我喜欢的音乐 ", this);
     QList<QAction*> action_list;
     action_list.append(action4);
     action_list.append(action5);
@@ -35,7 +35,7 @@ Mainwindow::Mainwindow(QWidget *parent) : QWidget(parent),ui(new Ui::Form)
     m->addAction(action4);
     m->addAction(action5);
     m->addAction(action6);
-    m->setTitle("添加进歌单");
+    m->setTitle("添加进歌单 ");
 
     menu->addMenu(m);
     menu->addSeparator();
@@ -132,31 +132,31 @@ void Mainwindow::btn_chage_page_rec()
 
 void Mainwindow::btn_chage_import_songs()
 {
-    QStringList  path_list;
-    QString selectedDir = QFileDialog::getExistingDirectory(this,"请选择本地歌单","",QFileDialog::ShowDirsOnly);
-    std::string path = selectedDir.toStdString();
-	intptr_t  hFile = 0;
-	struct _finddata_t fileinfo;
-	std::string p;
-	if ((hFile = _findfirst(p.assign(path).append("\\*.mp3").c_str(), &fileinfo)) != -1) {
-		do {
-            path_list.append(QString::fromLocal8Bit(QByteArray::fromStdString(p.assign(path).append("/").append(fileinfo.name))));
+    // QStringList  path_list;
+    // QString selectedDir = QFileDialog::getExistingDirectory(this,"请选择本地歌单","",QFileDialog::ShowDirsOnly);
+    // std::string path = selectedDir.toStdString();
+	// intptr_t  hFile = 0;
+	// struct _finddata_t fileinfo;
+	// std::string p;
+	// if ((hFile = _findfirst(p.assign(path).append("\\*.mp3").c_str(), &fileinfo)) != -1) {
+	// 	do {
+    //         path_list.append(QString::fromLocal8Bit(QByteArray::fromStdString(p.assign(path).append("/").append(fileinfo.name))));
             
-		} while (_findnext(hFile, &fileinfo) == 0);      
-		_findclose(hFile);
-	}
-    list_songs = path_list;
-    ui->lineEdit_2->setText(QString::fromLocal8Bit(QByteArray::fromStdString(path)));
-    for(int i=0; i<path_list.size(); i++)
-    {
-        QString path = QDir::toNativeSeparators(path_list.at(i));
-        if(path != nullptr)
-        {
-            get_songs(path);
-            playlist->addMedia(QUrl::fromLocalFile(path));
-            // play_list->addMedia(QUrl(path));
-        }
-    }
+	// 	} while (_findnext(hFile, &fileinfo) == 0);      
+	// 	_findclose(hFile);
+	// }
+    // list_songs = path_list;
+    // ui->lineEdit_2->setText(QString::fromLocal8Bit(QByteArray::fromStdString(path)));
+    // for(int i=0; i<path_list.size(); i++)
+    // {
+    //     QString path = QDir::toNativeSeparators(path_list.at(i));
+    //     if(path != nullptr)
+    //     {
+    //         get_songs(path);
+    //         playlist->addMedia(QUrl::fromLocalFile(path));
+    //         // play_list->addMedia(QUrl(path));
+    //     }
+    // }
     
 }
 
@@ -181,7 +181,7 @@ void Mainwindow::btn_chage_import_song()
 void Mainwindow::get_songs(QString file)
 {
     int ret = 0;
-    av_register_all();
+    // av_register_all();
     // std::cout<<file.toLocal8Bit().data()<<std::endl;
     AVFormatContext *cnt_avf = nullptr;
     ret = avformat_open_input(&cnt_avf, file.toLocal8Bit().data(), nullptr, nullptr);
@@ -388,13 +388,13 @@ void Mainwindow::select_action(QAction *action)
                 qDebug()<<selectedItem;
             }
         }
-    }else if(selection == "我的歌单一")
+    }else if(selection == "我的歌单一 ")
     {
         qDebug()<<selection;
-    }else if(selection == "我的歌单二")
+    }else if(selection == "我的歌单二 ")
     {
         qDebug()<<selection;
-    }else if(selection == "我喜欢的音乐")
+    }else if(selection == "我喜欢的音乐 ")
     {
         qDebug()<<selection;
     }
