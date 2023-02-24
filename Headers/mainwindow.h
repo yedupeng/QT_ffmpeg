@@ -20,7 +20,6 @@
 #include "netinfo_get.h"
 #include <QThread>
 
-
 extern "C"
 {
     #include "libavcodec/avcodec.h"
@@ -80,6 +79,7 @@ private slots:
     void update_red();
     void get_search_song();
     void add_table();
+    void add_item();
 
 private:
     QThread* pThread = new QThread;

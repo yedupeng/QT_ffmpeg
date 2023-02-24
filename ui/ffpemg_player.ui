@@ -2129,7 +2129,7 @@ text-align:center;
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>842</width>
+                <width>90</width>
                 <height>1100</height>
                </rect>
               </property>
@@ -2586,7 +2586,7 @@ QScrollBar::sub-page:vertical
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>842</width>
+                <width>90</width>
                 <height>1100</height>
                </rect>
               </property>
@@ -3294,7 +3294,7 @@ color: rgb(255, 255, 255);</string>
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>842</width>
+                <width>90</width>
                 <height>1100</height>
                </rect>
               </property>
@@ -3904,6 +3904,11 @@ text-align:center;
                      <column>
                       <property name="text">
                        <string>hash</string>
+                      </property>
+                     </column>
+                     <column>
+                      <property name="text">
+                       <string>时长</string>
                       </property>
                      </column>
                     </widget>

@@ -79,6 +79,7 @@ Mainwindow::Mainwindow(QWidget *parent) : QWidget(parent),ui(new Ui::Form)
     connect(timer, SIGNAL(timeout()), this, SLOT(update_red()));
     connect(ui->btn_search,SIGNAL(clicked()),this,SLOT(get_search_song()));
     connect(net, &Net_songs::get_songs_info_over, this, &Mainwindow::add_table);
+    connect(net, &Net_songs::get_timelength_over, this, &Mainwindow::add_item);
     timer->start(3000);
 }
 
@@ -481,4 +482,11 @@ void Mainwindow::add_table()
         ui->label_17->setStyleSheet("QLabel {border-image: url(:/background/pushubottom/question.png);}");
         ui->label_56->setText("0");
     }
+}
+
+void Mainwindow::add_item()
+{
+    const int tablerow = net->m_listResult.count();
+    for(int i =0; i<tablerow; i++)
+        ui->tableWidget_7->setItem(i, 5, new QTableWidgetItem(net->info.timelength));
 }

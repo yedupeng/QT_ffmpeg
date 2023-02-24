@@ -1721,10 +1721,10 @@ public:
 "\n"
 "QHeaderView::section\n"
 "{\n"
+"	background-color: rgb(0, 0, 0);\n"
 "	color: rgb(255, 255, 255);\n"
 "	font: 10pt \"\345\215\216\346\226\207\346\245\267\344\275\223\";\n"
 "	\n"
-"	background-color: rgb(0, 0, 0);\n"
 "	text-align:center;\n"
 "}\n"
 "\n"
@@ -1752,6 +1752,7 @@ public:
 "\n"
 "text-align:center;\n"
 "}\n"
+"\n"
 "\n"
 "\n"
 "\n"
@@ -2042,7 +2043,7 @@ public:
         scr4->setWidgetResizable(true);
         scrollAreaWidgetContents_9 = new QWidget();
         scrollAreaWidgetContents_9->setObjectName(QString::fromUtf8("scrollAreaWidgetContents_9"));
-        scrollAreaWidgetContents_9->setGeometry(QRect(0, 0, 842, 1100));
+        scrollAreaWidgetContents_9->setGeometry(QRect(0, 0, 90, 1100));
         scrollAreaWidgetContents_9->setMinimumSize(QSize(0, 1100));
         scrollAreaWidgetContents_9->setStyleSheet(QString::fromUtf8("\n"
 "background-color: rgb(0, 0, 0);\n"
@@ -2188,7 +2189,8 @@ public:
         label_17 = new QLabel(frame_17);
         label_17->setObjectName(QString::fromUtf8("label_17"));
         label_17->setGeometry(QRect(50, 20, 141, 141));
-        label_17->setStyleSheet(QString::fromUtf8("border-image: url(:/background/pushubottom/question.png);"));
+        label_17->setStyleSheet(QString::fromUtf8("border-image: url(:/background/pushubottom/question.png);\n"
+""));
         pushButton = new QPushButton(frame_17);
         pushButton->setObjectName(QString::fromUtf8("pushButton"));
         pushButton->setGeometry(QRect(340, 80, 131, 41));
@@ -2325,7 +2327,7 @@ public:
 "QTableCornerButton::section{\n"
 "\n"
 "background:black;\n"
-"\n"
+"text-align:center;\n"
 "}\n"
 "\n"
 "QTableWidget::item  \n"
@@ -2360,8 +2362,8 @@ public:
         gridLayout_14->setObjectName(QString::fromUtf8("gridLayout_14"));
         gridLayout_14->setContentsMargins(0, 0, 0, 0);
         tableWidget_7 = new QTableWidget(scrollAreaWidgetContents_4);
-        if (tableWidget_7->columnCount() < 5)
-            tableWidget_7->setColumnCount(5);
+        if (tableWidget_7->columnCount() < 6)
+            tableWidget_7->setColumnCount(6);
         QTableWidgetItem *__qtablewidgetitem20 = new QTableWidgetItem();
         tableWidget_7->setHorizontalHeaderItem(0, __qtablewidgetitem20);
         QTableWidgetItem *__qtablewidgetitem21 = new QTableWidgetItem();
@@ -2372,19 +2374,23 @@ public:
         tableWidget_7->setHorizontalHeaderItem(3, __qtablewidgetitem23);
         QTableWidgetItem *__qtablewidgetitem24 = new QTableWidgetItem();
         tableWidget_7->setHorizontalHeaderItem(4, __qtablewidgetitem24);
+        QTableWidgetItem *__qtablewidgetitem25 = new QTableWidgetItem();
+        tableWidget_7->setHorizontalHeaderItem(5, __qtablewidgetitem25);
         tableWidget_7->setObjectName(QString::fromUtf8("tableWidget_7"));
         tableWidget_7->setStyleSheet(QString::fromUtf8("#tableWidget_7\n"
 "{\n"
 "	border:none;\n"
 "	background-color: rgb(0, 0, 0);\n"
+"\n"
 "text-align:center;\n"
 "}\n"
+"\n"
 "QHeaderView::section\n"
 "{\n"
+"	background-color: rgb(0, 0, 0);\n"
 "	color: rgb(255, 255, 255);\n"
 "	font: 10pt \"\345\215\216\346\226\207\346\245\267\344\275\223\";\n"
 "	\n"
-"	background-color: rgb(0, 0, 0);\n"
 "	text-align:center;\n"
 "}\n"
 "\n"
@@ -2412,6 +2418,9 @@ public:
 "\n"
 "text-align:center;\n"
 "}\n"
+"\n"
+"\n"
+"\n"
 "\n"
 "\n"
 "\n"
@@ -2770,6 +2779,8 @@ public:
         ___qtablewidgetitem23->setText(QCoreApplication::translate("Form", "\346\226\207\344\273\266\345\244\247\345\260\217", nullptr));
         QTableWidgetItem *___qtablewidgetitem24 = tableWidget_7->horizontalHeaderItem(4);
         ___qtablewidgetitem24->setText(QCoreApplication::translate("Form", "hash", nullptr));
+        QTableWidgetItem *___qtablewidgetitem25 = tableWidget_7->horizontalHeaderItem(5);
+        ___qtablewidgetitem25->setText(QCoreApplication::translate("Form", "\346\227\266\351\225\277", nullptr));
         pushButton_17->setText(QString());
         label_15->setText(QCoreApplication::translate("Form", "\346\255\214\346\211\213\357\274\232", nullptr));
         label_16->setText(QCoreApplication::translate("Form", "\346\233\262\345\220\215:", nullptr));

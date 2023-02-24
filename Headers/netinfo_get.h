@@ -24,20 +24,28 @@ public:
         QString filesize;
         QString playPath;
         QString timelength;
-        QImage image;
+        QString image;
         QString imagePath;
+        QString album_id;
     }result_list;
+    QList<QString> m_id;
     findResult info;
     QList<findResult> m_listResult;
+    bool flag = true;
 
     void find(QString searchName);
     void init();
+    void get_net_path();
+    void parse_songs(QString json);
 private slots:
     void get_song_info(QNetworkReply *reply);
     void parseSongInfo(QString json);
+    int get_song_url(QNetworkReply *reply);
 
 signals:
     void get_songs_info_over();
+    void continue_songs();
+    void get_timelength_over();
 };
 
 #endif
