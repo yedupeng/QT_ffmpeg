@@ -41,6 +41,7 @@ void Net_songs::get_song_info(QNetworkReply *reply)
         emit get_songs_info_over();
     }
     get_net_path();
+    emit get_timelength_over();
     reply->deleteLater();
 }
 
@@ -183,7 +184,6 @@ void Net_songs::get_net_path()
         }
     }
     std::cout<<"exit";
-    emit get_timelength_over();
 }
 
 int Net_songs::get_song_url(QNetworkReply *reply)
@@ -193,7 +193,7 @@ int Net_songs::get_song_url(QNetworkReply *reply)
     if(reply->error() == QNetworkReply::NoError)
     {
         QByteArray byte = reply->readAll();
-        std::cout<<byte.toStdString()<<std::endl;
+        // std::cout<<byte.toStdString()<<std::endl;
         QString result(byte);
         parse_songs(result);
     }

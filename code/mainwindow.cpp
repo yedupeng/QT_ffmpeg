@@ -79,7 +79,7 @@ Mainwindow::Mainwindow(QWidget *parent) : QWidget(parent),ui(new Ui::Form)
     connect(timer, SIGNAL(timeout()), this, SLOT(update_red()));
     connect(ui->btn_search,SIGNAL(clicked()),this,SLOT(get_search_song()));
     connect(net, &Net_songs::get_songs_info_over, this, &Mainwindow::add_table);
-    connect(net, &Net_songs::get_timelength_over, this, &Mainwindow::add_item);
+    connect(net, &Net_songs::get_timelength_over, this, &Mainwindow::add_item,Qt::DirectConnection);
     timer->start(3000);
 }
 
@@ -487,6 +487,10 @@ void Mainwindow::add_table()
 void Mainwindow::add_item()
 {
     const int tablerow = net->m_listResult.count();
+    std::cout<<tablerow<<std::endl;
     for(int i =0; i<tablerow; i++)
-        ui->tableWidget_7->setItem(i, 5, new QTableWidgetItem(net->info.timelength));
+    {
+        qDebug()<<net->m_listResult.at(i).timelength;
+        ui->tableWidget_7->setItem(i, 5, new QTableWidgetItem(net->m_listResult.at(i).timelength));
+    }
 }
