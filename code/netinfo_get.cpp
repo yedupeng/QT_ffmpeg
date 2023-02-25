@@ -183,13 +183,13 @@ void Net_songs::get_net_path()
             event3.exec();
         }
     }
-    std::cout<<"exit";
+    // std::cout<<"exit";
 }
 
 int Net_songs::get_song_url(QNetworkReply *reply)
 {
     QVariant status_code = reply->attribute(QNetworkRequest::HttpStatusCodeAttribute);
-    qDebug()<<status_code;
+    // qDebug()<<status_code;
     if(reply->error() == QNetworkReply::NoError)
     {
         QByteArray byte = reply->readAll();
@@ -257,7 +257,7 @@ void Net_songs::parse_songs(QString json)
                                 tmp.playPath = play_path;
                                 tmp.timelength = QString("%1:%2").arg(time_length/60).arg(time_length%60,2,10,QChar('0'));
                                 tmp.image = img;
-                                qDebug()<<tmp.timelength;
+                                // qDebug()<<tmp.timelength;
                                 m_listResult.replace(i,tmp);
                                 break;
                             }

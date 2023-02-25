@@ -6,7 +6,9 @@ int number = 1;
 Mainwindow::Mainwindow(QWidget *parent) : QWidget(parent),ui(new Ui::Form)
 {
     ui->setupUi(this);
+    system("chcp 65001");
     net->moveToThread(pThread);
+    // playlist_net = new QMediaPlaylist;
     mp3_player = new QMediaPlayer(this);
     playlist = new QMediaPlaylist;
     ui->tableWidget->setSelectionBehavior(QAbstractItemView::SelectRows);
@@ -80,6 +82,7 @@ Mainwindow::Mainwindow(QWidget *parent) : QWidget(parent),ui(new Ui::Form)
     connect(ui->btn_search,SIGNAL(clicked()),this,SLOT(get_search_song()));
     connect(net, &Net_songs::get_songs_info_over, this, &Mainwindow::add_table);
     connect(net, &Net_songs::get_timelength_over, this, &Mainwindow::add_item,Qt::DirectConnection);
+    connect(ui->pushButton,SIGNAL(clicked()),this,SLOT(play_all_net()));
     timer->start(3000);
 }
 
@@ -158,8 +161,9 @@ void Mainwindow::btn_chage_import_songs()
         if(path != nullptr)
         {
             get_songs(path);
+            // playlist_local->addMedia(QUrl::fromLocalFile(path));
+            qDebug()<<path;
             playlist->addMedia(QUrl::fromLocalFile(path));
-            // play_list->addMedia(QUrl(path));
         }
     }
     
@@ -219,7 +223,6 @@ void Mainwindow::get_songs(QString file)
     ui->tableWidget->setItem(row, 3, new QTableWidgetItem(QString("%1:%2").arg(duration_s/60).arg(duration_s%60,2,10,QChar('0'))));
     ui->tableWidget->setItem(row, 4, new QTableWidgetItem(QDir::toNativeSeparators(file)));
     ui->tableWidget->horizontalHeader()->setDefaultAlignment(Qt::AlignLeft | Qt::AlignVCenter);
-
     avformat_close_input(&cnt_avf);
     avformat_free_context(cnt_avf);
 }
@@ -231,7 +234,7 @@ void Mainwindow::play_all()
     ui->label_singer->setText(item->text());
     item = ui->tableWidget->item(number, 0);
     ui->label_sing->setText(item->text());
-
+    // playlist = playlist_local;
     QString model = ui->comboBox->currentText();
     if(model == "单曲循环")
     {
@@ -243,6 +246,7 @@ void Mainwindow::play_all()
         std::cout<<"进入列表循环"<<std::endl;
     }
     mp3_player->setPlaylist(playlist);
+    // mp3_player->setMedia(QUrl::fromLocalFile("G:\\1\\Allie X - Thats So Us.mp3"));
     mp3_player->play();
 }
 
@@ -490,7 +494,29 @@ void Mainwindow::add_item()
     std::cout<<tablerow<<std::endl;
     for(int i =0; i<tablerow; i++)
     {
+        qDebug()<<net->m_listResult.at(i).playPath;
+        // playlist_net->addMedia(QUrl(net->m_listResult.at(i).playPath));
         qDebug()<<net->m_listResult.at(i).timelength;
         ui->tableWidget_7->setItem(i, 5, new QTableWidgetItem(net->m_listResult.at(i).timelength));
     }
+    // playlist_net->addMedia(QUrl(net->m_listResult.at(0).playPath));
+    // playlist_net->addMedia(QUrl(net->m_listResult.at(1).playPath));
+    playlist = playlist_net;
+    std::cout<<"over"<<std::endl;
+}
+
+void Mainwindow::play_all_net()
+{
+    // qDebug()<<QUrl(net->m_listResult.at(0).playPath);
+    QString model = ui->comboBox->currentText();
+    if(model == "单曲循环")
+    {
+        std::cout<<"进入单曲循环"<<std::endl;
+        playlist->setPlaybackMode(QMediaPlaylist::CurrentItemInLoop);
+    }else if(model == "列表循环")
+    {
+        playlist->setPlaybackMode(QMediaPlaylist::Loop);
+        std::cout<<"进入列表循环"<<std::endl;
+    }
+    // mp3_player->setPlaylist(playlist);
 }

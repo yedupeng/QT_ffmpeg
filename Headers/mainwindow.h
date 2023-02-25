@@ -80,6 +80,7 @@ private slots:
     void get_search_song();
     void add_table();
     void add_item();
+    void play_all_net();
 
 private:
     QThread* pThread = new QThread;
@@ -90,6 +91,8 @@ private:
     QMap<QString,QString> q_map;
     QMediaPlayer* mp3_player;
     QMediaPlaylist* playlist;
+    QMediaPlaylist* playlist_local;
+    QMediaPlaylist* playlist_net;
     QMenu * m;
     Net_songs* net = new Net_songs;
 };
