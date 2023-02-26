@@ -92,9 +92,10 @@ private:
     QMediaPlayer* mp3_player;
     QMediaPlaylist* playlist;
     QMediaPlaylist* playlist_local;
-    QMediaPlaylist* playlist_net;
+    // QMediaPlaylist* playlist_net;
     QMenu * m;
     Net_songs* net = new Net_songs;
+    int flag_ln = 0;
 };
 
 #endif

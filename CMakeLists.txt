@@ -10,6 +10,7 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
 set(SOURCES main.cpp)
+# SET(CMAKE_BUILD_TYPE “DEBUG”)
 
 find_package(Qt5 COMPONENTS
         Core

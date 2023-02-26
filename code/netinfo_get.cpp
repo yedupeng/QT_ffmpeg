@@ -5,6 +5,8 @@ void Net_songs::init()
 {
     manager_getinfo = new QNetworkAccessManager;
     manager_importinfo = new QNetworkAccessManager;
+    playlist = new QMediaPlaylist;
+    player = new QMediaPlayer;
     manager_importinfo->setRedirectPolicy(QNetworkRequest::NoLessSafeRedirectPolicy);
     // connect(manager_importinfo, SIGNAL(finished(QNetworkReply*)),this, SLOT(get_song_url(QNetworkReply*)));
 }
@@ -227,6 +229,7 @@ void Net_songs::parse_songs(QString json)
                     {
                         QJsonValue play_url = first_obj.take("play_url");
                         play_path = play_url.toString();
+                        playlist->addMedia(QUrl(play_path));
                     }
                     if(first_obj.contains("timelength"))
                     {
@@ -267,4 +270,38 @@ void Net_songs::parse_songs(QString json)
             }
         }
     }
+}
+
+void Net_songs::play_all_net()
+{
+    player->setPlaylist(playlist);
+    player->play();
+}
+
+int Net_songs::next_song()
+{
+    int row = playlist->currentIndex();
+    int num_all = playlist->mediaCount();
+    row++;
+    if(row >= num_all)
+    {
+        row = 0;
+    }
+    playlist->setCurrentIndex(row);
+    std::cout<<"row:"<<row<<std::endl;
+    player->play();
+    return row;
+}
+
+int Net_songs::last_song()
+{
+    int row = playlist->currentIndex();
+    row--;
+    if(row<0)
+    {
+        row = 0;
+    }
+    playlist->setCurrentIndex(row);
+    player->play();
+    return row;
 }

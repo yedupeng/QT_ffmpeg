@@ -71,8 +71,11 @@ Mainwindow::Mainwindow(QWidget *parent) : QWidget(parent),ui(new Ui::Form)
     connect(ui->verticalSlider,SIGNAL(valueChanged(int)),this,SLOT(volum_change()));
     connect(ui->sound,SIGNAL(clicked()),this,SLOT(btn_close_volum()));
     connect(mp3_player,SIGNAL(positionChanged(qint64)),this,SLOT(change_position(qint64)));
+    connect(net->player,SIGNAL(positionChanged(qint64)),this,SLOT(change_position(qint64)));
     connect(mp3_player,SIGNAL(durationChanged(qint64)),this,SLOT(change_duration(qint64)));
+    connect(net->player,SIGNAL(durationChanged(qint64)),this,SLOT(change_duration(qint64)));
     connect(ui->horizontalSlider,SIGNAL(sliderMoved(int)),this,SLOT(seekChange(int)));
+
     connect(ui->btn_next,SIGNAL(clicked()),this,SLOT(next_song()));
     connect(ui->btn_last,SIGNAL(clicked()),this,SLOT(last_song()));
     connect(ui->tableWidget,SIGNAL(customContextMenuRequested(const QPoint&)),this,SLOT(show_meau(const QPoint&)));
@@ -248,19 +251,35 @@ void Mainwindow::play_all()
     mp3_player->setPlaylist(playlist);
     // mp3_player->setMedia(QUrl::fromLocalFile("G:\\1\\Allie X - Thats So Us.mp3"));
     mp3_player->play();
+    flag_ln = 0;
+    flag = 1;
 }
 
 
 void Mainwindow::stop()
 {
-    if(flag)
+    if(flag_ln = 0)
     {
-        mp3_player->pause();
-        qDebug()<<mp3_player->mediaStatus();
+        if(flag)
+        {
+            mp3_player->pause();
+            qDebug()<<mp3_player->mediaStatus();
+        }else
+        {
+            mp3_player->play();
+            qDebug()<<mp3_player->mediaStatus();
+        }
     }else
     {
-        mp3_player->play();
-        qDebug()<<mp3_player->mediaStatus();
+        if(flag)
+        {
+            net->player->pause();
+            qDebug()<<net->player->mediaStatus();
+        }else
+        {
+            net->player->play();
+            qDebug()<<net->player->mediaStatus();
+        }
     }
     flag = 1-flag;
 }
@@ -272,9 +291,10 @@ void Mainwindow::play_model_change()
     {
         std::cout<<"进入单曲循环"<<std::endl;
         playlist->setPlaybackMode(QMediaPlaylist::CurrentItemInLoop);
+        net->playlist->setPlaybackMode(QMediaPlaylist::CurrentItemInLoop);
     }else if(model == "列表循环")
     {
-        playlist->setPlaybackMode(QMediaPlaylist::Loop);
+        net->playlist->setPlaybackMode(QMediaPlaylist::Loop);
         std::cout<<"进入列表循环"<<std::endl;
     }
 }
@@ -283,6 +303,7 @@ void Mainwindow::volum_change()
 {
     int pos = ui->verticalSlider->sliderPosition();
     mp3_player->setVolume(pos);
+    net->player->setVolume(pos);
     // std::cout<<"当前音量"<<pos<<std::endl;
 }
 
@@ -291,10 +312,12 @@ void Mainwindow::btn_close_volum()
     if(flag_volum)
     {
         mp3_player->setVolume(0);
+        net->player->setVolume(0);
         std::cout<<"静音"<<std::endl;
     }else
     {
         mp3_player->setVolume(50);
+        net->player->setVolume(0);
     }
     flag_volum = 1-flag_volum;
 }
@@ -314,17 +337,27 @@ void Mainwindow::change_duration(qint64 tim)
     QTime Time(0,(tim % (1000 * 60 * 60)) / (1000 * 60),(tim % (1000 * 60)) / 1000);
     ui->label_time2->setText(Time.toString("mm:ss"));
     QTableWidgetItem* item;
-
-    int row = playlist->currentIndex();
-    item = ui->tableWidget->item(row, 1);
-    ui->label_singer->setText(item->text());
-    item = ui->tableWidget->item(row, 0);
-    ui->label_sing->setText(item->text());
+    if(flag_ln==0)
+    {
+        int row = playlist->currentIndex();
+        item = ui->tableWidget->item(row, 1);
+        ui->label_singer->setText(item->text());
+        item = ui->tableWidget->item(row, 0);
+        ui->label_sing->setText(item->text());
+    }else
+    {
+        int row = net->playlist->currentIndex();
+        ui->label_singer->setText(net->m_listResult.at(row).singername);
+        ui->label_sing->setText(net->m_listResult.at(row).songName);
+    }
 }
 
 void Mainwindow::seekChange(int pos)
 {
+    if(flag_ln == 0)
     mp3_player -> setPosition(pos*duration/100);
+    else
+    net->player -> setPosition(pos*duration/100);
     int moved = pos * 1000;
     QTime moveTime(0,(moved/60000) % 60,(moved / 1000) % 60);
     ui->label_time1 ->setText(moveTime.toString("mm:ss"));
@@ -332,38 +365,56 @@ void Mainwindow::seekChange(int pos)
 
 void Mainwindow::next_song()
 {
-    int row = playlist->currentIndex();
-    int num_all = playlist->mediaCount();
-    row++;
-    if(row >= num_all)
+    if(flag_ln==0)
     {
-        row = 0;
+        int row = playlist->currentIndex();
+        int num_all = playlist->mediaCount();
+        row++;
+        if(row >= num_all)
+        {
+            row = 0;
+        }
+        QTableWidgetItem* item;
+        item = ui->tableWidget->item(row, 1);
+        ui->label_singer->setText(item->text());
+        item = ui->tableWidget->item(row, 0);
+        ui->label_sing->setText(item->text());
+        playlist->setCurrentIndex(row);
+        std::cout<<"row:"<<row<<std::endl;
+        mp3_player->play();
+    }else
+    {
+        int row;
+        row = net->next_song();
+        ui->label_singer->setText(net->m_listResult.at(row).singername);
+        ui->label_sing->setText(net->m_listResult.at(row).songName);
     }
-    QTableWidgetItem* item;
-    item = ui->tableWidget->item(row, 1);
-    ui->label_singer->setText(item->text());
-    item = ui->tableWidget->item(row, 0);
-    ui->label_sing->setText(item->text());
-    playlist->setCurrentIndex(row);
-    std::cout<<"row:"<<row<<std::endl;
-    mp3_player->play();
 }
 
 void Mainwindow::last_song()
 {
-    int row = playlist->currentIndex();
-    row--;
-    if(row<0)
+    if(flag_ln==0)
     {
-        row = 0;
+        int row = playlist->currentIndex();
+        row--;
+        if(row<0)
+        {
+            row = 0;
+        }
+        QTableWidgetItem* item;
+        item = ui->tableWidget->item(row, 1);
+        ui->label_singer->setText(item->text());
+        item = ui->tableWidget->item(row, 0);
+        ui->label_sing->setText(item->text());
+        playlist->setCurrentIndex(row);
+        mp3_player->play();
+    }else
+    {
+        int row;
+        row = net->last_song();
+        ui->label_singer->setText(net->m_listResult.at(row).singername);
+        ui->label_sing->setText(net->m_listResult.at(row).songName);
     }
-    QTableWidgetItem* item;
-    item = ui->tableWidget->item(row, 1);
-    ui->label_singer->setText(item->text());
-    item = ui->tableWidget->item(row, 0);
-    ui->label_sing->setText(item->text());
-    playlist->setCurrentIndex(row);
-    mp3_player->play();
 }
 
 void Mainwindow::show_meau(const QPoint& pos)
@@ -495,28 +546,24 @@ void Mainwindow::add_item()
     for(int i =0; i<tablerow; i++)
     {
         qDebug()<<net->m_listResult.at(i).playPath;
-        // playlist_net->addMedia(QUrl(net->m_listResult.at(i).playPath));
-        qDebug()<<net->m_listResult.at(i).timelength;
         ui->tableWidget_7->setItem(i, 5, new QTableWidgetItem(net->m_listResult.at(i).timelength));
     }
-    // playlist_net->addMedia(QUrl(net->m_listResult.at(0).playPath));
-    // playlist_net->addMedia(QUrl(net->m_listResult.at(1).playPath));
-    playlist = playlist_net;
     std::cout<<"over"<<std::endl;
 }
 
 void Mainwindow::play_all_net()
 {
-    // qDebug()<<QUrl(net->m_listResult.at(0).playPath);
     QString model = ui->comboBox->currentText();
     if(model == "单曲循环")
     {
         std::cout<<"进入单曲循环"<<std::endl;
-        playlist->setPlaybackMode(QMediaPlaylist::CurrentItemInLoop);
+        net->playlist->setPlaybackMode(QMediaPlaylist::CurrentItemInLoop);
     }else if(model == "列表循环")
     {
-        playlist->setPlaybackMode(QMediaPlaylist::Loop);
+         net->playlist->setPlaybackMode(QMediaPlaylist::Loop);
         std::cout<<"进入列表循环"<<std::endl;
     }
-    // mp3_player->setPlaylist(playlist);
+    flag_ln = 1;
+    flag = 1;
+    net->play_all_net();
 }

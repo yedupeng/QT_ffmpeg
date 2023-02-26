@@ -7,6 +7,9 @@
 #include <qtextcodec.h>
 #include <QObject>
 #include <qeventloop.h>
+#include <QtMultimedia/qmediaplaylist.h>
+#include <QMediaPlayer>
+
 
 class Net_songs: public QObject
 {
@@ -37,6 +40,12 @@ public:
     void init();
     void get_net_path();
     void parse_songs(QString json);
+    QMediaPlayer* player;
+    QMediaPlaylist* playlist;
+    void play_all_net();
+    int next_song();
+    int last_song();
+
 private slots:
     void get_song_info(QNetworkReply *reply);
     void parseSongInfo(QString json);
