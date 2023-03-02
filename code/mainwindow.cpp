@@ -7,7 +7,9 @@ Mainwindow::Mainwindow(QWidget *parent) : QWidget(parent),ui(new Ui::Form)
 {
     ui->setupUi(this);
     system("chcp 65001");
+    timer2 = new QTimer(this);
     net->moveToThread(pThread);
+    lc->moveToThread(pThread);
     // playlist_net = new QMediaPlaylist;
     mp3_player = new QMediaPlayer(this);
     playlist = new QMediaPlaylist;
@@ -72,7 +74,8 @@ Mainwindow::Mainwindow(QWidget *parent) : QWidget(parent),ui(new Ui::Form)
     connect(ui->sound,SIGNAL(clicked()),this,SLOT(btn_close_volum()));
     connect(mp3_player,SIGNAL(positionChanged(qint64)),this,SLOT(change_position(qint64)));
     connect(net->player,SIGNAL(positionChanged(qint64)),this,SLOT(change_position(qint64)));
-    connect(mp3_player,SIGNAL(durationChanged(qint64)),this,SLOT(change_duration(qint64)));
+    connect(mp3_player,SIGNAL(positionChanged(qint64)),this,SLOT(change_position(qint64)));
+
     connect(net->player,SIGNAL(durationChanged(qint64)),this,SLOT(change_duration(qint64)));
     connect(ui->horizontalSlider,SIGNAL(sliderMoved(int)),this,SLOT(seekChange(int)));
 
@@ -86,7 +89,12 @@ Mainwindow::Mainwindow(QWidget *parent) : QWidget(parent),ui(new Ui::Form)
     connect(net, &Net_songs::get_songs_info_over, this, &Mainwindow::add_table);
     connect(net, &Net_songs::get_timelength_over, this, &Mainwindow::add_item,Qt::DirectConnection);
     connect(ui->pushButton,SIGNAL(clicked()),this,SLOT(play_all_net()));
+    connect(ui->pushButton_17,SIGNAL(clicked()),this,SLOT(show_lc()));
+    connect(lc, &LC_classer::show_lc, this, &Mainwindow::lyric_show, Qt::DirectConnection);
+    connect(timer2, &QTimer::timeout, lc, &LC_classer::lyrics_net_show, Qt::DirectConnection);
+
     timer->start(3000);
+    pThread->start();
 }
 
 Mainwindow::~Mainwindow()
@@ -139,6 +147,11 @@ void Mainwindow::btn_chage_page_my2()
 void Mainwindow::btn_chage_page_rec()
 {
     ui->stack_1->setCurrentIndex(0);
+}
+
+void Mainwindow::show_lc()
+{
+    ui->stack_1->setCurrentIndex(6);
 }
 
 void Mainwindow::btn_chage_import_songs()
@@ -232,6 +245,7 @@ void Mainwindow::get_songs(QString file)
 
 void Mainwindow::play_all()
 {
+    net->player->pause();
     QTableWidgetItem* item;
     item = ui->tableWidget->item(number, 1);
     ui->label_singer->setText(item->text());
@@ -258,7 +272,7 @@ void Mainwindow::play_all()
 
 void Mainwindow::stop()
 {
-    if(flag_ln = 0)
+    if(flag_ln == 0)
     {
         if(flag)
         {
@@ -327,6 +341,9 @@ void Mainwindow::change_position(qint64 pos)
     ui->horizontalSlider->setValue(pos*100/duration);
     QTime moveTime(0,(pos/60000) % 60,(pos / 1000) % 60);//设置时间
     ui->label_time1 ->setText(moveTime.toString("mm:ss"));
+
+    lc->pos = pos;
+    lc->row = net->playlist->currentIndex();
 }
 
 void Mainwindow::change_duration(qint64 tim)
@@ -349,15 +366,16 @@ void Mainwindow::change_duration(qint64 tim)
         int row = net->playlist->currentIndex();
         ui->label_singer->setText(net->m_listResult.at(row).singername);
         ui->label_sing->setText(net->m_listResult.at(row).songName);
+        
     }
 }
 
 void Mainwindow::seekChange(int pos)
 {
     if(flag_ln == 0)
-    mp3_player -> setPosition(pos*duration/100);
+        mp3_player -> setPosition(pos*duration/100);
     else
-    net->player -> setPosition(pos*duration/100);
+        net->player -> setPosition(pos*duration/100);
     int moved = pos * 1000;
     QTime moveTime(0,(moved/60000) % 60,(moved / 1000) % 60);
     ui->label_time1 ->setText(moveTime.toString("mm:ss"));
@@ -543,9 +561,10 @@ void Mainwindow::add_item()
 {
     const int tablerow = net->m_listResult.count();
     std::cout<<tablerow<<std::endl;
+    lc->lc_list = net->lc_list;
     for(int i =0; i<tablerow; i++)
     {
-        qDebug()<<net->m_listResult.at(i).playPath;
+       // qDebug()<<net->m_listResult.at(i).playPath;
         ui->tableWidget_7->setItem(i, 5, new QTableWidgetItem(net->m_listResult.at(i).timelength));
     }
     std::cout<<"over"<<std::endl;
@@ -553,6 +572,7 @@ void Mainwindow::add_item()
 
 void Mainwindow::play_all_net()
 {
+    mp3_player->pause();
     QString model = ui->comboBox->currentText();
     if(model == "单曲循环")
     {
@@ -566,4 +586,22 @@ void Mainwindow::play_all_net()
     flag_ln = 1;
     flag = 1;
     net->play_all_net();
+    timer2->start(1000);
 }
+
+void Mainwindow::lyric_show()
+{
+    qDebug()<<lc->choose_ly_c.lyc1;
+    ui->label_lc_1->setText(lc->choose_ly_c.lyc1);
+    ui->label_lc_2->setText(lc->choose_ly_c.lyc2);
+    ui->label_lc_3->setText(lc->choose_ly_c.lyc3);
+    ui->label_lc_4->setText(lc->choose_ly_c.lyc4);
+    ui->label_lc_5->setText(lc->choose_ly_c.lyc5);
+}
+
+
+void Mainwindow::test()
+{
+    qDebug()<<2;
+}
+

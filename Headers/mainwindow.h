@@ -2,6 +2,7 @@
 #define __MAINWINDOW__H
 
 #include "../ui/ffpemg_player.h"
+#include "lyrices.h"
 #include <QWidget>
 #include <QFileDialog>
 #include <QImage>
@@ -51,6 +52,9 @@ public:
     QTableWidgetItem* selectedItem;
     QTableWidgetItem* selectedItem2;
     int row_index;
+    QTimer *timer2;
+    void test();
+
 
 private slots:
     void btn_chage_img();
@@ -81,6 +85,8 @@ private slots:
     void add_table();
     void add_item();
     void play_all_net();
+    void show_lc();
+    void lyric_show();
 
 private:
     QThread* pThread = new QThread;
@@ -95,6 +101,7 @@ private:
     // QMediaPlaylist* playlist_net;
     QMenu * m;
     Net_songs* net = new Net_songs;
+    LC_classer* lc = new LC_classer;
     int flag_ln = 0;
 };
 

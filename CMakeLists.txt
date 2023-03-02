@@ -25,7 +25,9 @@ add_executable(ffmpeg_play main.cpp
                         ./Headers/mainwindow.h
                         ./code/mainwindow.cpp
                         ./code/netinfo_get.cpp
-                        ./ui/ffmpeg.qrc)
+                        ./ui/ffmpeg.qrc
+                        ./Headers/lyrices.h
+                        ./code/lyrics.cpp)
 
 
 target_link_libraries(ffmpeg_play

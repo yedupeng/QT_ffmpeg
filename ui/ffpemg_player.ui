@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1045</width>
-    <height>692</height>
+    <width>1041</width>
+    <height>691</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,7 +16,7 @@
   <widget class="QFrame" name="frame">
    <property name="geometry">
     <rect>
-     <x>0</x>
+     <x>11</x>
      <y>11</y>
      <width>1022</width>
      <height>670</height>
@@ -803,7 +803,7 @@ border:none;
           <enum>QFrame::Raised</enum>
          </property>
          <property name="currentIndex">
-          <number>5</number>
+          <number>6</number>
          </property>
          <widget class="QWidget" name="stackedWidget_5Page1">
           <layout class="QHBoxLayout" name="horizontalLayout">
@@ -3482,8 +3482,8 @@ border:none;
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>852</width>
-                <height>522</height>
+                <width>90</width>
+                <height>71</height>
                </rect>
               </property>
               <layout class="QGridLayout" name="gridLayout_5" rowstretch="2,0,3">
@@ -3648,6 +3648,23 @@ color: rgb(255, 255, 255);</string>
                    <string>0</string>
                   </property>
                  </widget>
+                 <widget class="QLabel" name="label_57">
+                  <property name="geometry">
+                   <rect>
+                    <x>430</x>
+                    <y>150</y>
+                    <width>331</width>
+                    <height>21</height>
+                   </rect>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">font: 11pt &quot;华文楷体&quot;;
+color: rgb(255, 0, 0);</string>
+                  </property>
+                  <property name="text">
+                   <string>由于版权原因，部分歌曲只能试听1分钟</string>
+                  </property>
+                 </widget>
                 </widget>
                </item>
                <item row="1" column="0">
@@ -3800,7 +3817,7 @@ text-align:center;
                    <rect>
                     <x>0</x>
                     <y>0</y>
-                    <width>842</width>
+                    <width>88</width>
                     <height>1100</height>
                    </rect>
                   </property>
@@ -3923,7 +3940,308 @@ text-align:center;
            </item>
           </layout>
          </widget>
-         <widget class="QWidget" name="page_8"/>
+         <widget class="QWidget" name="page_8">
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(0, 0, 0);</string>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout_7" stretch="1,2">
+           <property name="spacing">
+            <number>0</number>
+           </property>
+           <property name="leftMargin">
+            <number>0</number>
+           </property>
+           <property name="topMargin">
+            <number>0</number>
+           </property>
+           <property name="rightMargin">
+            <number>0</number>
+           </property>
+           <property name="bottomMargin">
+            <number>0</number>
+           </property>
+           <item>
+            <widget class="QFrame" name="frame_19">
+             <property name="frameShape">
+              <enum>QFrame::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Raised</enum>
+             </property>
+             <widget class="QLabel" name="label_58">
+              <property name="geometry">
+               <rect>
+                <x>30</x>
+                <y>170</y>
+                <width>241</width>
+                <height>211</height>
+               </rect>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">#label_58
+{
+	border-image: url(:/background/pushubottom/question.png);
+	border-top-left-radius:90px;
+	border-top-right-radius:90px;
+border-bottom-left-radius:90px;
+	border-bottom-right-radius:90px;
+}</string>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </widget>
+           </item>
+           <item>
+            <widget class="QFrame" name="frame_20">
+             <property name="styleSheet">
+              <string notr="true"/>
+             </property>
+             <property name="frameShape">
+              <enum>QFrame::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Raised</enum>
+             </property>
+             <layout class="QVBoxLayout" name="verticalLayout_9" stretch="1,2">
+              <property name="spacing">
+               <number>0</number>
+              </property>
+              <property name="leftMargin">
+               <number>0</number>
+              </property>
+              <property name="topMargin">
+               <number>0</number>
+              </property>
+              <property name="rightMargin">
+               <number>40</number>
+              </property>
+              <property name="bottomMargin">
+               <number>0</number>
+              </property>
+              <item>
+               <widget class="QFrame" name="frame_21">
+                <property name="styleSheet">
+                 <string notr="true"/>
+                </property>
+                <property name="frameShape">
+                 <enum>QFrame::StyledPanel</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Raised</enum>
+                </property>
+                <widget class="QLabel" name="label_59">
+                 <property name="geometry">
+                  <rect>
+                   <x>90</x>
+                   <y>30</y>
+                   <width>101</width>
+                   <height>41</height>
+                  </rect>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">color: rgb(255, 255, 255);
+font: 15pt &quot;华文楷体&quot;;</string>
+                 </property>
+                 <property name="text">
+                  <string>歌曲名：</string>
+                 </property>
+                </widget>
+                <widget class="QLabel" name="label_60">
+                 <property name="geometry">
+                  <rect>
+                   <x>200</x>
+                   <y>30</y>
+                   <width>211</width>
+                   <height>41</height>
+                  </rect>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">color: rgb(255, 255, 255);
+font: 15pt &quot;华文楷体&quot;;</string>
+                 </property>
+                 <property name="text">
+                  <string>无</string>
+                 </property>
+                </widget>
+                <widget class="QLabel" name="label_61">
+                 <property name="geometry">
+                  <rect>
+                   <x>90</x>
+                   <y>100</y>
+                   <width>61</width>
+                   <height>16</height>
+                  </rect>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">color: rgb(255, 255, 255);
+font: 10pt &quot;华文楷体&quot;;</string>
+                 </property>
+                 <property name="text">
+                  <string>歌手名：</string>
+                 </property>
+                </widget>
+                <widget class="QLabel" name="label_62">
+                 <property name="geometry">
+                  <rect>
+                   <x>170</x>
+                   <y>100</y>
+                   <width>101</width>
+                   <height>16</height>
+                  </rect>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">color: rgb(255, 255, 255);
+font: 10pt &quot;华文楷体&quot;;</string>
+                 </property>
+                 <property name="text">
+                  <string>暂无</string>
+                 </property>
+                </widget>
+                <widget class="QLabel" name="label_63">
+                 <property name="geometry">
+                  <rect>
+                   <x>260</x>
+                   <y>100</y>
+                   <width>61</width>
+                   <height>16</height>
+                  </rect>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">color: rgb(255, 255, 255);
+font: 10pt &quot;华文楷体&quot;;</string>
+                 </property>
+                 <property name="text">
+                  <string>专辑：</string>
+                 </property>
+                </widget>
+                <widget class="QLabel" name="label_64">
+                 <property name="geometry">
+                  <rect>
+                   <x>310</x>
+                   <y>100</y>
+                   <width>181</width>
+                   <height>16</height>
+                  </rect>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">color: rgb(255, 255, 255);
+font: 10pt &quot;华文楷体&quot;;</string>
+                 </property>
+                 <property name="text">
+                  <string>暂无</string>
+                 </property>
+                </widget>
+               </widget>
+              </item>
+              <item>
+               <widget class="QFrame" name="frame_22">
+                <property name="styleSheet">
+                 <string notr="true"/>
+                </property>
+                <property name="frameShape">
+                 <enum>QFrame::StyledPanel</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Raised</enum>
+                </property>
+                <layout class="QGridLayout" name="gridLayout_15">
+                 <item row="2" column="0">
+                  <widget class="QLabel" name="label_lc_3">
+                   <property name="styleSheet">
+                    <string notr="true">color: rgb(255, 0, 0);
+font: 15pt &quot;华文楷体&quot;;</string>
+                   </property>
+                   <property name="text">
+                    <string/>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignCenter</set>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="4" column="0">
+                  <widget class="QLabel" name="label_lc_5">
+                   <property name="styleSheet">
+                    <string notr="true">color: rgb(255, 255, 255);
+font: 12pt &quot;华文楷体&quot;;</string>
+                   </property>
+                   <property name="text">
+                    <string/>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignCenter</set>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="3" column="0">
+                  <widget class="QLabel" name="label_lc_4">
+                   <property name="styleSheet">
+                    <string notr="true">color: rgb(255, 255, 255);
+font: 12pt &quot;华文楷体&quot;;</string>
+                   </property>
+                   <property name="text">
+                    <string/>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignCenter</set>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="0" column="0">
+                  <widget class="QLabel" name="label_lc_1">
+                   <property name="toolTip">
+                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                   </property>
+                   <property name="layoutDirection">
+                    <enum>Qt::LeftToRight</enum>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">color: rgb(255, 255, 255);
+font: 12pt &quot;华文楷体&quot;;
+</string>
+                   </property>
+                   <property name="text">
+                    <string/>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignCenter</set>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="1" column="0">
+                  <widget class="QLabel" name="label_lc_2">
+                   <property name="styleSheet">
+                    <string notr="true">color: rgb(255, 255, 255);
+font: 12pt &quot;华文楷体&quot;;</string>
+                   </property>
+                   <property name="text">
+                    <string>歌词暂无</string>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignCenter</set>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="1" column="1" rowspan="3">
+                  <widget class="QSlider" name="verticalSlider_2">
+                   <property name="styleSheet">
+                    <string notr="true"/>
+                   </property>
+                   <property name="orientation">
+                    <enum>Qt::Vertical</enum>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+          </layout>
+         </widget>
          <widget class="QWidget" name="page_9"/>
         </widget>
        </item>
@@ -3952,7 +4270,15 @@ text-align:center;
            </rect>
           </property>
           <property name="styleSheet">
-           <string notr="true">border-image: url(:/pushbottom/pushubottom/头像.png);</string>
+           <string notr="true">#pushbottom_17
+{
+border-image: url(:/pushbottom/pushubottom/头像.png);
+}
+
+QPushButton:hover
+{
+	margin:1px;
+}</string>
           </property>
           <property name="text">
            <string/>

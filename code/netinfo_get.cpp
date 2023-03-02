@@ -42,6 +42,7 @@ void Net_songs::get_song_info(QNetworkReply *reply)
         parseSongInfo(result);
         emit get_songs_info_over();
     }
+    playlist->clear();
     get_net_path();
     emit get_timelength_over();
     reply->deleteLater();
@@ -266,6 +267,40 @@ void Net_songs::parse_songs(QString json)
                             }
                         }
                     }
+                    if(first_obj.contains("lyrics"))
+                    {
+                        QJsonValue lyr_url_value = first_obj.take("lyrics");
+                        if(lyr_url_value.isString())
+                        {
+                            QString play_lyr_src = lyr_url_value.toString();
+                            // std::cout<<play_lyr_src.toStdString()<< std::endl;;
+                            if(play_lyr_src != "")
+                            {
+                                QString s = play_lyr_src;
+                                QStringList s1 = s.split("\n");
+                                // qDebug()<<s1;
+                                for (int i = 3; i < s1.size() - 1; i++)
+                                {
+                                    QString ss1 = s1.at(i);
+                                    QRegExp ipRegExp = QRegExp("\\[\\d\\d\\S\\d\\d\\S\\d\\d\\]");
+                                    bool match = ipRegExp.indexIn(ss1);
+                                    if(match == false)
+                                    {
+                                        int s_1 = ss1.mid(1,2).toInt();
+                                        int s_2 = ss1.mid(4,2).toInt();
+                                        int s_3 = ss1.mid(7,2).toInt();
+                                        int s_count = (s_1 * 60 + s_2);
+                                        int lrctime = s_count;
+							            QString lrcstr = ss1.mid(10);
+                                        lc_map.insert(lrctime, lrcstr);
+                                        std::string lc = lrcstr.toStdString();
+                                        // std::cout<<"这句歌词："<<lrctime<<lc<<std::endl;
+                                    }
+                                }
+                                lc_list.append(lc_map);
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -280,6 +315,7 @@ void Net_songs::play_all_net()
 
 int Net_songs::next_song()
 {
+    player->pause();
     int row = playlist->currentIndex();
     int num_all = playlist->mediaCount();
     row++;
@@ -289,12 +325,18 @@ int Net_songs::next_song()
     }
     playlist->setCurrentIndex(row);
     std::cout<<"row:"<<row<<std::endl;
+    QEventLoop event2;
     player->play();
+    if(player->mediaStatus() == QMediaPlayer::LoadedMedia)
+        event2.quit();
+    else
+        event2.exec();
     return row;
 }
 
 int Net_songs::last_song()
 {
+    player->pause();
     int row = playlist->currentIndex();
     row--;
     if(row<0)
@@ -302,6 +344,17 @@ int Net_songs::last_song()
         row = 0;
     }
     playlist->setCurrentIndex(row);
+    QEventLoop event2;
     player->play();
+    if(player->mediaStatus() == QMediaPlayer::LoadedMedia)
+        event2.quit();
+    else
+        event2.exec();
     return row;
 }
+
+// void Net_songs::send_lc_singals(qint64 pos)
+// {
+//     int row = playlist->currentIndex();
+//     emit solve_lc(pos, row);
+// }
