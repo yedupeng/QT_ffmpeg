@@ -261,7 +261,6 @@ void Net_songs::parse_songs(QString json)
                                 tmp.playPath = play_path;
                                 tmp.timelength = QString("%1:%2").arg(time_length/60).arg(time_length%60,2,10,QChar('0'));
                                 tmp.image = img;
-                                // qDebug()<<tmp.timelength;
                                 m_listResult.replace(i,tmp);
                                 break;
                             }

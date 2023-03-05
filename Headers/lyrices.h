@@ -24,6 +24,7 @@ public:
     void lyrics_net_show();
     qint64 pos;
     int row = 0;
+    
 
 signals:
     void show_lc();

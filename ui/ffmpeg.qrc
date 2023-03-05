@@ -5,10 +5,11 @@
     <file>pushubottom/my.png</file>
     <file>pushubottom/file.png</file>
     <file>pushubottom/like.png</file>
-    <file>pushubottom/sound.png</file>
     <file>pushubottom/class.png</file>
     <file>pushubottom/stop.png</file>
     <file>pushubottom/start.png</file>
+    <file>pushubottom/close_soud.png</file>
+    <file>pushubottom/sound.png</file>
     <file>pushubottom/btn-left_1.png</file>
     <file>pushubottom/btn-right_2.png</file>
     <file>pushubottom/start.png</file>
@@ -24,6 +25,7 @@
     <file>pushubottom/head.png</file>
   </qresource>
   <qresource prefix="background">
+    <file>background/20.jpg</file>
     <file>background/20.png</file>
     <file>pushubottom/question.png</file>
     <file>background/19.jpg</file>

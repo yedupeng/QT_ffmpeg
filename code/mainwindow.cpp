@@ -74,8 +74,7 @@ Mainwindow::Mainwindow(QWidget *parent) : QWidget(parent),ui(new Ui::Form)
     connect(ui->sound,SIGNAL(clicked()),this,SLOT(btn_close_volum()));
     connect(mp3_player,SIGNAL(positionChanged(qint64)),this,SLOT(change_position(qint64)));
     connect(net->player,SIGNAL(positionChanged(qint64)),this,SLOT(change_position(qint64)));
-    connect(mp3_player,SIGNAL(positionChanged(qint64)),this,SLOT(change_position(qint64)));
-
+    connect(mp3_player,SIGNAL(durationChanged(qint64)),this,SLOT(change_duration(qint64)));
     connect(net->player,SIGNAL(durationChanged(qint64)),this,SLOT(change_duration(qint64)));
     connect(ui->horizontalSlider,SIGNAL(sliderMoved(int)),this,SLOT(seekChange(int)));
 
@@ -245,13 +244,10 @@ void Mainwindow::get_songs(QString file)
 
 void Mainwindow::play_all()
 {
+    flag_ln = 0;
     net->player->pause();
+    timer2->stop();
     QTableWidgetItem* item;
-    item = ui->tableWidget->item(number, 1);
-    ui->label_singer->setText(item->text());
-    item = ui->tableWidget->item(number, 0);
-    ui->label_sing->setText(item->text());
-    // playlist = playlist_local;
     QString model = ui->comboBox->currentText();
     if(model == "单曲循环")
     {
@@ -265,7 +261,6 @@ void Mainwindow::play_all()
     mp3_player->setPlaylist(playlist);
     // mp3_player->setMedia(QUrl::fromLocalFile("G:\\1\\Allie X - Thats So Us.mp3"));
     mp3_player->play();
-    flag_ln = 0;
     flag = 1;
 }
 
@@ -331,7 +326,7 @@ void Mainwindow::btn_close_volum()
     }else
     {
         mp3_player->setVolume(50);
-        net->player->setVolume(0);
+        net->player->setVolume(50);
     }
     flag_volum = 1-flag_volum;
 }
@@ -366,7 +361,19 @@ void Mainwindow::change_duration(qint64 tim)
         int row = net->playlist->currentIndex();
         ui->label_singer->setText(net->m_listResult.at(row).singername);
         ui->label_sing->setText(net->m_listResult.at(row).songName);
-        
+        QNetworkAccessManager img_network;
+        QEventLoop loop;
+        QNetworkReply *reply = img_network.get(QNetworkRequest(QUrl(net->m_listResult.at(row).image)));
+        QObject::connect(reply, SIGNAL(finished()), &loop, SLOT(quit()));
+        loop.exec();
+        QByteArray jpgdata = reply->readAll();
+        QPixmap pix;
+        pix.loadFromData(jpgdata);
+        ui->label_58->setPixmap(pix);
+        ui->label_58->setScaledContents(true); 
+        ui->label_60->setText(net->m_listResult.at(row).songName);
+        ui->label_62->setText(net->m_listResult.at(row).singername);
+        ui->label_64->setText(net->m_listResult.at(row).album_name);
     }
 }
 
@@ -600,8 +607,8 @@ void Mainwindow::lyric_show()
 }
 
 
-void Mainwindow::test()
+void Mainwindow::delay(int i)
 {
-    qDebug()<<2;
+    while(i--);
 }
 

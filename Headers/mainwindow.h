@@ -53,7 +53,7 @@ public:
     QTableWidgetItem* selectedItem2;
     int row_index;
     QTimer *timer2;
-    void test();
+    void delay(int i);
 
 
 private slots:
