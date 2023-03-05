@@ -10,6 +10,7 @@ Mainwindow::Mainwindow(QWidget *parent) : QWidget(parent),ui(new Ui::Form)
     timer2 = new QTimer(this);
     net->moveToThread(pThread);
     lc->moveToThread(pThread);
+    encode_->moveToThread(pThread);
     // playlist_net = new QMediaPlaylist;
     mp3_player = new QMediaPlayer(this);
     playlist = new QMediaPlaylist;
@@ -91,6 +92,10 @@ Mainwindow::Mainwindow(QWidget *parent) : QWidget(parent),ui(new Ui::Form)
     connect(ui->pushButton_17,SIGNAL(clicked()),this,SLOT(show_lc()));
     connect(lc, &LC_classer::show_lc, this, &Mainwindow::lyric_show, Qt::DirectConnection);
     connect(timer2, &QTimer::timeout, lc, &LC_classer::lyrics_net_show, Qt::DirectConnection);
+    connect(ui->btn_pcm_path,SIGNAL(clicked()),encode_,SLOT(find_pcm()));
+    connect(ui->pushButton_11,SIGNAL(clicked()),encode_,SLOT(pcm_to_acc()));
+    connect(ui->pushButton_12,SIGNAL(clicked()),this,SLOT(setting_init()));
+    connect(encode_, &encode_pcm::cmd_show, this , &Mainwindow::cmd_show);
 
     timer->start(3000);
     pThread->start();
@@ -606,9 +611,21 @@ void Mainwindow::lyric_show()
     ui->label_lc_5->setText(lc->choose_ly_c.lyc5);
 }
 
+void Mainwindow::cmd_show(QString msg)
+{
+    ui->textBrowser->append(msg);
+    ui->textBrowser->ensureCursorVisible();
+}
+
+void Mainwindow::setting_init()
+{
+    encode_->encode_fmt.bit_rate = ui->line_bit->text().toInt();
+}
 
 void Mainwindow::delay(int i)
 {
     while(i--);
 }
+
+
 

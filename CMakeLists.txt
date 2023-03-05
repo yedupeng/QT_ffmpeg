@@ -27,8 +27,8 @@ add_executable(ffmpeg_play main.cpp
                         ./code/netinfo_get.cpp
                         ./ui/ffmpeg.qrc
                         ./Headers/lyrices.h
-                        # ./Headers/encode_Pcm.h
-                        # ./code/encode_Pcm.cpp
+                        ./Headers/encode_Pcm.h
+                        ./code/encode_Pcm.cpp
                         ./code/lyrics.cpp)
 
 

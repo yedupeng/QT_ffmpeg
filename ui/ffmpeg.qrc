@@ -1,5 +1,7 @@
 <RCC>
   <qresource prefix="pushbottom">
+    <file>pushubottom/locate.png</file>
+    <file>pushubottom/start1.png</file>
     <file>pushubottom/rec.png</file>
     <file>pushubottom/circle2.png</file>
     <file>pushubottom/my.png</file>

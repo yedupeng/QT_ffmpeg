@@ -15,6 +15,7 @@
 #include <qdebug.h>
 #include <QTime>
 #include <QtMultimedia/qmediaplaylist.h>
+#include "encode_Pcm.h"
 #include <QMenu>
 #include <QAction>
 #include <qtimer.h>
@@ -54,6 +55,7 @@ public:
     int row_index;
     QTimer *timer2;
     void delay(int i);
+    void cmd_show(QString msg);
 
 
 private slots:
@@ -87,10 +89,11 @@ private slots:
     void play_all_net();
     void show_lc();
     void lyric_show();
+    void setting_init();
 
 private:
     QThread* pThread = new QThread;
-    Ui::Form *ui;
+    Ui_Form *ui;
     QString File;
     int num = 0;
     // AVFormatContext* cnt_avf;
@@ -102,6 +105,7 @@ private:
     QMenu * m;
     Net_songs* net = new Net_songs;
     LC_classer* lc = new LC_classer;
+    encode_pcm* encode_ = new encode_pcm;
     int flag_ln = 0;
 };
 
