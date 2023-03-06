@@ -93,9 +93,10 @@ Mainwindow::Mainwindow(QWidget *parent) : QWidget(parent),ui(new Ui::Form)
     connect(lc, &LC_classer::show_lc, this, &Mainwindow::lyric_show, Qt::DirectConnection);
     connect(timer2, &QTimer::timeout, lc, &LC_classer::lyrics_net_show, Qt::DirectConnection);
     connect(ui->btn_pcm_path,SIGNAL(clicked()),encode_,SLOT(find_pcm()));
-    connect(ui->pushButton_11,SIGNAL(clicked()),encode_,SLOT(pcm_to_acc()));
+    connect(ui->pushButton_11,SIGNAL(clicked()),encode_,SLOT(select_method()));
     connect(ui->pushButton_12,SIGNAL(clicked()),this,SLOT(setting_init()));
     connect(encode_, &encode_pcm::cmd_show, this , &Mainwindow::cmd_show);
+    connect(ui->comboBox_method,SIGNAL(currentIndexChanged(int)),this,SLOT(set_method()));
 
     timer->start(3000);
     pThread->start();
@@ -652,6 +653,12 @@ void Mainwindow::setting_init()
         encode_->encode_fmt.in_sample_rate = 44100;
     }
     encode_->encode_fmt.in_fmt = ui->comboBox_fmt_2->currentIndex();
+}
+
+
+void Mainwindow::set_method()
+{
+    encode_->method_flag = ui->comboBox_method->currentIndex();
 }
 
 void Mainwindow::delay(int i)

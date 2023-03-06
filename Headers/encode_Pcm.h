@@ -35,6 +35,7 @@ public:
         string file_name;
     }encode_fmt;
 
+    int method_flag = 0;
     QStringList  pcm_path;
     QStringList  file_name;
     AVFrame *frame;
@@ -48,6 +49,7 @@ public:
 private slots:
     void find_pcm();
     int pcm_to_acc();
+    void select_method();
 
 signals:
     void cmd_show(QString msg);

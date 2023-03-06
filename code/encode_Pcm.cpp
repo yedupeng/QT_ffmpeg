@@ -18,6 +18,20 @@ void encode_pcm::find_pcm()
     }
 }
 
+void encode_pcm::select_method()
+{
+    switch (method_flag)
+    {
+        case 0:
+            cmd_show("encode_pcm : select AAC encoding");
+            pcm_to_acc();
+            break;
+
+        default:
+            break;
+    }
+}
+
 int encode_pcm::pcm_to_acc()
 {
     av_register_all();
@@ -30,7 +44,7 @@ int encode_pcm::pcm_to_acc()
         encode_fmt.file_name = file_name[i].toStdString();
         string name = outfile_path+encode_fmt.file_name+".aac";
         output = (char*)name.data();
-        cout<<"output:"<<output;
+
         codec_ = avcodec_find_encoder(AV_CODEC_ID_AAC);
         int ret = 0;
         cnt_code = avcodec_alloc_context3(codec_);
@@ -39,22 +53,22 @@ int encode_pcm::pcm_to_acc()
         cnt_code->sample_rate = encode_fmt.sample_rate;
         switch (encode_fmt.fmt)
         {
-        case 0:
-            cnt_code->sample_fmt = AV_SAMPLE_FMT_FLTP;
-            break;
-        
-        default:
-            break;
+            case 0:
+                cnt_code->sample_fmt = AV_SAMPLE_FMT_FLTP;
+                break;
+            
+            default:
+                break;
         }
 
         switch (encode_fmt.channel_layout)
         {
-        case 0:
-            cnt_code->channel_layout = AV_CH_LAYOUT_STEREO;
-            break;
-        
-        default:
-            break;
+            case 0:
+                cnt_code->channel_layout = AV_CH_LAYOUT_STEREO;
+                break;
+            
+            default:
+                break;
         } 
         cnt_code->flags |= AV_CODEC_FLAG_GLOBAL_HEADER;
 
@@ -83,23 +97,23 @@ int encode_pcm::pcm_to_acc()
         AVSampleFormat format;
         switch (encode_fmt.in_fmt)
         {
-        case 0:
-            format = AV_SAMPLE_FMT_S16;
-            break;
-        
-        default:
-            break;
+            case 0:
+                format = AV_SAMPLE_FMT_S16;
+                break;
+            
+            default:
+                break;
         }
 
         int64_t layout;
         switch (encode_fmt.in_channel_layout)
         {
-        case 0:
-            layout = AV_CH_LAYOUT_STEREO;
-            break;
-        
-        default:
-            break;
+            case 0:
+                layout = AV_CH_LAYOUT_STEREO;
+                break;
+            
+            default:
+                break;
         } 
 
         swr = swr_alloc_set_opts(swr, cnt_code->channel_layout, cnt_code->sample_fmt, cnt_code->sample_rate,
@@ -165,6 +179,7 @@ int encode_pcm::pcm_to_acc()
             pkt.pts = 0;
             av_interleaved_write_frame(oc, &pkt);
         }
+        emit cmd_show("AAC : finish");
         delete[] pcm;
         pcm = NULL;
         av_write_trailer(oc);

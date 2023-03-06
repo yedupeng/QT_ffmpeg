@@ -56,6 +56,7 @@ public:
     QTimer *timer2;
     void delay(int i);
     void cmd_show(QString msg);
+    void set_method();
 
 
 private slots:
