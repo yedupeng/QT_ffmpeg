@@ -92,6 +92,7 @@ private slots:
     void lyric_show();
     void setting_init();
     void add_item_encode(QString inputfile, QString outputfile, QString method, QString channel);
+    void show_settings();
 
 private:
     QThread* pThread = new QThread;

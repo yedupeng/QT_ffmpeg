@@ -101,6 +101,8 @@ Mainwindow::Mainwindow(QWidget *parent) : QWidget(parent),ui(new Ui::Form)
     connect(encode_, &encode_pcm::cmd_show, this , &Mainwindow::cmd_show);
     connect(ui->comboBox_method,SIGNAL(currentIndexChanged(int)),this,SLOT(set_method()));
     connect(encode_, &encode_pcm::add_iem_encode_, this, &Mainwindow::add_item_encode);
+    connect(ui->comboBox_4,SIGNAL(currentIndexChanged(int)),this,SLOT(show_settings()));
+    
 
     timer->start(3000);
     pThread->start();
@@ -679,6 +681,28 @@ void Mainwindow::add_item_encode(QString inputfile, QString outputfile, QString 
     ui->tableWidget_8->item (rownum,2)->setTextAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
     ui->tableWidget_8->setItem(rownum, 3, new QTableWidgetItem(channel));
     ui->tableWidget_8->item (rownum,3)->setTextAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
+}
+
+void Mainwindow::show_settings()
+{
+    int index_method = ui->comboBox_4->currentIndex();
+    switch (index_method)
+    {
+    case 0:
+        ui->stackedWidget_2->setCurrentIndex(0);
+        break;
+    
+    case 1:
+        ui->stackedWidget_2->setCurrentIndex(1);
+        break;
+
+    case 2:
+        ui->stackedWidget_2->setCurrentIndex(2);
+        break;
+    
+    default:
+        break;
+    }
 }
 
 void Mainwindow::delay(int i)
