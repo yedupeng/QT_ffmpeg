@@ -180,9 +180,15 @@ public:
     QLabel *label_74;
     QLabel *label_80;
     QComboBox *comboBox_fmt;
-    QComboBox *comboBox_4;
     QLabel *label_79;
     QComboBox *comboBox_layout;
+    QComboBox *comboBox_4;
+    QLabel *label_81;
+    QComboBox *comboBox_fmt_2;
+    QLabel *label_82;
+    QLineEdit *line_sample_2;
+    QLabel *label_83;
+    QComboBox *comboBox_layout_2;
     QWidget *page_5;
     QPushButton *pushButton_11;
     QPushButton *btn_pcm_path;
@@ -747,7 +753,7 @@ public:
         QFont font;
         font.setPointSize(9);
         font.setBold(false);
-        // font.setWeight(50);e
+        // font.setWeight(50);
         tabWidget->setFont(font);
         tabWidget->setStyleSheet(QString::fromUtf8("#tabWidget::pane\n"
 "{\n"
@@ -828,7 +834,7 @@ public:
         scr->setWidgetResizable(true);
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents->setObjectName(QString::fromUtf8("scrollAreaWidgetContents"));
-        scrollAreaWidgetContents->setGeometry(QRect(0, -334, 820, 1000));
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 820, 1000));
         scrollAreaWidgetContents->setMinimumSize(QSize(0, 1000));
         scrollAreaWidgetContents->setStyleSheet(QString::fromUtf8("background-color: rgb(0, 0, 0);"));
         verticalLayout_2 = new QVBoxLayout(scrollAreaWidgetContents);
@@ -1404,7 +1410,7 @@ public:
 "font:11pt \"\345\215\216\346\226\207\346\245\267\344\275\223\";"));
         label_pcm_path = new QLabel(frame_26);
         label_pcm_path->setObjectName(QString::fromUtf8("label_pcm_path"));
-        label_pcm_path->setGeometry(QRect(180, 40, 351, 16));
+        label_pcm_path->setGeometry(QRect(180, 40, 171, 16));
         label_pcm_path->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);"));
         label_65 = new QLabel(frame_26);
         label_65->setObjectName(QString::fromUtf8("label_65"));
@@ -1413,7 +1419,7 @@ public:
 "font:11pt \"\345\215\216\346\226\207\346\245\267\344\275\223\";"));
         label_result_pcm = new QLabel(frame_26);
         label_result_pcm->setObjectName(QString::fromUtf8("label_result_pcm"));
-        label_result_pcm->setGeometry(QRect(180, 100, 351, 16));
+        label_result_pcm->setGeometry(QRect(180, 100, 171, 16));
         label_result_pcm->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);"));
         label_67 = new QLabel(frame_26);
         label_67->setObjectName(QString::fromUtf8("label_67"));
@@ -1425,10 +1431,10 @@ public:
         comboBox_method->addItem(QString());
         comboBox_method->addItem(QString());
         comboBox_method->setObjectName(QString::fromUtf8("comboBox_method"));
-        comboBox_method->setGeometry(QRect(180, 70, 351, 16));
+        comboBox_method->setGeometry(QRect(180, 70, 171, 16));
         stackedWidget_2 = new QStackedWidget(frame_26);
         stackedWidget_2->setObjectName(QString::fromUtf8("stackedWidget_2"));
-        stackedWidget_2->setGeometry(QRect(580, 0, 261, 161));
+        stackedWidget_2->setGeometry(QRect(420, 0, 421, 161));
         stackedWidget_2->setStyleSheet(QString::fromUtf8("#stackedWidget_2\n"
 "{\n"
 "background-color: rgb(0, 0, 0);\n"
@@ -1441,65 +1447,95 @@ public:
         page->setStyleSheet(QString::fromUtf8("background-color: rgb(0, 0, 0);"));
         label_78 = new QLabel(page);
         label_78->setObjectName(QString::fromUtf8("label_78"));
-        label_78->setGeometry(QRect(20, 130, 101, 20));
+        label_78->setGeometry(QRect(220, 130, 101, 20));
         label_78->setStyleSheet(QString::fromUtf8("color: rgb(255, 255, 255);\n"
 "font:11pt \"\345\215\216\346\226\207\346\245\267\344\275\223\";"));
         line_sample = new QLineEdit(page);
         line_sample->setObjectName(QString::fromUtf8("line_sample"));
-        line_sample->setGeometry(QRect(120, 130, 131, 21));
+        line_sample->setGeometry(QRect(320, 130, 91, 21));
         line_sample->setStyleSheet(QString::fromUtf8("color: rgb(255, 255, 255);"));
         label_73 = new QLabel(page);
         label_73->setObjectName(QString::fromUtf8("label_73"));
-        label_73->setGeometry(QRect(10, 100, 81, 16));
+        label_73->setGeometry(QRect(10, 70, 81, 16));
         label_73->setStyleSheet(QString::fromUtf8("color: rgb(255, 255, 255);\n"
 "font:11pt \"\345\215\216\346\226\207\346\245\267\344\275\223\";"));
         line_bit = new QLineEdit(page);
         line_bit->setObjectName(QString::fromUtf8("line_bit"));
-        line_bit->setGeometry(QRect(70, 100, 51, 21));
+        line_bit->setGeometry(QRect(80, 70, 101, 21));
         line_bit->setStyleSheet(QString::fromUtf8("color: rgb(255, 255, 255);"));
         line_channels = new QLineEdit(page);
         line_channels->setObjectName(QString::fromUtf8("line_channels"));
-        line_channels->setGeometry(QRect(120, 70, 131, 21));
+        line_channels->setGeometry(QRect(280, 70, 131, 21));
         line_channels->setStyleSheet(QString::fromUtf8("color: rgb(255, 255, 255);"));
         label_74 = new QLabel(page);
         label_74->setObjectName(QString::fromUtf8("label_74"));
-        label_74->setGeometry(QRect(40, 70, 71, 20));
+        label_74->setGeometry(QRect(200, 70, 71, 20));
         label_74->setStyleSheet(QString::fromUtf8("color: rgb(255, 255, 255);\n"
 "font:11pt \"\345\215\216\346\226\207\346\245\267\344\275\223\";"));
         label_80 = new QLabel(page);
         label_80->setObjectName(QString::fromUtf8("label_80"));
-        label_80->setGeometry(QRect(20, 40, 101, 20));
+        label_80->setGeometry(QRect(230, 40, 101, 20));
         label_80->setStyleSheet(QString::fromUtf8("color: rgb(255, 255, 255);\n"
 "font:11pt \"\345\215\216\346\226\207\346\245\267\344\275\223\";"));
         comboBox_fmt = new QComboBox(page);
         comboBox_fmt->addItem(QString());
         comboBox_fmt->setObjectName(QString::fromUtf8("comboBox_fmt"));
-        comboBox_fmt->setGeometry(QRect(120, 40, 131, 20));
+        comboBox_fmt->setGeometry(QRect(330, 40, 81, 20));
         comboBox_fmt->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);"));
-        comboBox_4 = new QComboBox(page);
-        comboBox_4->addItem(QString());
-        comboBox_4->addItem(QString());
-        comboBox_4->addItem(QString());
-        comboBox_4->setObjectName(QString::fromUtf8("comboBox_4"));
-        comboBox_4->setGeometry(QRect(80, 10, 121, 21));
-        comboBox_4->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);"));
         label_79 = new QLabel(page);
         label_79->setObjectName(QString::fromUtf8("label_79"));
-        label_79->setGeometry(QRect(130, 100, 51, 20));
+        label_79->setGeometry(QRect(200, 100, 91, 20));
         label_79->setStyleSheet(QString::fromUtf8("color: rgb(255, 255, 255);\n"
 "font:11pt \"\345\215\216\346\226\207\346\245\267\344\275\223\";"));
         comboBox_layout = new QComboBox(page);
         comboBox_layout->addItem(QString());
         comboBox_layout->setObjectName(QString::fromUtf8("comboBox_layout"));
-        comboBox_layout->setGeometry(QRect(180, 100, 71, 20));
+        comboBox_layout->setGeometry(QRect(290, 100, 121, 20));
         comboBox_layout->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);"));
+        comboBox_4 = new QComboBox(page);
+        comboBox_4->addItem(QString());
+        comboBox_4->addItem(QString());
+        comboBox_4->addItem(QString());
+        comboBox_4->setObjectName(QString::fromUtf8("comboBox_4"));
+        comboBox_4->setGeometry(QRect(170, 10, 121, 21));
+        comboBox_4->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);"));
+        label_81 = new QLabel(page);
+        label_81->setObjectName(QString::fromUtf8("label_81"));
+        label_81->setGeometry(QRect(10, 40, 101, 20));
+        label_81->setStyleSheet(QString::fromUtf8("color: rgb(255, 255, 255);\n"
+"font:11pt \"\345\215\216\346\226\207\346\245\267\344\275\223\";"));
+        comboBox_fmt_2 = new QComboBox(page);
+        comboBox_fmt_2->addItem(QString());
+        comboBox_fmt_2->addItem(QString());
+        comboBox_fmt_2->setObjectName(QString::fromUtf8("comboBox_fmt_2"));
+        comboBox_fmt_2->setGeometry(QRect(100, 40, 101, 20));
+        comboBox_fmt_2->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);"));
+        label_82 = new QLabel(page);
+        label_82->setObjectName(QString::fromUtf8("label_82"));
+        label_82->setGeometry(QRect(10, 130, 101, 20));
+        label_82->setStyleSheet(QString::fromUtf8("color: rgb(255, 255, 255);\n"
+"font:11pt \"\345\215\216\346\226\207\346\245\267\344\275\223\";"));
+        line_sample_2 = new QLineEdit(page);
+        line_sample_2->setObjectName(QString::fromUtf8("line_sample_2"));
+        line_sample_2->setGeometry(QRect(110, 130, 101, 21));
+        line_sample_2->setStyleSheet(QString::fromUtf8("color: rgb(255, 255, 255);"));
+        label_83 = new QLabel(page);
+        label_83->setObjectName(QString::fromUtf8("label_83"));
+        label_83->setGeometry(QRect(10, 100, 71, 20));
+        label_83->setStyleSheet(QString::fromUtf8("color: rgb(255, 255, 255);\n"
+"font:11pt \"\345\215\216\346\226\207\346\245\267\344\275\223\";"));
+        comboBox_layout_2 = new QComboBox(page);
+        comboBox_layout_2->addItem(QString());
+        comboBox_layout_2->setObjectName(QString::fromUtf8("comboBox_layout_2"));
+        comboBox_layout_2->setGeometry(QRect(80, 100, 111, 20));
+        comboBox_layout_2->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);"));
         stackedWidget_2->addWidget(page);
         page_5 = new QWidget();
         page_5->setObjectName(QString::fromUtf8("page_5"));
         stackedWidget_2->addWidget(page_5);
         pushButton_11 = new QPushButton(frame_26);
         pushButton_11->setObjectName(QString::fromUtf8("pushButton_11"));
-        pushButton_11->setGeometry(QRect(180, 130, 131, 31));
+        pushButton_11->setGeometry(QRect(30, 130, 131, 31));
         pushButton_11->setStyleSheet(QString::fromUtf8("#pushButton_11\n"
 "{\n"
 "	background-color: rgb(109, 109, 109);\n"
@@ -1521,7 +1557,7 @@ public:
 "}"));
         btn_pcm_path = new QPushButton(frame_26);
         btn_pcm_path->setObjectName(QString::fromUtf8("btn_pcm_path"));
-        btn_pcm_path->setGeometry(QRect(540, 29, 31, 31));
+        btn_pcm_path->setGeometry(QRect(360, 29, 31, 31));
         btn_pcm_path->setStyleSheet(QString::fromUtf8("\n"
 "#btn_pcm_path\n"
 "{\n"
@@ -1539,7 +1575,7 @@ public:
 "}"));
         btn_method = new QPushButton(frame_26);
         btn_method->setObjectName(QString::fromUtf8("btn_method"));
-        btn_method->setGeometry(QRect(540, 59, 31, 31));
+        btn_method->setGeometry(QRect(360, 59, 31, 31));
         btn_method->setStyleSheet(QString::fromUtf8("\n"
 "#btn_method\n"
 "{\n"
@@ -1557,7 +1593,7 @@ public:
 "}"));
         btn_result = new QPushButton(frame_26);
         btn_result->setObjectName(QString::fromUtf8("btn_result"));
-        btn_result->setGeometry(QRect(540, 89, 31, 31));
+        btn_result->setGeometry(QRect(360, 89, 31, 31));
         btn_result->setStyleSheet(QString::fromUtf8("\n"
 "#btn_result\n"
 "{\n"
@@ -1575,7 +1611,7 @@ public:
 "}"));
         pushButton_12 = new QPushButton(frame_26);
         pushButton_12->setObjectName(QString::fromUtf8("pushButton_12"));
-        pushButton_12->setGeometry(QRect(410, 130, 121, 31));
+        pushButton_12->setGeometry(QRect(230, 130, 121, 31));
         pushButton_12->setStyleSheet(QString::fromUtf8("#pushButton_12\n"
 "{\n"
 "	background-color: rgb(109, 109, 109);\n"
@@ -2010,7 +2046,7 @@ public:
         scr2->setWidgetResizable(true);
         scrollAreaWidgetContents_5 = new QWidget();
         scrollAreaWidgetContents_5->setObjectName(QString::fromUtf8("scrollAreaWidgetContents_5"));
-        scrollAreaWidgetContents_5->setGeometry(QRect(0, 0, 842, 1100));
+        scrollAreaWidgetContents_5->setGeometry(QRect(0, 0, 90, 1100));
         scrollAreaWidgetContents_5->setMinimumSize(QSize(0, 1100));
         scrollAreaWidgetContents_5->setStyleSheet(QString::fromUtf8("\n"
 "background-color: rgb(0, 0, 0);\n"
@@ -2310,7 +2346,7 @@ public:
         scr3->setWidgetResizable(true);
         scrollAreaWidgetContents_7 = new QWidget();
         scrollAreaWidgetContents_7->setObjectName(QString::fromUtf8("scrollAreaWidgetContents_7"));
-        scrollAreaWidgetContents_7->setGeometry(QRect(0, 0, 842, 1100));
+        scrollAreaWidgetContents_7->setGeometry(QRect(0, 0, 90, 1100));
         scrollAreaWidgetContents_7->setMinimumSize(QSize(0, 1100));
         scrollAreaWidgetContents_7->setStyleSheet(QString::fromUtf8("\n"
 "background-color: rgb(0, 0, 0);\n"
@@ -2673,7 +2709,7 @@ public:
         scr4->setWidgetResizable(true);
         scrollAreaWidgetContents_9 = new QWidget();
         scrollAreaWidgetContents_9->setObjectName(QString::fromUtf8("scrollAreaWidgetContents_9"));
-        scrollAreaWidgetContents_9->setGeometry(QRect(0, 0, 842, 1100));
+        scrollAreaWidgetContents_9->setGeometry(QRect(0, 0, 90, 1100));
         scrollAreaWidgetContents_9->setMinimumSize(QSize(0, 1100));
         scrollAreaWidgetContents_9->setStyleSheet(QString::fromUtf8("\n"
 "background-color: rgb(0, 0, 0);\n"
@@ -2806,7 +2842,7 @@ public:
         scrollArea_3->setWidgetResizable(true);
         scrollAreaWidgetContents_3 = new QWidget();
         scrollAreaWidgetContents_3->setObjectName(QString::fromUtf8("scrollAreaWidgetContents_3"));
-        scrollAreaWidgetContents_3->setGeometry(QRect(0, 0, 852, 522));
+        scrollAreaWidgetContents_3->setGeometry(QRect(0, 0, 90, 71));
         gridLayout_5 = new QGridLayout(scrollAreaWidgetContents_3);
         gridLayout_5->setSpacing(0);
         gridLayout_5->setObjectName(QString::fromUtf8("gridLayout_5"));
@@ -2993,7 +3029,7 @@ public:
         scrollArea_4->setWidgetResizable(true);
         scrollAreaWidgetContents_4 = new QWidget();
         scrollAreaWidgetContents_4->setObjectName(QString::fromUtf8("scrollAreaWidgetContents_4"));
-        scrollAreaWidgetContents_4->setGeometry(QRect(0, 0, 842, 1100));
+        scrollAreaWidgetContents_4->setGeometry(QRect(0, 0, 88, 1100));
         scrollAreaWidgetContents_4->setMinimumSize(QSize(0, 1100));
         scrollAreaWidgetContents_4->setStyleSheet(QString::fromUtf8("background-color: rgb(0, 0, 0);"));
         gridLayout_14 = new QGridLayout(scrollAreaWidgetContents_4);
@@ -3492,20 +3528,29 @@ public:
         comboBox_method->setItemText(1, QCoreApplication::translate("Form", "WAV", nullptr));
         comboBox_method->setItemText(2, QCoreApplication::translate("Form", "MP3", nullptr));
 
-        label_78->setText(QCoreApplication::translate("Form", "sample_rate:", nullptr));
+        label_78->setText(QCoreApplication::translate("Form", "out_sam_rate:", nullptr));
         line_sample->setText(QString());
         label_73->setText(QCoreApplication::translate("Form", "bit_rate:", nullptr));
         line_bit->setText(QString());
         label_74->setText(QCoreApplication::translate("Form", "channels:", nullptr));
-        label_80->setText(QCoreApplication::translate("Form", "sample_fmt:", nullptr));
+        label_80->setText(QCoreApplication::translate("Form", "out_sam_fmt:", nullptr));
         comboBox_fmt->setItemText(0, QCoreApplication::translate("Form", "FLTP", nullptr));
+
+        label_79->setText(QCoreApplication::translate("Form", "out_layout:", nullptr));
+        comboBox_layout->setItemText(0, QCoreApplication::translate("Form", "STEREO", nullptr));
 
         comboBox_4->setItemText(0, QCoreApplication::translate("Form", "AAC_Settings", nullptr));
         comboBox_4->setItemText(1, QCoreApplication::translate("Form", "Wav_Settings", nullptr));
         comboBox_4->setItemText(2, QCoreApplication::translate("Form", "MP3_Settings", nullptr));
 
-        label_79->setText(QCoreApplication::translate("Form", "layout:", nullptr));
-        comboBox_layout->setItemText(0, QCoreApplication::translate("Form", "STEREO", nullptr));
+        label_81->setText(QCoreApplication::translate("Form", "in_sam_fmt:", nullptr));
+        comboBox_fmt_2->setItemText(0, QCoreApplication::translate("Form", "S16", nullptr));
+        comboBox_fmt_2->setItemText(1, QCoreApplication::translate("Form", "FLTP", nullptr));
+
+        label_82->setText(QCoreApplication::translate("Form", "in_sam_rate:", nullptr));
+        line_sample_2->setText(QString());
+        label_83->setText(QCoreApplication::translate("Form", "in_layout:", nullptr));
+        comboBox_layout_2->setItemText(0, QCoreApplication::translate("Form", "STEREO", nullptr));
 
         pushButton_11->setText(QCoreApplication::translate("Form", "start", nullptr));
         btn_pcm_path->setText(QString());

@@ -619,7 +619,39 @@ void Mainwindow::cmd_show(QString msg)
 
 void Mainwindow::setting_init()
 {
-    encode_->encode_fmt.bit_rate = ui->line_bit->text().toInt();
+    if(ui->line_bit->text().toInt())
+    {
+        encode_->encode_fmt.bit_rate = ui->line_bit->text().toInt();
+    }else
+    {
+        encode_->encode_fmt.bit_rate = 64000;
+    }
+
+    encode_->encode_fmt.channel_layout = ui->comboBox_layout->currentIndex();
+    encode_->encode_fmt.in_channel_layout = ui->comboBox_layout->currentIndex();
+    if(ui->line_channels->text().toInt())
+    {
+        encode_->encode_fmt.channels = ui->line_channels->text().toInt();
+    }else
+    {
+        encode_->encode_fmt.channels = 2;
+    }
+    encode_->encode_fmt.fmt = ui->comboBox_fmt->currentIndex();
+    if(ui->line_sample->text().toInt())
+    {
+        encode_->encode_fmt.sample_rate = ui->line_sample->text().toInt();
+    }else
+    {
+        encode_->encode_fmt.sample_rate = 44100;
+    }
+    if(ui->line_sample_2->text().toInt())
+    {
+        encode_->encode_fmt.in_sample_rate = ui->line_sample_2->text().toInt();
+    }else
+    {
+        encode_->encode_fmt.in_sample_rate = 44100;
+    }
+    encode_->encode_fmt.in_fmt = ui->comboBox_fmt_2->currentIndex();
 }
 
 void Mainwindow::delay(int i)

@@ -939,7 +939,7 @@ QScrollBar::sub-page:vertical
                   <property name="geometry">
                    <rect>
                     <x>0</x>
-                    <y>-334</y>
+                    <y>0</y>
                     <width>820</width>
                     <height>1000</height>
                    </rect>
@@ -2036,7 +2036,7 @@ font:11pt &quot;华文楷体&quot;;</string>
                       <rect>
                        <x>180</x>
                        <y>40</y>
-                       <width>351</width>
+                       <width>171</width>
                        <height>16</height>
                       </rect>
                      </property>
@@ -2069,7 +2069,7 @@ font:11pt &quot;华文楷体&quot;;</string>
                       <rect>
                        <x>180</x>
                        <y>100</y>
-                       <width>351</width>
+                       <width>171</width>
                        <height>16</height>
                       </rect>
                      </property>
@@ -2102,7 +2102,7 @@ font:11pt &quot;华文楷体&quot;;</string>
                       <rect>
                        <x>180</x>
                        <y>70</y>
-                       <width>351</width>
+                       <width>171</width>
                        <height>16</height>
                       </rect>
                      </property>
@@ -2125,9 +2125,9 @@ font:11pt &quot;华文楷体&quot;;</string>
                     <widget class="QStackedWidget" name="stackedWidget_2">
                      <property name="geometry">
                       <rect>
-                       <x>580</x>
+                       <x>420</x>
                        <y>0</y>
-                       <width>261</width>
+                       <width>421</width>
                        <height>161</height>
                       </rect>
                      </property>
@@ -2150,7 +2150,7 @@ border: 1px solid;
                       <widget class="QLabel" name="label_78">
                        <property name="geometry">
                         <rect>
-                         <x>20</x>
+                         <x>220</x>
                          <y>130</y>
                          <width>101</width>
                          <height>20</height>
@@ -2161,15 +2161,15 @@ border: 1px solid;
 font:11pt &quot;华文楷体&quot;;</string>
                        </property>
                        <property name="text">
-                        <string>sample_rate:</string>
+                        <string>out_sam_rate:</string>
                        </property>
                       </widget>
                       <widget class="QLineEdit" name="line_sample">
                        <property name="geometry">
                         <rect>
-                         <x>120</x>
+                         <x>320</x>
                          <y>130</y>
-                         <width>131</width>
+                         <width>91</width>
                          <height>21</height>
                         </rect>
                        </property>
@@ -2184,7 +2184,7 @@ font:11pt &quot;华文楷体&quot;;</string>
                        <property name="geometry">
                         <rect>
                          <x>10</x>
-                         <y>100</y>
+                         <y>70</y>
                          <width>81</width>
                          <height>16</height>
                         </rect>
@@ -2200,9 +2200,9 @@ font:11pt &quot;华文楷体&quot;;</string>
                       <widget class="QLineEdit" name="line_bit">
                        <property name="geometry">
                         <rect>
-                         <x>70</x>
-                         <y>100</y>
-                         <width>51</width>
+                         <x>80</x>
+                         <y>70</y>
+                         <width>101</width>
                          <height>21</height>
                         </rect>
                        </property>
@@ -2216,7 +2216,7 @@ font:11pt &quot;华文楷体&quot;;</string>
                       <widget class="QLineEdit" name="line_channels">
                        <property name="geometry">
                         <rect>
-                         <x>120</x>
+                         <x>280</x>
                          <y>70</y>
                          <width>131</width>
                          <height>21</height>
@@ -2229,7 +2229,7 @@ font:11pt &quot;华文楷体&quot;;</string>
                       <widget class="QLabel" name="label_74">
                        <property name="geometry">
                         <rect>
-                         <x>40</x>
+                         <x>200</x>
                          <y>70</y>
                          <width>71</width>
                          <height>20</height>
@@ -2246,7 +2246,7 @@ font:11pt &quot;华文楷体&quot;;</string>
                       <widget class="QLabel" name="label_80">
                        <property name="geometry">
                         <rect>
-                         <x>20</x>
+                         <x>230</x>
                          <y>40</y>
                          <width>101</width>
                          <height>20</height>
@@ -2257,15 +2257,15 @@ font:11pt &quot;华文楷体&quot;;</string>
 font:11pt &quot;华文楷体&quot;;</string>
                        </property>
                        <property name="text">
-                        <string>sample_fmt:</string>
+                        <string>out_sam_fmt:</string>
                        </property>
                       </widget>
                       <widget class="QComboBox" name="comboBox_fmt">
                        <property name="geometry">
                         <rect>
-                         <x>120</x>
+                         <x>330</x>
                          <y>40</y>
-                         <width>131</width>
+                         <width>81</width>
                          <height>20</height>
                         </rect>
                        </property>
@@ -2278,10 +2278,45 @@ font:11pt &quot;华文楷体&quot;;</string>
                         </property>
                        </item>
                       </widget>
+                      <widget class="QLabel" name="label_79">
+                       <property name="geometry">
+                        <rect>
+                         <x>200</x>
+                         <y>100</y>
+                         <width>91</width>
+                         <height>20</height>
+                        </rect>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">color: rgb(255, 255, 255);
+font:11pt &quot;华文楷体&quot;;</string>
+                       </property>
+                       <property name="text">
+                        <string>out_layout:</string>
+                       </property>
+                      </widget>
+                      <widget class="QComboBox" name="comboBox_layout">
+                       <property name="geometry">
+                        <rect>
+                         <x>290</x>
+                         <y>100</y>
+                         <width>121</width>
+                         <height>20</height>
+                        </rect>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">background-color: rgb(255, 255, 255);</string>
+                       </property>
+                       <item>
+                        <property name="text">
+                         <string>STEREO</string>
+                        </property>
+                       </item>
+                      </widget>
                       <widget class="QComboBox" name="comboBox_4">
                        <property name="geometry">
                         <rect>
-                         <x>80</x>
+                         <x>170</x>
                          <y>10</y>
                          <width>121</width>
                          <height>21</height>
@@ -2306,12 +2341,12 @@ font:11pt &quot;华文楷体&quot;;</string>
                         </property>
                        </item>
                       </widget>
-                      <widget class="QLabel" name="label_79">
+                      <widget class="QLabel" name="label_81">
                        <property name="geometry">
                         <rect>
-                         <x>130</x>
-                         <y>100</y>
-                         <width>51</width>
+                         <x>10</x>
+                         <y>40</y>
+                         <width>101</width>
                          <height>20</height>
                         </rect>
                        </property>
@@ -2320,15 +2355,88 @@ font:11pt &quot;华文楷体&quot;;</string>
 font:11pt &quot;华文楷体&quot;;</string>
                        </property>
                        <property name="text">
-                        <string>layout:</string>
+                        <string>in_sam_fmt:</string>
                        </property>
                       </widget>
-                      <widget class="QComboBox" name="comboBox_layout">
+                      <widget class="QComboBox" name="comboBox_fmt_2">
                        <property name="geometry">
                         <rect>
-                         <x>180</x>
+                         <x>100</x>
+                         <y>40</y>
+                         <width>101</width>
+                         <height>20</height>
+                        </rect>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">background-color: rgb(255, 255, 255);</string>
+                       </property>
+                       <item>
+                        <property name="text">
+                         <string>S16</string>
+                        </property>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string>FLTP</string>
+                        </property>
+                       </item>
+                      </widget>
+                      <widget class="QLabel" name="label_82">
+                       <property name="geometry">
+                        <rect>
+                         <x>10</x>
+                         <y>130</y>
+                         <width>101</width>
+                         <height>20</height>
+                        </rect>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">color: rgb(255, 255, 255);
+font:11pt &quot;华文楷体&quot;;</string>
+                       </property>
+                       <property name="text">
+                        <string>in_sam_rate:</string>
+                       </property>
+                      </widget>
+                      <widget class="QLineEdit" name="line_sample_2">
+                       <property name="geometry">
+                        <rect>
+                         <x>110</x>
+                         <y>130</y>
+                         <width>101</width>
+                         <height>21</height>
+                        </rect>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">color: rgb(255, 255, 255);</string>
+                       </property>
+                       <property name="text">
+                        <string/>
+                       </property>
+                      </widget>
+                      <widget class="QLabel" name="label_83">
+                       <property name="geometry">
+                        <rect>
+                         <x>10</x>
                          <y>100</y>
                          <width>71</width>
+                         <height>20</height>
+                        </rect>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">color: rgb(255, 255, 255);
+font:11pt &quot;华文楷体&quot;;</string>
+                       </property>
+                       <property name="text">
+                        <string>in_layout:</string>
+                       </property>
+                      </widget>
+                      <widget class="QComboBox" name="comboBox_layout_2">
+                       <property name="geometry">
+                        <rect>
+                         <x>80</x>
+                         <y>100</y>
+                         <width>111</width>
                          <height>20</height>
                         </rect>
                        </property>
@@ -2347,7 +2455,7 @@ font:11pt &quot;华文楷体&quot;;</string>
                     <widget class="QPushButton" name="pushButton_11">
                      <property name="geometry">
                       <rect>
-                       <x>180</x>
+                       <x>30</x>
                        <y>130</y>
                        <width>131</width>
                        <height>31</height>
@@ -2381,7 +2489,7 @@ QPushButton:pressed
                     <widget class="QPushButton" name="btn_pcm_path">
                      <property name="geometry">
                       <rect>
-                       <x>540</x>
+                       <x>360</x>
                        <y>29</y>
                        <width>31</width>
                        <height>31</height>
@@ -2411,7 +2519,7 @@ QPushButton:pressed
                     <widget class="QPushButton" name="btn_method">
                      <property name="geometry">
                       <rect>
-                       <x>540</x>
+                       <x>360</x>
                        <y>59</y>
                        <width>31</width>
                        <height>31</height>
@@ -2441,7 +2549,7 @@ QPushButton:pressed
                     <widget class="QPushButton" name="btn_result">
                      <property name="geometry">
                       <rect>
-                       <x>540</x>
+                       <x>360</x>
                        <y>89</y>
                        <width>31</width>
                        <height>31</height>
@@ -2471,7 +2579,7 @@ QPushButton:pressed
                     <widget class="QPushButton" name="pushButton_12">
                      <property name="geometry">
                       <rect>
-                       <x>410</x>
+                       <x>230</x>
                        <y>130</y>
                        <width>121</width>
                        <height>31</height>
@@ -3190,7 +3298,7 @@ text-align:center;
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>842</width>
+                <width>90</width>
                 <height>1100</height>
                </rect>
               </property>
@@ -3647,7 +3755,7 @@ QScrollBar::sub-page:vertical
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>842</width>
+                <width>90</width>
                 <height>1100</height>
                </rect>
               </property>
@@ -4363,7 +4471,7 @@ color: rgb(255, 255, 255);</string>
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>842</width>
+                <width>90</width>
                 <height>1100</height>
                </rect>
               </property>
@@ -4551,8 +4659,8 @@ border:none;
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>852</width>
-                <height>522</height>
+                <width>90</width>
+                <height>71</height>
                </rect>
               </property>
               <layout class="QGridLayout" name="gridLayout_5" rowstretch="2,0,3">
@@ -4890,7 +4998,7 @@ text-align:center;
                    <rect>
                     <x>0</x>
                     <y>0</y>
-                    <width>842</width>
+                    <width>88</width>
                     <height>1100</height>
                    </rect>
                   </property>

@@ -13,6 +13,7 @@ extern "C"
     #include "libswscale/swscale.h"
     #include "libavdevice/avdevice.h"
     #include "libavutil/dict.h"
+    #include "libswresample/swresample.h"
 }
 
 using namespace std;
@@ -25,13 +26,14 @@ public:
     {
         int bit_rate;
         int fmt;
+        int in_fmt;
         int channels;
         int sample_rate;
+        int in_sample_rate;
         int channel_layout;
+        int in_channel_layout;
         string file_name;
     }encode_fmt;
-
-    void init();
 
     QStringList  pcm_path;
     QStringList  file_name;
