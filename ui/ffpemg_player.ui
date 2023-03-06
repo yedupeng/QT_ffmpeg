@@ -2718,6 +2718,10 @@ text-align:center;
 }
 
 
+
+
+
+
 </string>
                         </property>
                         <column>
@@ -2737,7 +2741,7 @@ text-align:center;
                         </column>
                         <column>
                          <property name="text">
-                          <string>文件大小</string>
+                          <string>声道数</string>
                          </property>
                         </column>
                        </widget>
@@ -3755,7 +3759,7 @@ QScrollBar::sub-page:vertical
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>90</width>
+                <width>842</width>
                 <height>1100</height>
                </rect>
               </property>
@@ -4471,7 +4475,7 @@ color: rgb(255, 255, 255);</string>
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>90</width>
+                <width>842</width>
                 <height>1100</height>
                </rect>
               </property>
@@ -4659,8 +4663,8 @@ border:none;
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>90</width>
-                <height>71</height>
+                <width>852</width>
+                <height>522</height>
                </rect>
               </property>
               <layout class="QGridLayout" name="gridLayout_5" rowstretch="2,0,3">
@@ -4998,7 +5002,7 @@ text-align:center;
                    <rect>
                     <x>0</x>
                     <y>0</y>
-                    <width>88</width>
+                    <width>842</width>
                     <height>1100</height>
                    </rect>
                   </property>

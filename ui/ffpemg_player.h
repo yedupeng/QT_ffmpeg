@@ -1711,6 +1711,10 @@ public:
 "}\n"
 "\n"
 "\n"
+"\n"
+"\n"
+"\n"
+"\n"
 ""));
 
         gridLayout_16->addWidget(tableWidget_8, 0, 0, 1, 1);
@@ -2346,7 +2350,7 @@ public:
         scr3->setWidgetResizable(true);
         scrollAreaWidgetContents_7 = new QWidget();
         scrollAreaWidgetContents_7->setObjectName(QString::fromUtf8("scrollAreaWidgetContents_7"));
-        scrollAreaWidgetContents_7->setGeometry(QRect(0, 0, 90, 1100));
+        scrollAreaWidgetContents_7->setGeometry(QRect(0, 0, 842, 1100));
         scrollAreaWidgetContents_7->setMinimumSize(QSize(0, 1100));
         scrollAreaWidgetContents_7->setStyleSheet(QString::fromUtf8("\n"
 "background-color: rgb(0, 0, 0);\n"
@@ -2709,7 +2713,7 @@ public:
         scr4->setWidgetResizable(true);
         scrollAreaWidgetContents_9 = new QWidget();
         scrollAreaWidgetContents_9->setObjectName(QString::fromUtf8("scrollAreaWidgetContents_9"));
-        scrollAreaWidgetContents_9->setGeometry(QRect(0, 0, 90, 1100));
+        scrollAreaWidgetContents_9->setGeometry(QRect(0, 0, 842, 1100));
         scrollAreaWidgetContents_9->setMinimumSize(QSize(0, 1100));
         scrollAreaWidgetContents_9->setStyleSheet(QString::fromUtf8("\n"
 "background-color: rgb(0, 0, 0);\n"
@@ -2842,7 +2846,7 @@ public:
         scrollArea_3->setWidgetResizable(true);
         scrollAreaWidgetContents_3 = new QWidget();
         scrollAreaWidgetContents_3->setObjectName(QString::fromUtf8("scrollAreaWidgetContents_3"));
-        scrollAreaWidgetContents_3->setGeometry(QRect(0, 0, 90, 71));
+        scrollAreaWidgetContents_3->setGeometry(QRect(0, 0, 852, 522));
         gridLayout_5 = new QGridLayout(scrollAreaWidgetContents_3);
         gridLayout_5->setSpacing(0);
         gridLayout_5->setObjectName(QString::fromUtf8("gridLayout_5"));
@@ -3029,7 +3033,7 @@ public:
         scrollArea_4->setWidgetResizable(true);
         scrollAreaWidgetContents_4 = new QWidget();
         scrollAreaWidgetContents_4->setObjectName(QString::fromUtf8("scrollAreaWidgetContents_4"));
-        scrollAreaWidgetContents_4->setGeometry(QRect(0, 0, 88, 1100));
+        scrollAreaWidgetContents_4->setGeometry(QRect(0, 0, 842, 1100));
         scrollAreaWidgetContents_4->setMinimumSize(QSize(0, 1100));
         scrollAreaWidgetContents_4->setStyleSheet(QString::fromUtf8("background-color: rgb(0, 0, 0);"));
         gridLayout_14 = new QGridLayout(scrollAreaWidgetContents_4);
@@ -3564,7 +3568,7 @@ public:
         QTableWidgetItem *___qtablewidgetitem2 = tableWidget_8->horizontalHeaderItem(2);
         ___qtablewidgetitem2->setText(QCoreApplication::translate("Form", "\347\233\256\346\240\207\346\226\207\344\273\266", nullptr));
         QTableWidgetItem *___qtablewidgetitem3 = tableWidget_8->horizontalHeaderItem(3);
-        ___qtablewidgetitem3->setText(QCoreApplication::translate("Form", "\346\226\207\344\273\266\345\244\247\345\260\217", nullptr));
+        ___qtablewidgetitem3->setText(QCoreApplication::translate("Form", "\345\243\260\351\201\223\346\225\260", nullptr));
         textBrowser->setPlaceholderText(QCoreApplication::translate("Form", "\346\232\202\346\227\240\350\277\220\350\241\214\347\250\213\345\272\217", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab_3), QCoreApplication::translate("Form", "PCM\345\244\204\347\220\206", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab_4), QCoreApplication::translate("Form", "\346\216\250\350\215\220\346\255\214\346\211\213", nullptr));

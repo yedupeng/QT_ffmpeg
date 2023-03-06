@@ -53,6 +53,7 @@ private slots:
 
 signals:
     void cmd_show(QString msg);
+    void add_iem_encode_(QString inputfile, QString outputfile, QString method, QString channel);
 };
 
 #endif

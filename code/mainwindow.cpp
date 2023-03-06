@@ -17,6 +17,9 @@ Mainwindow::Mainwindow(QWidget *parent) : QWidget(parent),ui(new Ui::Form)
     ui->tableWidget->setSelectionBehavior(QAbstractItemView::SelectRows);
     ui->tableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
     ui->tableWidget->setContextMenuPolicy(Qt::CustomContextMenu); 
+    ui->tableWidget_8->setSelectionBehavior(QAbstractItemView::SelectRows);
+    ui->tableWidget_8->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    ui->tableWidget_8->setContextMenuPolicy(Qt::CustomContextMenu); 
     ui->radioButton->setChecked(1);
     ui->stackedWidget->setCurrentWidget(ui->page_1);
     net->init();
@@ -97,6 +100,7 @@ Mainwindow::Mainwindow(QWidget *parent) : QWidget(parent),ui(new Ui::Form)
     connect(ui->pushButton_12,SIGNAL(clicked()),this,SLOT(setting_init()));
     connect(encode_, &encode_pcm::cmd_show, this , &Mainwindow::cmd_show);
     connect(ui->comboBox_method,SIGNAL(currentIndexChanged(int)),this,SLOT(set_method()));
+    connect(encode_, &encode_pcm::add_iem_encode_, this, &Mainwindow::add_item_encode);
 
     timer->start(3000);
     pThread->start();
@@ -620,6 +624,7 @@ void Mainwindow::cmd_show(QString msg)
 
 void Mainwindow::setting_init()
 {
+/*--------------------------------------------------------aac-----------------------------------------------------------*/
     if(ui->line_bit->text().toInt())
     {
         encode_->encode_fmt.bit_rate = ui->line_bit->text().toInt();
@@ -653,12 +658,27 @@ void Mainwindow::setting_init()
         encode_->encode_fmt.in_sample_rate = 44100;
     }
     encode_->encode_fmt.in_fmt = ui->comboBox_fmt_2->currentIndex();
+/*--------------------------------------------------------aac-----------------------------------------------------------*/
 }
 
 
 void Mainwindow::set_method()
 {
     encode_->method_flag = ui->comboBox_method->currentIndex();
+}
+
+void Mainwindow::add_item_encode(QString inputfile, QString outputfile, QString method, QString channel)
+{
+    int rownum = ui->tableWidget_8->rowCount();
+    ui->tableWidget_8->insertRow(rownum);
+    ui->tableWidget_8->setItem(rownum, 0, new QTableWidgetItem(inputfile));
+    ui->tableWidget_8->item (rownum,0)->setTextAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
+    ui->tableWidget_8->setItem(rownum, 1, new QTableWidgetItem(method));
+    ui->tableWidget_8->item (rownum,1)->setTextAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
+    ui->tableWidget_8->setItem(rownum, 2, new QTableWidgetItem(outputfile));
+    ui->tableWidget_8->item (rownum,2)->setTextAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
+    ui->tableWidget_8->setItem(rownum, 3, new QTableWidgetItem(channel));
+    ui->tableWidget_8->item (rownum,3)->setTextAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
 }
 
 void Mainwindow::delay(int i)

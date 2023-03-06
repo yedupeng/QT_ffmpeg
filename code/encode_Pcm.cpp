@@ -180,6 +180,8 @@ int encode_pcm::pcm_to_acc()
             av_interleaved_write_frame(oc, &pkt);
         }
         emit cmd_show("AAC : finish");
+        emit add_iem_encode_(QString(QLatin1String(input)), QString(QLatin1String(output)), 
+            "AAC",  QString::number(encode_fmt.channels));
         delete[] pcm;
         pcm = NULL;
         av_write_trailer(oc);
