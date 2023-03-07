@@ -865,7 +865,7 @@ QTabBar::tab::hover
 </string>
              </property>
              <property name="currentIndex">
-              <number>2</number>
+              <number>1</number>
              </property>
              <property name="iconSize">
               <size>
@@ -3303,7 +3303,7 @@ text-align:center;
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>90</width>
+                <width>842</width>
                 <height>1100</height>
                </rect>
               </property>

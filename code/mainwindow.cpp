@@ -5,29 +5,15 @@ int number = 1;
 
 Mainwindow::Mainwindow(QWidget *parent) : QWidget(parent),ui(new Ui::Form)
 {
+/*---------------------------------------------------------------init-------------------------------------------------------------------*/
     ui->setupUi(this);
     system("chcp 65001");
+    m = new QMenu(this);
+    menu = new QMenu(this);
     timer2 = new QTimer(this);
-    net->moveToThread(pThread);
-    lc->moveToThread(pThread);
-    encode_->moveToThread(pThread);
-    // playlist_net = new QMediaPlaylist;
     mp3_player = new QMediaPlayer(this);
     playlist = new QMediaPlaylist;
-    ui->tableWidget->setSelectionBehavior(QAbstractItemView::SelectRows);
-    ui->tableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
-    ui->tableWidget->setContextMenuPolicy(Qt::CustomContextMenu); 
-    ui->tableWidget_8->setSelectionBehavior(QAbstractItemView::SelectRows);
-    ui->tableWidget_8->setEditTriggers(QAbstractItemView::NoEditTriggers);
-    ui->tableWidget_8->setContextMenuPolicy(Qt::CustomContextMenu); 
-    ui->radioButton->setChecked(1);
-    ui->stackedWidget->setCurrentWidget(ui->page_1);
-    net->init();
-
     QTimer *timer = new QTimer(this);
-    menu = new QMenu(this);
-    m = new QMenu(this);
-
     QAction* action1 = new QAction("暂停", this);
     QAction* action2 = new QAction("删除歌曲", this);
     QAction* action3 = new QAction("添加进歌单", this);
@@ -35,6 +21,23 @@ Mainwindow::Mainwindow(QWidget *parent) : QWidget(parent),ui(new Ui::Form)
     QAction* action5 = new QAction("我的歌单二", this);
     QAction* action6 = new QAction("我喜欢的音乐", this);
     QList<QAction*> action_list;
+/*----------------------------------------------------------push to Thread--------------------------------------------------------------*/
+    net->moveToThread(pThread);
+    lc->moveToThread(pThread);
+    encode_->moveToThread(pThread);
+/*----------------------------------------------------------push to Thread--------------------------------------------------------------*/
+
+/*----------------------------------------------------------settings init--------------------------------------------------------------*/
+    net->init();
+    ui->radioButton->setChecked(1);
+    ui->tableWidget->setSelectionBehavior(QAbstractItemView::SelectRows);
+    ui->tableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    ui->tableWidget->setContextMenuPolicy(Qt::CustomContextMenu); 
+    ui->tableWidget_8->setSelectionBehavior(QAbstractItemView::SelectRows);
+    ui->tableWidget_8->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    ui->tableWidget_8->setContextMenuPolicy(Qt::CustomContextMenu); 
+    ui->stackedWidget->setCurrentWidget(ui->page_1);
+
     action_list.append(action4);
     action_list.append(action5);
     action_list.append(action6);
@@ -50,17 +53,16 @@ Mainwindow::Mainwindow(QWidget *parent) : QWidget(parent),ui(new Ui::Form)
     menu->addMenu(m);
     menu->addSeparator();
 
-    // menu->addAction(action4);
-    // menu->addAction(action5);
-    // system("chcp 65001");
-
     ui->verticalSlider->setMaximum(100);
     ui->verticalSlider->setMinimum(0);
     ui->verticalSlider->setPageStep(10);
     ui->verticalSlider->setSingleStep(10);
-    ui->verticalSlider->setSliderPosition(50);
     ui->horizontalSlider->setRange(0,100);
-    
+    ui->verticalSlider->setSliderPosition(50);
+/*----------------------------------------------------------settings init--------------------------------------------------------------*/
+
+
+/*----------------------------------------------------------signals and slots--------------------------------------------------------------*/
     connect(ui->btn_close, SIGNAL(clicked()), this, SLOT(close()));
     connect(ui->btn_down ,SIGNAL(clicked()), this, SLOT(showMinimized()));
     connect(ui->btn_aut, SIGNAL(clicked()), this, SLOT(btn_chage_img()));
@@ -73,36 +75,42 @@ Mainwindow::Mainwindow(QWidget *parent) : QWidget(parent),ui(new Ui::Form)
     connect(ui->btn_import,SIGNAL(clicked()),this,SLOT(btn_chage_import_song())); 
     connect(ui->btn_play_all,SIGNAL(clicked()),this,SLOT(play_all())); 
     connect(ui->btn_start,SIGNAL(clicked()),this,SLOT(stop())); 
-    connect(ui->comboBox,SIGNAL(currentIndexChanged(int)),this,SLOT(play_model_change()));
-    connect(ui->verticalSlider,SIGNAL(valueChanged(int)),this,SLOT(volum_change()));
+    connect(ui->btn_next,SIGNAL(clicked()),this,SLOT(next_song()));
+    connect(ui->btn_last,SIGNAL(clicked()),this,SLOT(last_song()));
+    connect(ui->btn_search,SIGNAL(clicked()),this,SLOT(get_search_song()));
+    connect(ui->pushButton,SIGNAL(clicked()),this,SLOT(play_all_net()));
+    connect(ui->pushButton_17,SIGNAL(clicked()),this,SLOT(show_lc()));
+    connect(ui->btn_pcm_path,SIGNAL(clicked()),encode_,SLOT(find_pcm()));
+    connect(ui->pushButton_11,SIGNAL(clicked()),encode_,SLOT(select_method()));
+    connect(ui->pushButton_12,SIGNAL(clicked()),this,SLOT(setting_init()));
     connect(ui->sound,SIGNAL(clicked()),this,SLOT(btn_close_volum()));
+
+    connect(ui->comboBox,SIGNAL(currentIndexChanged(int)),this,SLOT(play_model_change()));
+    connect(ui->comboBox_method,SIGNAL(currentIndexChanged(int)),this,SLOT(set_method()));
+    connect(ui->comboBox_4,SIGNAL(currentIndexChanged(int)),this,SLOT(show_settings()));  
+
+    connect(ui->horizontalSlider,SIGNAL(sliderMoved(int)),this,SLOT(seekChange(int)));
+    connect(ui->verticalSlider,SIGNAL(valueChanged(int)),this,SLOT(volum_change()));
+
     connect(mp3_player,SIGNAL(positionChanged(qint64)),this,SLOT(change_position(qint64)));
     connect(net->player,SIGNAL(positionChanged(qint64)),this,SLOT(change_position(qint64)));
     connect(mp3_player,SIGNAL(durationChanged(qint64)),this,SLOT(change_duration(qint64)));
     connect(net->player,SIGNAL(durationChanged(qint64)),this,SLOT(change_duration(qint64)));
-    connect(ui->horizontalSlider,SIGNAL(sliderMoved(int)),this,SLOT(seekChange(int)));
 
-    connect(ui->btn_next,SIGNAL(clicked()),this,SLOT(next_song()));
-    connect(ui->btn_last,SIGNAL(clicked()),this,SLOT(last_song()));
-    connect(ui->tableWidget,SIGNAL(customContextMenuRequested(const QPoint&)),this,SLOT(show_meau(const QPoint&)));
-    connect(menu,SIGNAL(triggered(QAction *)),this,SLOT(select_action(QAction *)));
     connect(ui->tableWidget,SIGNAL(cellClicked(int,int)),this,SLOT(get_row(int,int)));
-    connect(timer, SIGNAL(timeout()), this, SLOT(update_red()));
-    connect(ui->btn_search,SIGNAL(clicked()),this,SLOT(get_search_song()));
+    connect(ui->tableWidget,SIGNAL(customContextMenuRequested(const QPoint&)),this,SLOT(show_meau(const QPoint&)));
+
+    connect(menu,SIGNAL(triggered(QAction *)),this,SLOT(select_action(QAction *)));
+    
+    connect(encode_, &encode_pcm::cmd_show, this , &Mainwindow::cmd_show);
+    connect(encode_, &encode_pcm::add_iem_encode_, this, &Mainwindow::add_item_encode);
     connect(net, &Net_songs::get_songs_info_over, this, &Mainwindow::add_table);
     connect(net, &Net_songs::get_timelength_over, this, &Mainwindow::add_item,Qt::DirectConnection);
-    connect(ui->pushButton,SIGNAL(clicked()),this,SLOT(play_all_net()));
-    connect(ui->pushButton_17,SIGNAL(clicked()),this,SLOT(show_lc()));
     connect(lc, &LC_classer::show_lc, this, &Mainwindow::lyric_show, Qt::DirectConnection);
+
+    connect(timer, SIGNAL(timeout()), this, SLOT(update_red()));
     connect(timer2, &QTimer::timeout, lc, &LC_classer::lyrics_net_show, Qt::DirectConnection);
-    connect(ui->btn_pcm_path,SIGNAL(clicked()),encode_,SLOT(find_pcm()));
-    connect(ui->pushButton_11,SIGNAL(clicked()),encode_,SLOT(select_method()));
-    connect(ui->pushButton_12,SIGNAL(clicked()),this,SLOT(setting_init()));
-    connect(encode_, &encode_pcm::cmd_show, this , &Mainwindow::cmd_show);
-    connect(ui->comboBox_method,SIGNAL(currentIndexChanged(int)),this,SLOT(set_method()));
-    connect(encode_, &encode_pcm::add_iem_encode_, this, &Mainwindow::add_item_encode);
-    connect(ui->comboBox_4,SIGNAL(currentIndexChanged(int)),this,SLOT(show_settings()));
-    
+/*----------------------------------------------------------signals and slots--------------------------------------------------------------*/   
 
     timer->start(3000);
     pThread->start();
