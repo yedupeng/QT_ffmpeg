@@ -35,6 +35,40 @@ public:
         string file_name;
     }encode_fmt;
 
+    struct Wav_fmt
+    {
+        int channels;
+        int sample_rate;
+        int fmt_size;
+        int bits = 16;
+    }wav_fmt;
+    
+
+    typedef struct WAV_HEAD
+    {
+        char chunkid[4];
+        unsigned long chunksize;
+        char format[4];
+    };
+
+    typedef struct WAV_FMT
+    {
+        char subformat[4];
+        unsigned long sbusize;
+        unsigned short audioFormat;
+        unsigned short numchannels;
+        unsigned long sampleRate;
+        unsigned long byteRate;
+        unsigned short blockAlign;
+        unsigned short bitPerSample;
+    };
+
+    typedef struct WAV_DATA
+    {
+        char wavdata[4];
+        unsigned long datasize;
+    };
+
     int method_flag = 0;
     QStringList  pcm_path;
     QStringList  file_name;
@@ -45,15 +79,19 @@ public:
     string outfile_path = "../temp/";
     string infile_path = "";
     QString encode_type = "AAC";
+    QString encode_type2 = "WAV";
+    long get_size(string path);
 
 private slots:
     void find_pcm();
     int pcm_to_acc();
+    int pam_to_wav();
     void select_method();
 
 signals:
     void cmd_show(QString msg);
     void add_iem_encode_(QString inputfile, QString outputfile, QString method, QString channel);
+    void show_input(QString input);
 };
 
 #endif

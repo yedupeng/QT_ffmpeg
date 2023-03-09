@@ -7,6 +7,8 @@ Mainwindow::Mainwindow(QWidget *parent) : QWidget(parent),ui(new Ui::Form)
 {
 /*---------------------------------------------------------------init-------------------------------------------------------------------*/
     ui->setupUi(this);
+    this->setWindowFlags(Qt::FramelessWindowHint);
+    this->setAttribute(Qt::WA_TranslucentBackground);
     system("chcp 65001");
     m = new QMenu(this);
     menu = new QMenu(this);
@@ -84,6 +86,10 @@ Mainwindow::Mainwindow(QWidget *parent) : QWidget(parent),ui(new Ui::Form)
     connect(ui->pushButton_11,SIGNAL(clicked()),encode_,SLOT(select_method()));
     connect(ui->pushButton_12,SIGNAL(clicked()),this,SLOT(setting_init()));
     connect(ui->sound,SIGNAL(clicked()),this,SLOT(btn_close_volum()));
+    connect(ui->pushButton_9,SIGNAL(clicked()),this,SLOT(btn_chage_page_favor()));
+    connect(ui->pushButton_10,SIGNAL(clicked()),this,SLOT(btn_chage_page_local()));
+    connect(ui->pushButton_14,SIGNAL(clicked()),this,SLOT(btn_chage_page_my1()));
+    connect(ui->pushButton_15,SIGNAL(clicked()),this,SLOT(btn_chage_page_my2()));
 
     connect(ui->comboBox,SIGNAL(currentIndexChanged(int)),this,SLOT(play_model_change()));
     connect(ui->comboBox_method,SIGNAL(currentIndexChanged(int)),this,SLOT(set_method()));
@@ -101,9 +107,10 @@ Mainwindow::Mainwindow(QWidget *parent) : QWidget(parent),ui(new Ui::Form)
     connect(ui->tableWidget,SIGNAL(customContextMenuRequested(const QPoint&)),this,SLOT(show_meau(const QPoint&)));
 
     connect(menu,SIGNAL(triggered(QAction *)),this,SLOT(select_action(QAction *)));
-    
+
     connect(encode_, &encode_pcm::cmd_show, this , &Mainwindow::cmd_show);
     connect(encode_, &encode_pcm::add_iem_encode_, this, &Mainwindow::add_item_encode);
+    connect(encode_, &encode_pcm::show_input, this, &Mainwindow::show_acc_input);
     connect(net, &Net_songs::get_songs_info_over, this, &Mainwindow::add_table);
     connect(net, &Net_songs::get_timelength_over, this, &Mainwindow::add_item,Qt::DirectConnection);
     connect(lc, &LC_classer::show_lc, this, &Mainwindow::lyric_show, Qt::DirectConnection);
@@ -412,6 +419,10 @@ void Mainwindow::next_song()
 {
     if(flag_ln==0)
     {
+        if(playlist->mediaCount()==0)
+        {
+            return;
+        }
         int row = playlist->currentIndex();
         int num_all = playlist->mediaCount();
         row++;
@@ -429,6 +440,10 @@ void Mainwindow::next_song()
         mp3_player->play();
     }else
     {
+        if(net->playlist->mediaCount()==0)
+        {
+            return;
+        }
         int row;
         row = net->next_song();
         ui->label_singer->setText(net->m_listResult.at(row).singername);
@@ -440,6 +455,10 @@ void Mainwindow::last_song()
 {
     if(flag_ln==0)
     {
+        if(playlist->mediaCount()==0)
+        {
+            return;
+        }
         int row = playlist->currentIndex();
         row--;
         if(row<0)
@@ -455,6 +474,10 @@ void Mainwindow::last_song()
         mp3_player->play();
     }else
     {
+        if(net->playlist->mediaCount()==0)
+        {
+            return;
+        }
         int row;
         row = net->last_song();
         ui->label_singer->setText(net->m_listResult.at(row).singername);
@@ -668,12 +691,45 @@ void Mainwindow::setting_init()
         encode_->encode_fmt.in_sample_rate = 44100;
     }
     encode_->encode_fmt.in_fmt = ui->comboBox_fmt_2->currentIndex();
+
 /*--------------------------------------------------------aac-----------------------------------------------------------*/
+
+/*--------------------------------------------------------wav-----------------------------------------------------------*/
+   if(ui->line_bit_5->text().toInt())
+   {
+        encode_->wav_fmt.bits = ui->line_bit_5->text().toInt();
+   }else
+   {
+        encode_->wav_fmt.bits = 16;
+   }
+    if(ui->line_bit_2->text().toInt())
+   {
+        encode_->wav_fmt.channels = ui->line_bit_2->text().toInt();
+   }else
+   {
+        encode_->wav_fmt.channels = 2;
+   }
+   if(ui->line_bit_3->text().toInt())
+   {
+        encode_->wav_fmt.sample_rate = ui->line_bit_3->text().toInt();
+   }else
+   {
+         encode_->wav_fmt.sample_rate = 44100;
+   }
+   if(ui->line_bit_4->text().toInt())
+   {
+    encode_->wav_fmt.fmt_size = ui->line_bit_4->text().toInt();
+   }else
+   {
+    encode_->wav_fmt.fmt_size = 16;
+   }
+/*--------------------------------------------------------wav-----------------------------------------------------------*/
 }
 
 
 void Mainwindow::set_method()
 {
+    qDebug()<<1;
     encode_->method_flag = ui->comboBox_method->currentIndex();
 }
 
@@ -711,6 +767,23 @@ void Mainwindow::show_settings()
     default:
         break;
     }
+}
+
+void Mainwindow::mousePressEvent(QMouseEvent *event)
+{
+	this->windowPos = this->pos();       // 获得部件当前位置
+	this->mousePos = event->globalPos(); // 获得鼠标位置
+	this->dPos = mousePos - windowPos;   // 移动后部件所在的位置
+}
+ 
+void Mainwindow::mouseMoveEvent(QMouseEvent *event)
+{
+	this->move(event->globalPos() - this->dPos);
+}
+
+void Mainwindow::show_acc_input(QString input)
+{
+    ui->label_pcm_path->setText(input);
 }
 
 void Mainwindow::delay(int i)

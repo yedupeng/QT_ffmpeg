@@ -20,7 +20,9 @@
 #include <QAction>
 #include <qtimer.h>
 #include "netinfo_get.h"
+#include <QComboBox>
 #include <QThread>
+#include <QMouseEvent>
 
 extern "C"
 {
@@ -56,7 +58,12 @@ public:
     QTimer *timer2;
     void delay(int i);
     void cmd_show(QString msg);
-    void set_method();
+ 
+    //记录鼠标，窗口位置
+    QPoint windowPos;
+    QPoint mousePos;
+    QPoint dPos;
+
 
 
 private slots:
@@ -93,6 +100,10 @@ private slots:
     void setting_init();
     void add_item_encode(QString inputfile, QString outputfile, QString method, QString channel);
     void show_settings();
+    void mousePressEvent(QMouseEvent *event);
+    void mouseMoveEvent(QMouseEvent *event);
+    void set_method();
+    void show_acc_input(QString input);
 
 private:
     QThread* pThread = new QThread;

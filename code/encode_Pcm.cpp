@@ -15,6 +15,7 @@ void encode_pcm::find_pcm()
         file_name.append(fileinfo.baseName());
         qDebug()<<file_name[i];
         cmd_show("encode_pcm : find "+fileinfo.baseName());
+        emit show_input(pcm_path[i]);
     }
 }
 
@@ -27,8 +28,88 @@ void encode_pcm::select_method()
             pcm_to_acc();
             break;
 
+        case 1:
+            cmd_show("encode_pcm : select WAV encoding");
+            pam_to_wav();
+            break;
+
         default:
             break;
+    }
+}
+
+long encode_pcm::get_size(string path)
+{
+    char *input;
+    input = (char *)path.data();
+    FILE* fp = fopen(input, "r");
+    fseek(fp, 0, SEEK_END);
+    long size = ftell(fp);
+    fclose(fp);
+    return size;
+}
+
+int encode_pcm::pam_to_wav()
+{
+    WAV_HEAD header;
+    WAV_FMT fmt;
+    WAV_DATA wav_data;
+    // int bits = 16;
+    for(int i=0; i<pcm_path.size(); i++)
+    {
+        FILE *fp, *fout;
+        char *output;
+        encode_fmt.file_name = file_name[i].toStdString();  
+        string name = outfile_path+encode_fmt.file_name+".wav";
+        output = (char*)name.data();
+        string input = pcm_path[i].toStdString();
+        fp = fopen((char*)input.data(), "rb");
+        if(fp == NULL)
+        {
+            emit cmd_show("WAV : open input file error");
+            return -1;
+        }
+        memcpy(header.chunkid, "RIFF", strlen("RIFF"));
+        long filesize = 44 + get_size(input) - 8;
+        if(filesize)
+        {
+            emit cmd_show("WAV : get filesize:"+QString::number (filesize));
+        }
+        header.chunksize = filesize;
+        memcpy(header.format, "WAVE", strlen("WAVE"));
+        memcpy(fmt.subformat, "fmt ", strlen("fmt "));
+        fmt.sbusize = wav_fmt.fmt_size;
+        fmt.audioFormat = 1;
+        fmt.numchannels = wav_fmt.channels;
+        fmt.sampleRate = wav_fmt.sample_rate;
+        fmt.byteRate = fmt.sampleRate * fmt.numchannels * wav_fmt.bits / 8; 
+
+        fmt.blockAlign = fmt.numchannels * wav_fmt.bits / 8;
+        fmt.bitPerSample = wav_fmt.bits;
+
+        memcpy(wav_data.wavdata, "data", strlen("data"));
+        wav_data.datasize = get_size(input);
+
+        fout = fopen(output, "wb");
+        if(!fout)
+        {
+            emit cmd_show("open output file error");
+        }
+        fwrite(&header, sizeof(header), 1, fout);
+        fwrite(&fmt, sizeof(fmt), 1, fout);
+        fwrite(&wav_data, sizeof(wav_data), 1, fout);
+        char *buffer = (char*)malloc(512);
+        int len;
+        while(len = fread(buffer, sizeof(char), 512, fp))
+        {
+            fwrite(buffer, sizeof(char), len, fout);
+        }
+        emit cmd_show("WAV : finish");
+        emit add_iem_encode_(QString(QLatin1String((char*)input.data())), QString(QLatin1String(output)), 
+            "WAV",  QString::number(wav_fmt.channels));
+        free(buffer);
+        fclose(fp);
+        fclose(fout);
     }
 }
 
