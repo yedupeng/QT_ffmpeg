@@ -10,7 +10,7 @@
     <x>0</x>
     <y>0</y>
     <width>1044</width>
-    <height>692</height>
+    <height>691</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -36,6 +36,21 @@ border-radius:10;
 }</string>
   </property>
   <layout class="QGridLayout" name="gridLayout_17">
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
+   <property name="spacing">
+    <number>0</number>
+   </property>
    <item row="0" column="0">
     <widget class="QFrame" name="frame">
      <property name="minimumSize">
@@ -883,7 +898,7 @@ QTabBar::tab::hover
 </string>
                </property>
                <property name="currentIndex">
-                <number>1</number>
+                <number>5</number>
                </property>
                <property name="iconSize">
                 <size>
@@ -958,7 +973,7 @@ QScrollBar::sub-page:vertical
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>820</width>
+                      <width>838</width>
                       <height>1000</height>
                      </rect>
                     </property>
@@ -2807,7 +2822,7 @@ QPushButton:pressed
                         <rect>
                          <x>0</x>
                          <y>0</y>
-                         <width>565</width>
+                         <width>577</width>
                          <height>325</height>
                         </rect>
                        </property>
@@ -3003,9 +3018,708 @@ font: 9pt &quot;华文楷体&quot;;</string>
                 </attribute>
                </widget>
                <widget class="QWidget" name="tab">
+                <property name="styleSheet">
+                 <string notr="true">#tab
+{
+	background-color: rgb(0, 0, 0);
+}</string>
+                </property>
                 <attribute name="title">
                  <string>Video处理</string>
                 </attribute>
+                <layout class="QGridLayout" name="gridLayout_18">
+                 <property name="leftMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="spacing">
+                  <number>0</number>
+                 </property>
+                 <item row="0" column="0">
+                  <widget class="QStackedWidget" name="stackedWidget_3">
+                   <property name="styleSheet">
+                    <string notr="true">background-color: rgb(0, 0, 0);</string>
+                   </property>
+                   <property name="currentIndex">
+                    <number>0</number>
+                   </property>
+                   <widget class="QWidget" name="page_7">
+                    <layout class="QVBoxLayout" name="verticalLayout_15" stretch="2,1">
+                     <property name="spacing">
+                      <number>1</number>
+                     </property>
+                     <property name="leftMargin">
+                      <number>0</number>
+                     </property>
+                     <property name="topMargin">
+                      <number>0</number>
+                     </property>
+                     <property name="rightMargin">
+                      <number>0</number>
+                     </property>
+                     <property name="bottomMargin">
+                      <number>0</number>
+                     </property>
+                     <item>
+                      <widget class="QFrame" name="frame_27">
+                       <property name="styleSheet">
+                        <string notr="true">#frame_27
+{
+background-color: rgb(0, 0, 0);
+border-color: rgb(255, 255, 255);
+}</string>
+                       </property>
+                       <property name="frameShape">
+                        <enum>QFrame::StyledPanel</enum>
+                       </property>
+                       <property name="frameShadow">
+                        <enum>QFrame::Raised</enum>
+                       </property>
+                       <widget class="QLabel" name="label_66">
+                        <property name="geometry">
+                         <rect>
+                          <x>140</x>
+                          <y>20</y>
+                          <width>341</width>
+                          <height>291</height>
+                         </rect>
+                        </property>
+                        <property name="styleSheet">
+                         <string notr="true">#label_66
+{
+background-image: url(:/background/pushubottom/question.png);
+	border-top-right-radius:20px;
+border-top-left-radius:20px;
+	border-bottom-left-radius:20px;
+	border-bottom-right-radius:20px;
+}
+</string>
+                        </property>
+                        <property name="text">
+                         <string/>
+                        </property>
+                       </widget>
+                       <widget class="QLabel" name="label_93">
+                        <property name="geometry">
+                         <rect>
+                          <x>510</x>
+                          <y>30</y>
+                          <width>121</width>
+                          <height>20</height>
+                         </rect>
+                        </property>
+                        <property name="styleSheet">
+                         <string notr="true">color: rgb(255, 255, 255);
+font:11pt &quot;华文楷体&quot;;</string>
+                        </property>
+                        <property name="text">
+                         <string>播放文件路径：</string>
+                        </property>
+                       </widget>
+                       <widget class="QLabel" name="label_94">
+                        <property name="geometry">
+                         <rect>
+                          <x>630</x>
+                          <y>30</y>
+                          <width>171</width>
+                          <height>16</height>
+                         </rect>
+                        </property>
+                        <property name="styleSheet">
+                         <string notr="true">background-color: rgb(255, 255, 255);</string>
+                        </property>
+                        <property name="text">
+                         <string/>
+                        </property>
+                       </widget>
+                       <widget class="QPushButton" name="btn_yuv_path">
+                        <property name="geometry">
+                         <rect>
+                          <x>810</x>
+                          <y>20</y>
+                          <width>41</width>
+                          <height>41</height>
+                         </rect>
+                        </property>
+                        <property name="styleSheet">
+                         <string notr="true">
+#btn_yuv_path
+{
+border-image: url(:/pushbottom/pushubottom/locate.png);;
+}
+
+QPushButton:hover
+{
+	margin:1px;
+}
+
+QPushButton:pressed
+{
+	margin:2px;
+}</string>
+                        </property>
+                        <property name="text">
+                         <string/>
+                        </property>
+                       </widget>
+                       <widget class="QLabel" name="label_95">
+                        <property name="geometry">
+                         <rect>
+                          <x>530</x>
+                          <y>80</y>
+                          <width>21</width>
+                          <height>20</height>
+                         </rect>
+                        </property>
+                        <property name="styleSheet">
+                         <string notr="true">color: rgb(255, 255, 255);
+font:11pt &quot;华文楷体&quot;;</string>
+                        </property>
+                        <property name="text">
+                         <string>Y:</string>
+                        </property>
+                       </widget>
+                       <widget class="QLabel" name="label_96">
+                        <property name="geometry">
+                         <rect>
+                          <x>660</x>
+                          <y>80</y>
+                          <width>21</width>
+                          <height>20</height>
+                         </rect>
+                        </property>
+                        <property name="styleSheet">
+                         <string notr="true">color: rgb(255, 255, 255);
+font:11pt &quot;华文楷体&quot;;</string>
+                        </property>
+                        <property name="text">
+                         <string>U:</string>
+                        </property>
+                       </widget>
+                       <widget class="QLabel" name="label_97">
+                        <property name="geometry">
+                         <rect>
+                          <x>780</x>
+                          <y>80</y>
+                          <width>21</width>
+                          <height>20</height>
+                         </rect>
+                        </property>
+                        <property name="styleSheet">
+                         <string notr="true">color: rgb(255, 255, 255);
+font:11pt &quot;华文楷体&quot;;</string>
+                        </property>
+                        <property name="text">
+                         <string>V:</string>
+                        </property>
+                       </widget>
+                       <widget class="QCheckBox" name="checkBox">
+                        <property name="geometry">
+                         <rect>
+                          <x>560</x>
+                          <y>80</y>
+                          <width>91</width>
+                          <height>19</height>
+                         </rect>
+                        </property>
+                        <property name="text">
+                         <string/>
+                        </property>
+                       </widget>
+                       <widget class="QCheckBox" name="checkBox_2">
+                        <property name="geometry">
+                         <rect>
+                          <x>690</x>
+                          <y>80</y>
+                          <width>91</width>
+                          <height>19</height>
+                         </rect>
+                        </property>
+                        <property name="text">
+                         <string/>
+                        </property>
+                       </widget>
+                       <widget class="QCheckBox" name="checkBox_3">
+                        <property name="geometry">
+                         <rect>
+                          <x>810</x>
+                          <y>80</y>
+                          <width>91</width>
+                          <height>19</height>
+                         </rect>
+                        </property>
+                        <property name="text">
+                         <string/>
+                        </property>
+                       </widget>
+                       <widget class="QPushButton" name="pushButton_20">
+                        <property name="geometry">
+                         <rect>
+                          <x>20</x>
+                          <y>170</y>
+                          <width>93</width>
+                          <height>28</height>
+                         </rect>
+                        </property>
+                        <property name="styleSheet">
+                         <string notr="true">color: rgb(255, 255, 255);
+font:11pt &quot;华文楷体&quot;;</string>
+                        </property>
+                        <property name="text">
+                         <string>Stop</string>
+                        </property>
+                       </widget>
+                       <widget class="QPushButton" name="pushButton_21">
+                        <property name="geometry">
+                         <rect>
+                          <x>20</x>
+                          <y>220</y>
+                          <width>93</width>
+                          <height>28</height>
+                         </rect>
+                        </property>
+                        <property name="styleSheet">
+                         <string notr="true">color: rgb(255, 255, 255);
+font:11pt &quot;华文楷体&quot;;</string>
+                        </property>
+                        <property name="text">
+                         <string>Start</string>
+                        </property>
+                       </widget>
+                       <widget class="QPushButton" name="pushButton_22">
+                        <property name="geometry">
+                         <rect>
+                          <x>20</x>
+                          <y>270</y>
+                          <width>93</width>
+                          <height>28</height>
+                         </rect>
+                        </property>
+                        <property name="styleSheet">
+                         <string notr="true">color: rgb(255, 255, 255);
+font:11pt &quot;华文楷体&quot;;</string>
+                        </property>
+                        <property name="text">
+                         <string>全屏</string>
+                        </property>
+                       </widget>
+                       <widget class="QTextBrowser" name="textBrowser_2">
+                        <property name="geometry">
+                         <rect>
+                          <x>520</x>
+                          <y>130</y>
+                          <width>331</width>
+                          <height>181</height>
+                         </rect>
+                        </property>
+                        <property name="styleSheet">
+                         <string notr="true">#textBrowser_2
+{
+color: rgb(255, 255, 255);
+font: 9pt &quot;华文楷体&quot;;
+	background-color: rgb(0, 0, 0);
+}
+
+QScrollBar:vertical
+{
+	width:10px;
+	background:rgb(56, 56, 63);
+}
+
+QScrollBar::handle:vertical
+{
+	border-radius:5px;
+	background: rgb(255, 255, 255);
+}
+
+QScrollBar::add-line:vertical
+{
+	image:url();
+}
+
+QScrollBar::sub-line:vertical
+{
+	image:url();
+}
+
+QScrollBar::add-page:vertical
+{
+	background: rgb(169, 169, 169);
+}
+
+QScrollBar::sub-page:vertical
+{
+	background: rgb(169, 169, 169);
+}
+</string>
+                        </property>
+                        <property name="placeholderText">
+                         <string>暂无....</string>
+                        </property>
+                       </widget>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QFrame" name="frame_28">
+                       <property name="styleSheet">
+                        <string notr="true">background-color: rgb(255, 255, 255);</string>
+                       </property>
+                       <property name="frameShape">
+                        <enum>QFrame::StyledPanel</enum>
+                       </property>
+                       <property name="frameShadow">
+                        <enum>QFrame::Raised</enum>
+                       </property>
+                       <layout class="QHBoxLayout" name="horizontalLayout_10" stretch="3,2">
+                        <property name="spacing">
+                         <number>0</number>
+                        </property>
+                        <property name="leftMargin">
+                         <number>0</number>
+                        </property>
+                        <property name="topMargin">
+                         <number>0</number>
+                        </property>
+                        <property name="rightMargin">
+                         <number>0</number>
+                        </property>
+                        <property name="bottomMargin">
+                         <number>0</number>
+                        </property>
+                        <item>
+                         <widget class="QFrame" name="frame_29">
+                          <property name="styleSheet">
+                           <string notr="true">background-color: rgb(0, 0, 0);</string>
+                          </property>
+                          <property name="frameShape">
+                           <enum>QFrame::StyledPanel</enum>
+                          </property>
+                          <property name="frameShadow">
+                           <enum>QFrame::Raised</enum>
+                          </property>
+                          <widget class="QLabel" name="label_92">
+                           <property name="geometry">
+                            <rect>
+                             <x>50</x>
+                             <y>80</y>
+                             <width>81</width>
+                             <height>16</height>
+                            </rect>
+                           </property>
+                           <property name="styleSheet">
+                            <string notr="true">color: rgb(255, 255, 255);
+font:11pt &quot;华文楷体&quot;;</string>
+                           </property>
+                           <property name="text">
+                            <string>编码格式：</string>
+                           </property>
+                          </widget>
+                          <widget class="QLabel" name="label_88">
+                           <property name="geometry">
+                            <rect>
+                             <x>140</x>
+                             <y>20</y>
+                             <width>321</width>
+                             <height>16</height>
+                            </rect>
+                           </property>
+                           <property name="styleSheet">
+                            <string notr="true">background-color: rgb(255, 255, 255);</string>
+                           </property>
+                           <property name="text">
+                            <string/>
+                           </property>
+                          </widget>
+                          <widget class="QComboBox" name="comboBox_2">
+                           <property name="geometry">
+                            <rect>
+                             <x>140</x>
+                             <y>80</y>
+                             <width>321</width>
+                             <height>22</height>
+                            </rect>
+                           </property>
+                           <property name="styleSheet">
+                            <string notr="true">background-color: rgb(255, 255, 255);</string>
+                           </property>
+                          </widget>
+                          <widget class="QLabel" name="label_91">
+                           <property name="geometry">
+                            <rect>
+                             <x>140</x>
+                             <y>50</y>
+                             <width>321</width>
+                             <height>16</height>
+                            </rect>
+                           </property>
+                           <property name="styleSheet">
+                            <string notr="true">background-color: rgb(255, 255, 255);</string>
+                           </property>
+                           <property name="text">
+                            <string/>
+                           </property>
+                          </widget>
+                          <widget class="QLabel" name="label_69">
+                           <property name="geometry">
+                            <rect>
+                             <x>10</x>
+                             <y>20</y>
+                             <width>121</width>
+                             <height>20</height>
+                            </rect>
+                           </property>
+                           <property name="styleSheet">
+                            <string notr="true">color: rgb(255, 255, 255);
+font:11pt &quot;华文楷体&quot;;</string>
+                           </property>
+                           <property name="text">
+                            <string>输入文件路径：</string>
+                           </property>
+                          </widget>
+                          <widget class="QLabel" name="label_89">
+                           <property name="geometry">
+                            <rect>
+                             <x>10</x>
+                             <y>50</y>
+                             <width>121</width>
+                             <height>20</height>
+                            </rect>
+                           </property>
+                           <property name="styleSheet">
+                            <string notr="true">color: rgb(255, 255, 255);
+font:11pt &quot;华文楷体&quot;;</string>
+                           </property>
+                           <property name="text">
+                            <string>输出文件路径：</string>
+                           </property>
+                          </widget>
+                          <widget class="QPushButton" name="pushButton_18">
+                           <property name="geometry">
+                            <rect>
+                             <x>170</x>
+                             <y>120</y>
+                             <width>93</width>
+                             <height>28</height>
+                            </rect>
+                           </property>
+                           <property name="styleSheet">
+                            <string notr="true">color: rgb(255, 255, 255);
+font:11pt &quot;华文楷体&quot;;</string>
+                           </property>
+                           <property name="text">
+                            <string>PushButton</string>
+                           </property>
+                          </widget>
+                          <widget class="QPushButton" name="pushButton_19">
+                           <property name="geometry">
+                            <rect>
+                             <x>320</x>
+                             <y>120</y>
+                             <width>93</width>
+                             <height>28</height>
+                            </rect>
+                           </property>
+                           <property name="styleSheet">
+                            <string notr="true">color: rgb(255, 255, 255);
+font:11pt &quot;华文楷体&quot;;</string>
+                           </property>
+                           <property name="text">
+                            <string>PushButton</string>
+                           </property>
+                          </widget>
+                          <widget class="QPushButton" name="btn_method_2">
+                           <property name="geometry">
+                            <rect>
+                             <x>470</x>
+                             <y>10</y>
+                             <width>41</width>
+                             <height>41</height>
+                            </rect>
+                           </property>
+                           <property name="styleSheet">
+                            <string notr="true">
+#btn_method_2
+{
+border-image: url(:/pushbottom/pushubottom/locate.png);;
+}
+
+QPushButton:hover
+{
+	margin:1px;
+}
+
+QPushButton:pressed
+{
+	margin:2px;
+}</string>
+                           </property>
+                           <property name="text">
+                            <string/>
+                           </property>
+                          </widget>
+                          <widget class="QPushButton" name="btn_method_3">
+                           <property name="geometry">
+                            <rect>
+                             <x>470</x>
+                             <y>70</y>
+                             <width>41</width>
+                             <height>41</height>
+                            </rect>
+                           </property>
+                           <property name="styleSheet">
+                            <string notr="true">
+#btn_method_3
+{
+border-image: url(:/pushbottom/pushubottom/locate.png);;
+}
+
+QPushButton:hover
+{
+	margin:1px;
+}
+
+QPushButton:pressed
+{
+	margin:2px;
+}</string>
+                           </property>
+                           <property name="text">
+                            <string/>
+                           </property>
+                          </widget>
+                          <widget class="QPushButton" name="btn_method_4">
+                           <property name="geometry">
+                            <rect>
+                             <x>680</x>
+                             <y>-120</y>
+                             <width>41</width>
+                             <height>41</height>
+                            </rect>
+                           </property>
+                           <property name="styleSheet">
+                            <string notr="true">
+#btn_method_2
+{
+border-image: url(:/pushbottom/pushubottom/locate.png);;
+}
+
+QPushButton:hover
+{
+	margin:1px;
+}
+
+QPushButton:pressed
+{
+	margin:2px;
+}</string>
+                           </property>
+                           <property name="text">
+                            <string/>
+                           </property>
+                          </widget>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QFrame" name="frame_30">
+                          <property name="styleSheet">
+                           <string notr="true"/>
+                          </property>
+                          <property name="frameShape">
+                           <enum>QFrame::StyledPanel</enum>
+                          </property>
+                          <property name="frameShadow">
+                           <enum>QFrame::Raised</enum>
+                          </property>
+                          <layout class="QGridLayout" name="gridLayout_19" rowstretch="0" columnstretch="0" rowminimumheight="0">
+                           <property name="leftMargin">
+                            <number>1</number>
+                           </property>
+                           <property name="topMargin">
+                            <number>1</number>
+                           </property>
+                           <property name="rightMargin">
+                            <number>1</number>
+                           </property>
+                           <property name="bottomMargin">
+                            <number>1</number>
+                           </property>
+                           <property name="spacing">
+                            <number>1</number>
+                           </property>
+                           <item row="0" column="0">
+                            <widget class="QStackedWidget" name="stackedWidget_4">
+                             <property name="styleSheet">
+                              <string notr="true">background-color: rgb(0, 0, 0);</string>
+                             </property>
+                             <property name="currentIndex">
+                              <number>1</number>
+                             </property>
+                             <widget class="QWidget" name="page_11"/>
+                             <widget class="QWidget" name="page_12">
+                              <widget class="QComboBox" name="comboBox_3">
+                               <property name="geometry">
+                                <rect>
+                                 <x>130</x>
+                                 <y>10</y>
+                                 <width>91</width>
+                                 <height>22</height>
+                                </rect>
+                               </property>
+                               <property name="styleSheet">
+                                <string notr="true">background-color: rgb(255, 255, 255);</string>
+                               </property>
+                              </widget>
+                             </widget>
+                            </widget>
+                           </item>
+                          </layout>
+                         </widget>
+                        </item>
+                       </layout>
+                      </widget>
+                     </item>
+                    </layout>
+                   </widget>
+                   <widget class="QWidget" name="page_10">
+                    <layout class="QGridLayout" name="gridLayout_20">
+                     <property name="leftMargin">
+                      <number>0</number>
+                     </property>
+                     <property name="topMargin">
+                      <number>0</number>
+                     </property>
+                     <property name="rightMargin">
+                      <number>0</number>
+                     </property>
+                     <property name="bottomMargin">
+                      <number>0</number>
+                     </property>
+                     <property name="spacing">
+                      <number>0</number>
+                     </property>
+                     <item row="0" column="0">
+                      <widget class="QLabel" name="label_98">
+                       <property name="styleSheet">
+                        <string notr="true">border-image: url(:/background/pushubottom/question.png);</string>
+                       </property>
+                       <property name="text">
+                        <string/>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </widget>
+                  </widget>
+                 </item>
+                </layout>
                </widget>
               </widget>
              </item>
@@ -3457,7 +4171,7 @@ text-align:center;
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>842</width>
+                  <width>860</width>
                   <height>1100</height>
                  </rect>
                 </property>
@@ -3914,7 +4628,7 @@ QScrollBar::sub-page:vertical
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>842</width>
+                  <width>90</width>
                   <height>1100</height>
                  </rect>
                 </property>
@@ -4630,7 +5344,7 @@ color: rgb(255, 255, 255);</string>
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>842</width>
+                  <width>90</width>
                   <height>1100</height>
                  </rect>
                 </property>
@@ -4818,8 +5532,8 @@ border:none;
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>852</width>
-                  <height>522</height>
+                  <width>90</width>
+                  <height>71</height>
                  </rect>
                 </property>
                 <layout class="QGridLayout" name="gridLayout_5" rowstretch="2,0,3">
@@ -5157,7 +5871,7 @@ text-align:center;
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>842</width>
+                      <width>80</width>
                       <height>1100</height>
                      </rect>
                     </property>

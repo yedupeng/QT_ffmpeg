@@ -29,6 +29,8 @@ add_executable(ffmpeg_play main.cpp
                         ./Headers/lyrices.h
                         ./Headers/encode_Pcm.h
                         ./code/encode_Pcm.cpp
+                        ./Headers/yuv_processing.h
+                        ./code/yuv_processing.cpp
                         ./code/lyrics.cpp)
 
 
