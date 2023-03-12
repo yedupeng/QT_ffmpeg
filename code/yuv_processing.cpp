@@ -1,8 +1,26 @@
 #include "../Headers/yuv_processing.h"
 
+void yuv_processing::slotOpenFile()//打开文件键
+{
+    currentFileName = QFileDialog::getOpenFileName(nullptr, QStringLiteral("选择文件"), "", tr("Video files(*.rmvb *.rm *.avi *.wmv *.mkv *.asf *.3gp *.mov *.mp4 *.ogv* )"));
+}
+
+void yuv_processing::delay(int msec)
+{
+    QTime dieTime = QTime::currentTime().addMSecs(msec);
+    while( QTime::currentTime() < dieTime )
+        QCoreApplication::processEvents(QEventLoop::AllEvents, 100);
+}
+
+
 void yuv_processing::show_yuv()
 {
     av_register_all();
+    if(currentFileName == " ")
+    {
+        return;
+    }
+    show_path = currentFileName.toStdString();
     AVFormatContext *cnt_ = avformat_alloc_context();
     int ret = avformat_open_input(&cnt_, (char *)show_path.data(), NULL, NULL);
     if(ret<0)
@@ -33,7 +51,7 @@ void yuv_processing::show_yuv()
     frame = av_frame_alloc();
     frame_rgb = av_frame_alloc();
     unsigned char* buffer;
-    buffer = (unsigned char *)av_malloc(av_image_get_buffer_size(AV_PIX_FMT_RGB32, cnt_codec_->width, 
+    buffer = (unsigned char *)av_malloc((size_t)av_image_get_buffer_size(AV_PIX_FMT_RGB32, cnt_codec_->width, 
                                 cnt_codec_->height, 1));
     av_image_fill_arrays(frame_rgb->data, frame_rgb->linesize, buffer, AV_PIX_FMT_RGB32,
                             cnt_codec_->width, cnt_codec_->height, 1);
@@ -42,7 +60,7 @@ void yuv_processing::show_yuv()
     img_convert_ctx = sws_getContext(cnt_codec_->width, cnt_codec_->height, cnt_codec_->pix_fmt,
                         cnt_codec_->width, cnt_codec_->height, AV_PIX_FMT_RGB32, SWS_BICUBIC, NULL, NULL, NULL);
     int flag;
-    while(av_read_frame(cnt_, pkt))
+    while(av_read_frame(cnt_, pkt) >= 0)
     {
         if(pkt->stream_index = vedio_index)
         {
@@ -55,8 +73,16 @@ void yuv_processing::show_yuv()
             {
                 sws_scale(img_convert_ctx, (const unsigned char* const*)frame->data, frame->linesize, 0, cnt_codec_->height,
                             frame_rgb->data, frame_rgb->linesize);
-                QImage img((uchar*)frame_rgb->data[0], cnt_codec_->width, cnt_codec_->height, QImage::Format_RGB32)
+                QImage img((uchar*)frame_rgb->data[0], cnt_codec_->width, cnt_codec_->height, QImage::Format_RGB32);
+                emit show_imgs(img);
+                delay(40);
             }
         }
+        av_free_packet(pkt);
     }
+    sws_freeContext(img_convert_ctx); // 释放一个SwsContext
+    av_frame_free(&frame_rgb);
+    av_frame_free(&frame);
+    avcodec_close(cnt_codec_);
+    avformat_close_input(&cnt_);
 }

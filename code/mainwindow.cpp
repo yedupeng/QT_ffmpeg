@@ -26,6 +26,7 @@ Mainwindow::Mainwindow(QWidget *parent) : QWidget(parent),ui(new Ui::Form)
 /*----------------------------------------------------------push to Thread--------------------------------------------------------------*/
     net->moveToThread(pThread);
     lc->moveToThread(pThread);
+    yuv_process->moveToThread(pThread1);
     encode_->moveToThread(pThread);
 /*----------------------------------------------------------push to Thread--------------------------------------------------------------*/
 
@@ -90,6 +91,8 @@ Mainwindow::Mainwindow(QWidget *parent) : QWidget(parent),ui(new Ui::Form)
     connect(ui->pushButton_10,SIGNAL(clicked()),this,SLOT(btn_chage_page_local()));
     connect(ui->pushButton_14,SIGNAL(clicked()),this,SLOT(btn_chage_page_my1()));
     connect(ui->pushButton_15,SIGNAL(clicked()),this,SLOT(btn_chage_page_my2()));
+    connect(ui->btn_yuv_path,SIGNAL(clicked()),yuv_process,SLOT(slotOpenFile()));
+    connect(ui->pushButton_21,SIGNAL(clicked()),yuv_process,SLOT(show_yuv()));
 
     connect(ui->comboBox,SIGNAL(currentIndexChanged(int)),this,SLOT(play_model_change()));
     connect(ui->comboBox_method,SIGNAL(currentIndexChanged(int)),this,SLOT(set_method()));
@@ -114,6 +117,7 @@ Mainwindow::Mainwindow(QWidget *parent) : QWidget(parent),ui(new Ui::Form)
     connect(net, &Net_songs::get_songs_info_over, this, &Mainwindow::add_table);
     connect(net, &Net_songs::get_timelength_over, this, &Mainwindow::add_item,Qt::DirectConnection);
     connect(lc, &LC_classer::show_lc, this, &Mainwindow::lyric_show, Qt::DirectConnection);
+    connect(yuv_process, &yuv_processing::show_imgs, this, &Mainwindow::show_imgs);
 
     connect(timer, SIGNAL(timeout()), this, SLOT(update_red()));
     connect(timer2, &QTimer::timeout, lc, &LC_classer::lyrics_net_show, Qt::DirectConnection);
@@ -121,6 +125,7 @@ Mainwindow::Mainwindow(QWidget *parent) : QWidget(parent),ui(new Ui::Form)
 
     timer->start(3000);
     pThread->start();
+    pThread1->start();
 }
 
 Mainwindow::~Mainwindow()
@@ -791,5 +796,9 @@ void Mainwindow::delay(int i)
     while(i--);
 }
 
-
+void Mainwindow::show_imgs(QImage img)
+{
+    ui->label_66->setPixmap(QPixmap::fromImage(img)); 
+    ui->label_66->setScaledContents(true); 
+}
 

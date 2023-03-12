@@ -15,6 +15,7 @@
 #include <qdebug.h>
 #include <QTime>
 #include <QtMultimedia/qmediaplaylist.h>
+#include "yuv_processing.h"
 #include "encode_Pcm.h"
 #include <QMenu>
 #include <QAction>
@@ -104,9 +105,11 @@ private slots:
     void mouseMoveEvent(QMouseEvent *event);
     void set_method();
     void show_acc_input(QString input);
+    void show_imgs(QImage img);
 
 private:
     QThread* pThread = new QThread;
+    QThread* pThread1 = new QThread;
     Ui_Form *ui;
     QString File;
     int num = 0;
@@ -121,6 +124,7 @@ private:
     LC_classer* lc = new LC_classer;
     encode_pcm* encode_ = new encode_pcm;
     int flag_ln = 0;
+    yuv_processing* yuv_process = new yuv_processing;
 };
 
 #endif

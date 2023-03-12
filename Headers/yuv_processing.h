@@ -5,6 +5,8 @@
 #include <QObject>
 #include <qdebug.h>
 #include <QFileDialog>
+#include <QTime>
+#include <QtCore>
 
 extern "C"
 {
@@ -25,9 +27,15 @@ class yuv_processing : public QObject
     Q_OBJECT
 public:
     string show_path = "";
+    QString currentFileName = " ";
+    void delay(int msec);
+
+signals:
+    void show_imgs(QImage img);
 
 private slots:
     void show_yuv();
+    void slotOpenFile();
 };
 
 #endif
