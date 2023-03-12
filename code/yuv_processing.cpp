@@ -1,17 +1,10 @@
 #include "../Headers/yuv_processing.h"
 
+
 void yuv_processing::slotOpenFile()//打开文件键
 {
     currentFileName = QFileDialog::getOpenFileName(nullptr, QStringLiteral("选择文件"), "", tr("Video files(*.rmvb *.rm *.avi *.wmv *.mkv *.asf *.3gp *.mov *.mp4 *.ogv* )"));
 }
-
-void yuv_processing::delay(int msec)
-{
-    QTime dieTime = QTime::currentTime().addMSecs(msec);
-    while( QTime::currentTime() < dieTime )
-        QCoreApplication::processEvents(QEventLoop::AllEvents, 100);
-}
-
 
 void yuv_processing::show_yuv()
 {
@@ -74,8 +67,6 @@ void yuv_processing::show_yuv()
                 sws_scale(img_convert_ctx, (const unsigned char* const*)frame->data, frame->linesize, 0, cnt_codec_->height,
                             frame_rgb->data, frame_rgb->linesize);
                 QImage img((uchar*)frame_rgb->data[0], cnt_codec_->width, cnt_codec_->height, QImage::Format_RGB32);
-                emit show_imgs(img);
-                delay(40);
             }
         }
         av_free_packet(pkt);

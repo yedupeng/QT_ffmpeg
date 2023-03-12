@@ -24,6 +24,7 @@
 #include <QComboBox>
 #include <QThread>
 #include <QMouseEvent>
+#include <QtMultimediaWidgets/qvideowidget.h>
 
 extern "C"
 {
@@ -59,7 +60,7 @@ public:
     QTimer *timer2;
     void delay(int i);
     void cmd_show(QString msg);
- 
+    QVideoWidget *mediawidge;
     //记录鼠标，窗口位置
     QPoint windowPos;
     QPoint mousePos;
@@ -105,7 +106,7 @@ private slots:
     void mouseMoveEvent(QMouseEvent *event);
     void set_method();
     void show_acc_input(QString input);
-    void show_imgs(QImage img);
+    void player_yuv();
 
 private:
     QThread* pThread = new QThread;
@@ -124,6 +125,7 @@ private:
     LC_classer* lc = new LC_classer;
     encode_pcm* encode_ = new encode_pcm;
     int flag_ln = 0;
+    QMediaPlayer *mediaplay;
     yuv_processing* yuv_process = new yuv_processing;
 };
 

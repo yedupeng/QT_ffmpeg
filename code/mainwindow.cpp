@@ -26,8 +26,9 @@ Mainwindow::Mainwindow(QWidget *parent) : QWidget(parent),ui(new Ui::Form)
 /*----------------------------------------------------------push to Thread--------------------------------------------------------------*/
     net->moveToThread(pThread);
     lc->moveToThread(pThread);
-    yuv_process->moveToThread(pThread1);
+    yuv_process->moveToThread(pThread);
     encode_->moveToThread(pThread);
+    pThread->start();
 /*----------------------------------------------------------push to Thread--------------------------------------------------------------*/
 
 /*----------------------------------------------------------settings init--------------------------------------------------------------*/
@@ -92,7 +93,7 @@ Mainwindow::Mainwindow(QWidget *parent) : QWidget(parent),ui(new Ui::Form)
     connect(ui->pushButton_14,SIGNAL(clicked()),this,SLOT(btn_chage_page_my1()));
     connect(ui->pushButton_15,SIGNAL(clicked()),this,SLOT(btn_chage_page_my2()));
     connect(ui->btn_yuv_path,SIGNAL(clicked()),yuv_process,SLOT(slotOpenFile()));
-    connect(ui->pushButton_21,SIGNAL(clicked()),yuv_process,SLOT(show_yuv()));
+    connect(ui->pushButton_21,SIGNAL(clicked()),this,SLOT(player_yuv()));
 
     connect(ui->comboBox,SIGNAL(currentIndexChanged(int)),this,SLOT(play_model_change()));
     connect(ui->comboBox_method,SIGNAL(currentIndexChanged(int)),this,SLOT(set_method()));
@@ -116,16 +117,13 @@ Mainwindow::Mainwindow(QWidget *parent) : QWidget(parent),ui(new Ui::Form)
     connect(encode_, &encode_pcm::show_input, this, &Mainwindow::show_acc_input);
     connect(net, &Net_songs::get_songs_info_over, this, &Mainwindow::add_table);
     connect(net, &Net_songs::get_timelength_over, this, &Mainwindow::add_item,Qt::DirectConnection);
-    connect(lc, &LC_classer::show_lc, this, &Mainwindow::lyric_show, Qt::DirectConnection);
-    connect(yuv_process, &yuv_processing::show_imgs, this, &Mainwindow::show_imgs);
+    connect(lc, &LC_classer::show_lc, this, &Mainwindow::lyric_show, Qt::DirectConnection);;
 
     connect(timer, SIGNAL(timeout()), this, SLOT(update_red()));
     connect(timer2, &QTimer::timeout, lc, &LC_classer::lyrics_net_show, Qt::DirectConnection);
 /*----------------------------------------------------------signals and slots--------------------------------------------------------------*/   
 
     timer->start(3000);
-    pThread->start();
-    pThread1->start();
 }
 
 Mainwindow::~Mainwindow()
@@ -796,9 +794,17 @@ void Mainwindow::delay(int i)
     while(i--);
 }
 
-void Mainwindow::show_imgs(QImage img)
+void Mainwindow::player_yuv()
 {
-    ui->label_66->setPixmap(QPixmap::fromImage(img)); 
-    ui->label_66->setScaledContents(true); 
+    mediaplay = new QMediaPlayer;
+    mediawidge = new QVideoWidget;
+    mediaplay->setVideoOutput(mediawidge);
+    ui->verticalLayout_16->addWidget(mediawidge);
+    QPalette qplte;// 调色板
+    qplte.setColor(QPalette::Window, QColor(55,55,0));// 透明
+    mediawidge->setPalette(qplte);
+	mediawidge->setAutoFillBackground(true);
+    mediaplay->setMedia(QUrl::fromLocalFile(yuv_process->currentFileName));
+    mediawidge->show();
+    mediaplay->play();
 }
-

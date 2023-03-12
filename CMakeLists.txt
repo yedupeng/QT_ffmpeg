@@ -17,6 +17,7 @@ find_package(Qt5 COMPONENTS
         Widgets
         Gui
         Multimedia
+        MultimediaWidgets
         REQUIRED)
 
 add_executable(ffmpeg_play main.cpp
@@ -39,6 +40,7 @@ target_link_libraries(ffmpeg_play
         Qt::Widgets
         Qt::Gui
         Qt::Multimedia
+        Qt::MultimediaWidgets
         avfilter
         avformat
         avcodec

@@ -3083,30 +3083,6 @@ border-color: rgb(255, 255, 255);
                        <property name="frameShadow">
                         <enum>QFrame::Raised</enum>
                        </property>
-                       <widget class="QLabel" name="label_66">
-                        <property name="geometry">
-                         <rect>
-                          <x>140</x>
-                          <y>20</y>
-                          <width>341</width>
-                          <height>291</height>
-                         </rect>
-                        </property>
-                        <property name="styleSheet">
-                         <string notr="true">#label_66
-{
-background-image: url(:/background/pushubottom/question.png);
-	border-top-right-radius:20px;
-border-top-left-radius:20px;
-	border-bottom-left-radius:20px;
-	border-bottom-right-radius:20px;
-}
-</string>
-                        </property>
-                        <property name="text">
-                         <string/>
-                        </property>
-                       </widget>
                        <widget class="QLabel" name="label_93">
                         <property name="geometry">
                          <rect>
@@ -4679,7 +4655,7 @@ QScrollBar::sub-page:vertical
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>90</width>
+                  <width>860</width>
                   <height>1100</height>
                  </rect>
                 </property>
@@ -5395,7 +5371,7 @@ color: rgb(255, 255, 255);</string>
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>90</width>
+                  <width>860</width>
                   <height>1100</height>
                  </rect>
                 </property>
@@ -5583,8 +5559,8 @@ border:none;
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>90</width>
-                  <height>71</height>
+                  <width>870</width>
+                  <height>522</height>
                  </rect>
                 </property>
                 <layout class="QGridLayout" name="gridLayout_5" rowstretch="2,0,3">
@@ -5922,7 +5898,7 @@ text-align:center;
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>80</width>
+                      <width>860</width>
                       <height>1100</height>
                      </rect>
                     </property>
