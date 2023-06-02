@@ -16,7 +16,9 @@ void Net_songs::find(QString searchName)
     m_listResult.clear();
     QTextCodec *codec_ = QTextCodec::codecForName("utf-8");
     QString strInput = searchName;
+    // 将URL的格式转为UTF8
     QByteArray bytecodec_ = codec_->fromUnicode(strInput);
+    // 处理转码后部分特殊字符
     QByteArray byteencodec = bytecodec_.toPercentEncoding();
     QString str_name = QString(byteencodec);
     QNetworkReply* answer;
@@ -24,11 +26,14 @@ void Net_songs::find(QString searchName)
     QString strurl = QString("http://mobilecdn.kugou.com/api/v3/search/song?format=json"
                                "&keyword=%1&page=1&pagesize=18").arg(str_name);
     qDebug()<<strurl;
+    // 发起URL请求
     request.setUrl(QUrl(strurl));
+    // 接收服务端的回复
     answer = manager_getinfo->get(request);
     QEventLoop eventloop;
     connect(manager_getinfo, SIGNAL(finished(QNetworkReply*)),&eventloop, SLOT(quit()));
     eventloop.exec();
+    // 解析服务端回复的消息
     get_song_info(answer);
     answer->deleteLater();
 }
